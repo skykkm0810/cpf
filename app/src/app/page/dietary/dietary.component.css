@@ -1,15 +1,15 @@
-.header mat-card-title {
-    display:inline-block;
+.header {
     font-size: 1rem;
+    line-height: 36px;
     margin:0;
 }
-.header mat-icon {
-    font-size:1.4rem;
-    cursor:pointer;
+.header .addDietary{
+    background-color: slateblue;
+    color:#fff;
     float:right;
 }
-.bodyWrap { padding-top: 5%;}
-mat-grid-list { padding-top: 30px;}
+.bodyWrap { padding-top: 20px;}
+mat-grid-list { padding-top: 20px;}
 .dietrayCard { 
     width:90%;
     height:90%;

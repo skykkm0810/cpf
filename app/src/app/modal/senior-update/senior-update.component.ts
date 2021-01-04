@@ -14,6 +14,15 @@ export class SeniorUpdateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  value() {
+    var inputvalue = (document.getElementById('seniorImg') as HTMLInputElement).value;
+    (document.getElementsByClassName('fileUpload')[0] as HTMLInputElement ).innerHTML = inputvalue
+    if( inputvalue == ""){
+      (document.getElementsByClassName('fileUpload')[0] as HTMLInputElement ).innerHTML = "파일 없음";
+    }
+  }
+  closeDialog(){
+    this.dialogRef2.close();
+  }
 }
 

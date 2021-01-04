@@ -1,0 +1,16 @@
+.header {
+    line-height: 36px;
+}
+.addActivity {
+    background-color: slateblue;
+    color:#fff;
+    float: right;
+}
+
+.filter {
+    display: inline-block;
+    width:50%;
+}
+.TableControl{
+    float:right;
+}

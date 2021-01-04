@@ -1,0 +1,41 @@
+<h4>기기 추가</h4>
+<div class="contents">
+    <form action="/">
+        <p class="type">
+            <span class="label">종류</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="name">
+            <span class="label">이름</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="center">
+            <span class="label">시설</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="location">
+            <span class="label">위치</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="inserted">
+            <span class="label">등록일</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        
+        
+        <div class="buttonBox">
+            <button mat-button class="submit">추가하기</button>
+            <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+        </div>
+    </form>
+</div>

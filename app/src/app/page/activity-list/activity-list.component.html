@@ -1,5 +1,6 @@
-<mat-card class="m-b-10">
+<mat-card class="m-b-10 header">
     활동 관리
+    <button mat-button class="addActivity" (click)="addActivity()">활동 추가</button>
 </mat-card>
 <div class="filterTable">
   <mat-card class="filterContainer">
@@ -27,10 +28,13 @@
     </section>
   </mat-card>
   <mat-card class="tableContainer">
-    <mat-form-field>
+    <mat-form-field class="filter">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="입력" #input>
     </mat-form-field>
+    <button mat-button class="TableControl">
+      <mat-icon>settings</mat-icon>
+    </button>
     
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
@@ -65,7 +69,6 @@
           <td mat-cell *matCellDef="let row"> {{row.datetime}} </td>
         </ng-container>
     
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     

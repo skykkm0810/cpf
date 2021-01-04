@@ -22,7 +22,8 @@ export const TAGS : Record<string, string> = {
   SCHEDULE: 'schedule',
   PHOTOBOOK: 'photobook',
   TASKADD: 'taskAdd',
-  CCTVDETAIL: 'cctvDetail',
+  CCTVDETAIL: 'cctvDetail/:id',
+  NOTICEDETAIL: 'noticeDetail',
 } 
 
 export interface AsideItem {
@@ -171,7 +172,7 @@ export interface Device {
   inserted?: string;
 };
 
-export const deviceHeader: string[] = ['id', 'type', 'name', 'center', 'location', 'inserted', 'status'];
+export const deviceHeader: string[] = ['select','id', 'type', 'name', 'center', 'location', 'inserted', 'status'];
 
 export const deviceFilter: Filter = {
   name: '전체',
@@ -284,10 +285,10 @@ export interface Worker {
   contact : string;
   center : string;
   region : string;
-  date : string;
+  date?: string;
 }
 
-export const workerHeader: string[] = ['task', 'name', 'contact', 'center', 'region', 'date'];
+export const workerHeader: string[] = [ 'name', 'contact','task','center', 'region', 'date'];
 
 export const workerFilter: Filter = {
   name: '전체',
@@ -439,28 +440,28 @@ export interface Dietary {
 }
 
 export const DIETARYS : Dietary[] =[
-  {year:2020, month:12, day:1, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:2, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:3, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:4, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:7, info:"나들이 도시락 대체", url:"dietary.jpg"},
-  {year:2020, month:12, day:8, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:9, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:10, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:11, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:14, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
-  {year:2020, month:12, day:15, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:16, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:17, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:18, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:21, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
-  {year:2020, month:12, day:22, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:23, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:24, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:28, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:29, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:30, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:12, day:31, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:1, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:2, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:3, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:4, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:7, info:"나들이 도시락 대체", url:"dietary.jpg"},
+  {year:2020, month:1, day:8, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:9, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:10, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:11, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:14, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
+  {year:2020, month:1, day:15, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:16, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:17, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:18, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:21, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
+  {year:2020, month:1, day:22, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:23, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:24, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:28, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:29, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:30, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2020, month:1, day:31, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
 ]
 
 // video
@@ -495,19 +496,20 @@ export interface cctv {
   update : string;
   title: string;
   desc?: string;
+  url?:string;
 
 }
 export const CCTVLIST : cctv[] = [
-  {id:1, kind:'사고', thum:'1.jpg', update:"20/12/20 18:46" , title:"사고", desc:""},
-  {id:2, kind:'요청', thum:'2.jpg', update:"20/12/20 18:46" , title:"사고", desc:""},
-  {id:3, kind:'요청', thum:'3.jpg', update:"20/12/19 18:46" , title:"요청", desc:""},
-  {id:4, kind:'요청', thum:'4.jpg', update:"20/12/05 18:46" , title:"요청", desc:""},
-  {id:5, kind:'요청', thum:'5.jpg', update:"20/11/20 18:46" , title:"요청", desc:""},
-  {id:6, kind:'요청', thum:'6.jpg', update:"20/10/12 18:46" , title:"요청", desc:""},
-  {id:7, kind:'요청', thum:'7.jpg', update:"20/10/10 18:46" , title:"요청", desc:""},
-  {id:8, kind:'요청', thum:'8.jpg', update:"20/10/02 18:46" , title:"요청", desc:""},
-  {id:9, kind:'사고', thum:'1.jpg', update:"20/9/20 18:46" , title:"사고", desc:""},
-  {id:10, kind:'사고', thum:'2.jpg', update:"20/8/20 18:46" , title:"사고", desc:""},
+  {id:1, kind:'사고', thum:'1.jpg', update:"20/12/20 18:46" , title:"사고", desc:"" ,url:""},
+  {id:2, kind:'요청', thum:'2.jpg', update:"20/12/20 18:46" , title:"사고", desc:"" ,url:""},
+  {id:3, kind:'요청', thum:'3.jpg', update:"20/12/19 18:46" , title:"요청", desc:"" ,url:""},
+  {id:4, kind:'요청', thum:'4.jpg', update:"20/12/05 18:46" , title:"요청", desc:"" ,url:""},
+  {id:5, kind:'요청', thum:'5.jpg', update:"20/11/20 18:46" , title:"요청", desc:"" ,url:""},
+  {id:6, kind:'요청', thum:'6.jpg', update:"20/10/12 18:46" , title:"요청", desc:"" ,url:""},
+  {id:7, kind:'요청', thum:'7.jpg', update:"20/10/10 18:46" , title:"요청", desc:"" ,url:""},
+  {id:8, kind:'요청', thum:'8.jpg', update:"20/10/02 18:46" , title:"요청", desc:"" ,url:""},
+  {id:9, kind:'사고', thum:'1.jpg', update:"20/9/20 18:46" , title:"사고", desc:"", url:""},
+  {id:10, kind:'사고', thum:'2.jpg', update:"20/8/20 18:46" , title:"사고", desc:"", url:""},
 
 ]
 // noticeList

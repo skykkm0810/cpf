@@ -3,7 +3,7 @@ import { Senior, SENIORS } from '../../interface/interface';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SeniorAddComponent } from '../../modal/senior-add/senior-add.component';
 import { Router } from '@angular/router';
-import { SeniorUpdateComponent } from '../../modal/senior-update/senior-update.component';
+import { SeniorContactComponent } from '../../modal/senior-contact/senior-contact.component';
 @Component({
   selector: 'app-senior-list',
   templateUrl: './senior-list.component.html',
@@ -30,7 +30,7 @@ export class SeniorListComponent implements OnInit {
   }
  
   openNumber(obj1,obj2,obj3,obj4){
-    const dialogRef2 = this.dialog.open(SeniorUpdateComponent, {
+    const dialogRef2 = this.dialog.open(SeniorContactComponent, {
       width: '30%',
       data: {name: obj1, contact: obj2, guardian: obj3, guardianContact: obj4}
     });

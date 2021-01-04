@@ -1,0 +1,39 @@
+<h4>영상 정보 변경</h4>
+<div class="contents">
+    <form action="/">
+        <p class="title">
+            <span class="label">제목</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="file">
+            <span class="label">파일</span>
+                <label for="seniorImg" class="fileUpload">파일 변경하기</label>
+                <input type="file" id="seniorImg" class="hidden" (change)="value()">
+        </p>
+        <p class="update">
+            <span class="label">날짜</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="kind">
+            <span class="label">분류</span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        <p class="desc">
+            <span class="label">상황설명 </span>
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+        </p>
+        
+        <div class="buttonBox">
+            <button mat-button class="submit">추가하기</button>
+            <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+        </div>
+    </form>
+</div>

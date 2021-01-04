@@ -1,11 +1,78 @@
-<h4>{{data.name}} 어르신 연락처 </h4>
-<div class="contents">
-    <p class="senior">
-        <span class="name">{{data.name}}</span> 어르신 :
-        <span class="number">{{data.contact}}</span>
-    </p>
-    <p class="guardian">
-        <span class="name">{{data.guardian}}</span> 님 :
-        <span class="number">{{data.guardianContact}}</span>
-    </p>
-</div>
+<mat-tab-group>
+  <form action="/">
+    <mat-tab label="어르신 정보 변경">
+      <div class="contents">
+        <p class="name">
+          <span class="label">이름</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="age">
+          <span class="label">나이</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="gender">
+          <span class="label">주소</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="gender">
+          <span class="label">성별</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="desc">
+          <span class="label">특이사항</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="number">
+          <span class="label">연락처</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="guardianName">
+          <span class="label">보호자 이름</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <p class="guardianNumber">
+          <span class="label">보호자 연락처</span>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </p>
+        <div class="buttonBox">
+          <button mat-button class="submit">추가하기</button>
+          <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="사진 변경">
+      <div class="contents2">
+        <p class="file">
+          <span class="label">사진</span>
+          <label for="seniorImg" class="fileUpload">사진 변경하기</label>
+          <input type="file" id="seniorImg" class="hidden" (change)="value()">
+        </p>
+        <p class="bgfile">
+          <span class="label">배경사진</span>
+          <label for="bgImg" class="fileUpload">사진 변경하기</label>
+          <input type="file" id="bgImg" class="hidden" (change)="value()">
+        </p>
+      </div>
+      <div class="buttonBox">
+        <button mat-button class="submit">추가하기</button>
+        <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+      </div>
+    </mat-tab>
+  </form>
+</mat-tab-group>

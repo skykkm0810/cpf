@@ -2,7 +2,7 @@
   <div class="logo">
     <a href="/"></a>
   </div>
-  <!-- <div class="manager">
+  <div class="manager">
     <p><img src="../../../assets/images/users/{{user[0].img}}" class="userImg"
         alt='관리자 {{user[0].name}}'></p>
     <p>
@@ -17,7 +17,7 @@
       </mat-menu>
     </p>
     <p class="work">{{user[0].progress}}</p>
-  </div> -->
+  </div>
   <mat-accordion>
     <div *ngFor="let item of items">
       <div *ngIf="!item.subItem">

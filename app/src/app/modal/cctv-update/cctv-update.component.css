@@ -1,0 +1,45 @@
+.hidden{
+    display:none;
+}
+h4 {
+    font-size: 1.2rem;
+}
+.contents {
+    padding:0 1rem;
+}
+.contents .label {
+    display: inline-block;
+    width:25%;
+}
+.contents .mat-form-field {
+    display: inline-block;
+    width: 75%;
+}
+.contents .mat-form-field .mat-form-field-wrapper{
+    padding-bottom: 0;
+}
+.contents .fileUpload {
+    display: inline-block;
+    width: 75%;
+    border-bottom:1.5px solid #aaa;
+}
+.contents .file span {
+    padding: 1rem 0;
+}
+.buttonBox {
+    padding:1rem 0;
+    text-align: center;
+}
+.buttonBox button {
+    display: inline-block;
+    margin:0 15px;
+    width:15%;
+    min-width: 100px;
+}
+.buttonBox button.submit{
+    background-color: royalblue;
+    color:#fff;
+}
+.buttonBox button.cancel{
+    background-color: #eee;
+}

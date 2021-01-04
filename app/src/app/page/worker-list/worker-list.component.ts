@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Worker, workerHeader, WORKERS, workerFilter } from '../../interface/interface';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { WorkerAddComponent } from 'src/app/modal/worker-add/worker-add.component';
 
 @Component({
   selector: 'app-worker-list',
@@ -21,10 +23,16 @@ export class WorkerListComponent implements AfterViewInit {
   
   filter = workerFilter
   
-  constructor() {
+  constructor(
+    public dialog: MatDialog,
+  ) {
     this.dataSource = new MatTableDataSource(WORKERS);
   }
-  
+  addWorker( worker? : Worker ): void {
+    const dialogRef = this.dialog.open(WorkerAddComponent, {
+      width: '40%',
+    });
+  }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

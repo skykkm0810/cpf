@@ -72,6 +72,14 @@ import { SeniorAddComponent } from './modal/senior-add/senior-add.component';
 import { SeniorUpdateComponent } from './modal/senior-update/senior-update.component';
 import { CctvAddComponent } from './modal/cctv-add/cctv-add.component';
 import { CctvDetailComponent } from './page/cctv-detail/cctv-detail.component';
+import { CctvUpdateComponent } from './modal/cctv-update/cctv-update.component';
+import { SeniorContactComponent } from './modal/senior-contact/senior-contact.component';
+import { DeviceAddComponent } from './modal/device-add/device-add.component';
+import { DeviceUpdateComponent } from './modal/device-update/device-update.component';
+import { WorkerAddComponent } from './modal/worker-add/worker-add.component';
+import { ActivityAddComponent } from './modal/activity-add/activity-add.component';
+import { PhotoAddComponent } from './modal/photo-add/photo-add.component';
+import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +110,14 @@ import { CctvDetailComponent } from './page/cctv-detail/cctv-detail.component';
     SeniorUpdateComponent,
     CctvAddComponent,
     CctvDetailComponent,
+    CctvUpdateComponent,
+    SeniorContactComponent,
+    DeviceAddComponent,
+    DeviceUpdateComponent,
+    WorkerAddComponent,
+    ActivityAddComponent,
+    PhotoAddComponent,
+    NoticeDetailComponent,
   ],
   imports: [
     BrowserModule,

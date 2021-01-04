@@ -21,6 +21,17 @@
     height:100%;
     background-color: rgba(0, 0, 0, 0.15);
 }
+.update {
+    position: absolute;
+    right:1rem; 
+    font-size: 1.5rem;
+    top:1rem;
+    cursor: pointer;
+    color: #ccc;
+}
+.update:hover{
+    color:#fff;
+}
 .show p {
     text-align: center;
     color:#fff;

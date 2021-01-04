@@ -1,0 +1,34 @@
+.hide{
+    display: none;
+}
+.header {
+    line-height: 36px;
+}
+.addDevice {
+    float:right;
+    background-color:slateblue;
+    color:#fff;
+}
+.right_button {
+    float: right;
+}
+.icon {
+    display: inline-block;
+    margin:0 10px;
+    cursor:pointer;
+}
+ .delete{
+    color:red;
+}
+ .revice{
+    color:#444444;
+}
+
+.filterBox {
+    display: inline-block;
+    width:50%;
+}
+.TableControl {
+    float: right;
+    color:#666;
+}

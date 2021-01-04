@@ -6,8 +6,11 @@ import {REQUESTS , Request} from '../../interface/interface';
 import {EMERGENCY , Emergency} from '../../interface/interface';
 import {MEDICINE , Medicine} from '../../interface/interface';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Senior } from '../../interface/interface';
+import { Senior,SENIORS } from '../../interface/interface';
+import { SeniorContactComponent } from '../../modal/senior-contact/senior-contact.component';
+import { SeniorUpdateComponent } from '../../modal/senior-update/senior-update.component';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+
 
 @Component({
   selector: 'app-senior-detail',
@@ -53,7 +56,6 @@ export class SeniorDetailComponent implements AfterViewInit {
       .subscribe( param => {
         console.log(param['data']);
       })
-
   }
 
   present(){
@@ -66,5 +68,16 @@ export class SeniorDetailComponent implements AfterViewInit {
     show.classList.remove('inputMediInfo');
     show.classList.add('display');
   }
+  updateSenior( senior? : Senior ): void {
+    const dialogRef = this.dialog.open(SeniorUpdateComponent, {
+      width: '40%',
+    });
+  }
+  // openNumber(obj1,obj2,obj3,obj4){
+  //   const dialogRef2 = this.dialog.open(SeniorContactComponent, {
+  //     width: '30%',
+  //     data: {name: obj1, contact: obj2, guardian: obj3, guardianContact: obj4}
+  //   });
+  // }
   
 }
