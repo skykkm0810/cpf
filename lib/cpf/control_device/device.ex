@@ -1,4 +1,4 @@
-defmodule Cpf.Device do
+defmodule Cpf.ControlDevice.Device do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,11 +15,7 @@ defmodule Cpf.Device do
   @doc false
   def changeset(device, attrs) do
     device
-    |> cast(attrs, [:type, :name, :centerId, :location, :status])
-    |> validate_required([:type, :name, :centerId, :status])
-  end
-
-  def get_devices(limit \\ 100) do
-    Cpf.Repo.all(Cpf.Device, limit: limit)
+    |> cast(attrs, [:centerId, :location, :name, :status, :type])
+    |> validate_required([:centerId, :location, :name, :status, :type])
   end
 end

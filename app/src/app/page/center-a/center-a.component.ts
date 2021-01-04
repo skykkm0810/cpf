@@ -47,7 +47,7 @@ export class CenterAComponent implements AfterViewInit {
   select(){
     this.phxChannel.send(
       "device",
-      "deviceAdd",
+      "add:device",
       {
         centerId: 1,
         type: '로봇',
