@@ -1,4 +1,4 @@
-defmodule Cpf.Event do
+defmodule Cpf.ConEvent.Event do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,7 +15,7 @@ defmodule Cpf.Event do
   @doc false
   def changeset(event, attrs) do
     event
-    |> cast(attrs, [:centerId, :userId, :venderId, :deviceId, :type])
-    |> validate_required([:centerId, :userId, :venderId, :deviceId, :type])
+    |> cast(attrs, [:centerId, :deviceId, :type, :userId, :venderId])
+    |> validate_required([:centerId, :deviceId, :type, :userId, :venderId])
   end
 end

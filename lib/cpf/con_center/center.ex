@@ -1,4 +1,4 @@
-defmodule Cpf.Center do
+defmodule Cpf.ConCenter.Center do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -16,7 +16,7 @@ defmodule Cpf.Center do
   @doc false
   def changeset(center, attrs) do
     center
-    |> cast(attrs, [:name, :address, :limited, :manager, :contact, :email])
-    |> validate_required([:name, :address, :limited, :manager, :contact, :email])
+    |> cast(attrs, [:address, :contact, :email, :limited, :manager, :name])
+    |> validate_required([:address, :contact, :email, :limited, :manager, :name])
   end
 end

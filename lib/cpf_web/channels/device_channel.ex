@@ -25,14 +25,14 @@ defmodule CpfWeb.DeviceChannel do
   #   {:noreply, socket}
   # end
 
-  def handle_in("req:device:list", socket) do
-    body = list_devices()
-    {:reply, {:ok, body}, socket}
-  end
+  # def handle_in("req:device:list", socket) do
+  #   body = list_devices()
+  #   {:reply, {:ok, body}, socket}
+  # end
 
-  def handle_in("add:device", %{"body" => payload}, socket) do
-    data = create_device(payload)
-    response = Cpf.PostView.render("show.json", %{data: data})
+  def handle_in("device:add", %{"body" => payload}, socket) do
+    body = create_device(payload)
+    response = Jason.encode(body)
     {:reply, {:ok, response}, socket}
   end
 
@@ -43,13 +43,25 @@ defmodule CpfWeb.DeviceChannel do
 
   def list_devices() do
     Cpf.ControlDevice.list_devices()
-    |> Enum.filter(fn x -> 
-      x["centerId"] == 1
-      end)
+    # |> Enum.filter(fn x -> 
+    #   x["centerId"] == 1
+    #   end)
   end
 
   def create_device(data) do
     Cpf.ControlDevice.create_device(data)
   end
 
+  # def handle_info(:after_join, socket) do
+  #   Cpf.Control.list_devices()
+  #   |> Enum.each(fn data -> push(socket, "deviceList", %{
+  #       id: data.id,
+  #       centerId: data.centerId,
+  #       type: data.type,
+  #       name: data.name,
+  #       location: data.location,
+  #       status: data.status
+  #     }) end)
+  #   {:noreply, socket}
+  # end
 end

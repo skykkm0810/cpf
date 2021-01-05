@@ -1,4 +1,4 @@
-defmodule Cpf.Data do
+defmodule Cpf.Condata.Data do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -18,7 +18,7 @@ defmodule Cpf.Data do
   @doc false
   def changeset(data, attrs) do
     data
-    |> cast(attrs, [:eventId, :seniorId, :title, :subtitle, :desc, :progress, :endedData, :emergency])
-    |> validate_required([:eventId, :seniorId, :title, :subtitle, :desc, :progress, :endedData, :emergency])
+    |> cast(attrs, [:desc, :emergency, :endedData, :eventId, :progress, :seniorId, :subtitle, :title])
+    |> validate_required([:desc, :emergency, :endedData, :eventId, :progress, :seniorId, :subtitle, :title])
   end
 end
