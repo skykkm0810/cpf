@@ -23,7 +23,7 @@ export class PhxChannelService {
   private init_channel() {
     this.socket = new Socket( `${Environment.socket_channel}/socket`, {
       logger: (kind, msg, data) => {
-        console.log( `${kind}: ${msg}`, data );
+        // console.log( `${kind}: ${msg}`, data );
       },
       transport: WebSocket
     });
@@ -75,7 +75,7 @@ export class PhxChannelService {
           //   console.log(body);
           // });
         break;
-      
+
       default:
         break;
     }
