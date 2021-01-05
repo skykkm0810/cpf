@@ -19,7 +19,8 @@
             <li *ngFor="let subFilter of filter.subFilters">
               <mat-checkbox [(ngModel)]="subFilter.completed"
                             [color]="subFilter.color"
-                            (ngModelChange)="updateAllComplete()">
+                            (ngModelChange)="updateAllComplete()"
+                            (change)="addFilter($event)">
                 {{subFilter.name}}
               </mat-checkbox>
             </li>

@@ -80,6 +80,7 @@ import { WorkerAddComponent } from './modal/worker-add/worker-add.component';
 import { ActivityAddComponent } from './modal/activity-add/activity-add.component';
 import { PhotoAddComponent } from './modal/photo-add/photo-add.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
+import { EmergencyComponent } from './page/emergency/emergency.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import { NoticeDetailComponent } from './page/notice-detail/notice-detail.compon
     ActivityAddComponent,
     PhotoAddComponent,
     NoticeDetailComponent,
+    EmergencyComponent,
   ],
   imports: [
     BrowserModule,

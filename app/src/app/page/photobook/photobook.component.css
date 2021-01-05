@@ -11,8 +11,8 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    column-gap: 2%;
-    row-gap: 30px;
+    column-gap: 10px;
+    row-gap: 20px;
 }
 .gridItem {
     border:1px solid #ccc;

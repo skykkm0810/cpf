@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VIDEOS } from '../../interface/interface';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-videos',
   templateUrl: './videos.component.html',
@@ -8,11 +10,14 @@ import { VIDEOS } from '../../interface/interface';
 export class VideosComponent implements OnInit {
   videos = VIDEOS;
   detail(){
-    location.href = './vdetail'
+    this.router.navigate(['/vdetail/']);
   }
-  constructor() { }
+  constructor(
+    public router : Router,
+
+  ) { }
 
   ngOnInit(): void {
   }
-
+  
 }

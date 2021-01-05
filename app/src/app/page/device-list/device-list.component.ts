@@ -39,9 +39,11 @@ export class DeviceListComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
   }
   
-  applyFilter(event: Event) {  
+  applyFilter(event: Event) { 
+    
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if ( this.dataSource.paginator ) {
@@ -68,6 +70,15 @@ export class DeviceListComponent implements AfterViewInit {
     }
     this.filter.subFilters.forEach(t => t.completed = completed);
   }
+  // addFilter(event: Event){
+  //   console.log(event.target)
+  //   const filterValue = (event.target as HTMLInputElement).innerText;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
