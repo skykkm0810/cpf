@@ -20,7 +20,7 @@
               <mat-checkbox [(ngModel)]="subFilter.completed"
                             [color]="subFilter.color"
                             (ngModelChange)="updateAllComplete()"
-                            (change)="addFilter($event)">
+                            (change)="checkFilter(filter)">
                 {{subFilter.name}}
               </mat-checkbox>
             </li>

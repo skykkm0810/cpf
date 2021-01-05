@@ -24,12 +24,13 @@ export class DeviceListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   
   filter = deviceFilter
-  
+  CheckFilter : Device[] = DEVICES;
+  filteredData : Device[] = [];
   constructor(
     public dialog: MatDialog,
 
   ) {
-    this.dataSource = new MatTableDataSource(DEVICES);
+    this.dataSource = new MatTableDataSource(this.CheckFilter);
   }
   addDevice( Device? : Device ): void {
     const dialogRef = this.dialog.open(DeviceAddComponent, {
@@ -70,15 +71,46 @@ export class DeviceListComponent implements AfterViewInit {
     }
     this.filter.subFilters.forEach(t => t.completed = completed);
   }
-  // addFilter(event: Event){
-  //   console.log(event.target)
-  //   const filterValue = (event.target as HTMLInputElement).innerText;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  checkFilter(filter){
 
-  //   if (this.dataSource.paginator) {
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
+    this.filteredData = [];
+    let filterS = [];
+    let filterT = [];
+    let arrS = [];
+    let arrT = [];
+    for ( var i = 0; i < filter.subFilters.length; i++ ) {
+      if ( filter.subFilters[i].completed == true ) {
+        if ( i < 3 ) {
+          arrS.push( filter.subFilters[i].name );
+        } else {
+          arrT.push( filter.subFilters[i].name );
+        }
+      }
+    }
+    if ( !arrS.length && !arrT.length ) {
+      this.dataSource = new MatTableDataSource(DEVICES);
+    } else {
+      for ( var i = 0; i < 3; i++ ) {
+        for ( var j = 0; j < this.CheckFilter.length; j++ ) {
+          if ( this.CheckFilter[j].status == arrS[i] ) {
+            filterS.push( this.CheckFilter[j] );
+          }
+          if ( this.CheckFilter[j].type == arrT[i] ) {
+            filterT.push( this.CheckFilter[j] );
+          }
+        }
+      }
+      if ( arrT.length && arrS.length ) {
+        this.filteredData = filterS.filter(x => filterT.includes(x));
+      } else if ( arrT.length ) {
+        this.filteredData = filterT;
+      } else if ( arrS.length ) {
+        this.filteredData = filterS;
+      }
+      console.log( filterS, filterT );
+      this.dataSource = new MatTableDataSource(this.filteredData);
+    }
+  }
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;

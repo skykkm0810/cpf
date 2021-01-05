@@ -181,9 +181,9 @@ export const deviceFilter: Filter = {
   subFilters: [
     {name: '정상', completed: false, color: 'primary'},
     {name: '이상', completed: false, color: 'primary'},
-    {name: '수리 중', completed: false, color: 'primary'},
+    {name: '수리', completed: false, color: 'primary'},
     {name: '로봇', completed: false, color: 'primary'},
-    {name: '센서류', completed: false, color: 'primary'},
+    {name: '센서', completed: false, color: 'primary'},
     {name: '스마트 스피커', completed: false, color: 'primary'},
   ]
 }
