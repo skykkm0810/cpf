@@ -25,15 +25,14 @@ defmodule CpfWeb.DeviceChannel do
   #   {:noreply, socket}
   # end
 
-  # def handle_in("req:device:list", socket) do
-  #   body = list_devices()
-  #   {:reply, {:ok, body}, socket}
-  # end
+  def handle_in("req:device:list", socket) do
+    body = list_devices()
+    {:reply, {:ok, body}, socket}
+  end
 
   def handle_in("device:add", %{"body" => payload}, socket) do
-    body = create_device(payload)
-    response = Jason.encode(body)
-    {:reply, {:ok, response}, socket}
+    data = create_device(payload)
+    {:reply, {:ok, data}, socket}
   end
 
   # Add authorization logic here as required.
@@ -42,14 +41,33 @@ defmodule CpfWeb.DeviceChannel do
   end
 
   def list_devices() do
+    # devices = 
     Cpf.ControlDevice.list_devices()
-    # |> Enum.filter(fn x -> 
-    #   x["centerId"] == 1
-    #   end)
+    |> Enum.map(fn data -> %{
+        id: data.id,
+        centerId: data.centerId,
+        type: data.type,
+        name: data.name,
+        location: data.location,
+        status: data.status
+      } end)
+    # IO.puts "return of list_devices ===>>  #{inspect devices}"
+    # devices
   end
 
   def create_device(data) do
-    Cpf.ControlDevice.create_device(data)
+    {:ok, device} = Cpf.ControlDevice.create_device(data)
+    resp = 
+    %{
+      id: device.id,
+      centerId: device.centerId,
+      type: device.type,
+      name: device.name,
+      location: device.location,
+      status: device.status
+    }
+    IO.puts "return of list_devices ===>>  #{inspect resp}"
+    resp
   end
 
   # def handle_info(:after_join, socket) do

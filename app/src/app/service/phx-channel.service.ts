@@ -41,9 +41,13 @@ export class PhxChannelService {
 
     // this.devicesChannel.on('deviceList', payload => {
     //   console.log('cpf:device from phx channel: ', payload);
-    //   this.Devices.emit(payload.body);
+    //   // this.Devices.emit(payload.body);
     // })
-    // this.send('device', 'req:device', { status: 'device' } )
+    this.devicesChannel.on('device:add', payload => {
+      console.log('cpf:device from phx channel: ', payload);
+      // this.Devices.emit(payload.body);
+    })
+        // this.send('device', 'req:device', { status: 'device' } )
   }
 
   // reqDevices() {
