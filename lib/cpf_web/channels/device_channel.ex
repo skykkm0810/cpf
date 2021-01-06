@@ -32,6 +32,8 @@ defmodule CpfWeb.DeviceChannel do
 
   def handle_in("device:add", %{"body" => payload}, socket) do
     data = create_device(payload)
+    IO.puts "return of create_device ===>>  #{inspect data}"
+    push(socket, "device:add", data)
     {:reply, {:ok, data}, socket}
   end
 
@@ -57,7 +59,6 @@ defmodule CpfWeb.DeviceChannel do
 
   def create_device(data) do
     {:ok, device} = Cpf.ControlDevice.create_device(data)
-    resp = 
     %{
       id: device.id,
       centerId: device.centerId,
@@ -66,8 +67,6 @@ defmodule CpfWeb.DeviceChannel do
       location: device.location,
       status: device.status
     }
-    IO.puts "return of list_devices ===>>  #{inspect resp}"
-    resp
   end
 
   # def handle_info(:after_join, socket) do
