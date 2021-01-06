@@ -1,6 +1,6 @@
 <mat-card>
   <h3>동영상 목록</h3>
-  <button mat-button class="addVideo">영상 추가</button>
+  <button mat-button class="addVideo" (click)="addvideo()">영상 추가</button>
 </mat-card>
 <div class="videoList">
   <mat-card *ngFor="let video of videos">
@@ -15,7 +15,7 @@
         <mat-icon>edit</mat-icon>
         <span>정보 변경</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="remove()">
         <mat-icon>remove_circle</mat-icon>
         <span>영상 삭제</span>
       </button>

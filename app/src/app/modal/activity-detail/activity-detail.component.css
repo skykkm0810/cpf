@@ -1,0 +1,20 @@
+.hidden{
+    display:none;
+}
+
+.contentsWrap {
+    padding:0 1rem;
+}
+.background img{
+    width:100%;
+}
+.contentsWrap .label {
+    display: inline-block;
+    text-align: right;
+    width:120px;
+    padding-right:5%;
+}
+.contentsWrap .contents {
+    display: inline-block;
+    width: calc(95% - 120px);
+}

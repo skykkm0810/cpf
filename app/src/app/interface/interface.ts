@@ -24,6 +24,7 @@ export const TAGS : Record<string, string> = {
   TASKADD: 'taskAdd',
   CCTVDETAIL: 'cctvDetail/:id',
   NOTICEDETAIL: 'noticeDetail',
+  EMERGENCY: 'emergency',
 } 
 
 export interface AsideItem {
@@ -117,6 +118,11 @@ export const ASIDELISTS: AsideItem[] = [
     path: TAGS.TASKLIST, 
     name: '업무 관리' ,
     icon: 'receipt_long'
+  },
+  { 
+    path: TAGS.EMERGENCY, 
+    name: '응급서비스' ,
+    icon: 'priority_high'
   },
   { 
     path: TAGS.OTHERS, 
@@ -592,4 +598,25 @@ export const ATTENDANCE: Attendance[] = [
   {id:11,date:'20/12/01',attand:40, strange:0, center: "녹양주간보호센터"},
   {id:12,date:'20/12/01',attand:40, strange:0, center: "요셉주간보호센터"},
 
+]
+// 응급
+export interface callEmergency {
+  id:number;
+  date:string;
+  center:string;
+  what?:string;
+  desc?:string;
+} 
+export const CALLEMERGENCY : callEmergency[] = [
+  {id:1,date:'20/12/01', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+  {id:4,date:'20/12/01', center:'Center B', what:"긴급 호출" ,desc:"응급 환자 신고" },
+  {id:5,date:'20/12/01', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+  {id:2,date:'20/11/13', center:'Center B', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+  {id:3,date:'20/11/13', center:'Center A', what:"시설 호출" ,desc:"피보호자 확인 요망 : " },
+  {id:6,date:'20/11/13', center:'Center B', what:"시설 호출" ,desc:"피보호자 확인 요망 : 김모모" },
+  {id:7,date:'20/11/13', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+  {id:8,date:'20/10/21', center:'Center B', what:"시설 호출" ,desc:"시설 / 장비 확인요망 : " },
+  {id:9,date:'20/10/13', center:'Center B', what:"시설 호출" ,desc:"시설 / 장비 확인요망 : 화장실 센서" },
+  {id:10,date:'20/10/11', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+  {id:11,date:'20/10/01', center:'Center B', what:"긴급 호출" ,desc:"긴급 구조 신고" },
 ]
