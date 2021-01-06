@@ -17,5 +17,12 @@ export class WorkerAddComponent implements OnInit {
   closeDialog(){
     this.dialogRef.close();
   }
+  value() {
+    var inputvalue = (document.getElementById('photoFile') as HTMLInputElement).value;
+    (document.getElementsByClassName('replaceIF')[0] as HTMLInputElement ).innerHTML = inputvalue
+    if( inputvalue == ""){
+      (document.getElementsByClassName('replaceIF')[0] as HTMLInputElement ).innerHTML = "파일 없음";
+    }
+  }
 }
 

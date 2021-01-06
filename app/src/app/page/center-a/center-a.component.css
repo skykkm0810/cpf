@@ -42,6 +42,7 @@
 /* 기기로그 */
 .deviceLog {
   padding-top: 50px;
+<<<<<<< HEAD
 }
 
 /* 화장실 */
@@ -115,4 +116,6 @@ p .label {
 }
 .usingTime {
   display: none;
+=======
+>>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
 }

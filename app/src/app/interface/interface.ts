@@ -213,6 +213,7 @@ export interface log {
 }
 export const LOG : log[] =[
   { id: 1, name: 'RB-01', type: '로봇', center: '시설A', time: '12/22 14:05', desc: '플랫폼에 데이터 전송', },
+  { id: 1, name: 'RB-01', type: '로봇', center: '시설A', time: '12/22 14:05', desc: '플랫폼에 데이터 전송', },
   { id: 2, name: 'ST-04', type: '센서', center: '시설B', time: '12/22 12:12', desc: '대화', },
   { id: 3, name: 'ST-01', type: '센서', center: '시설C', time: '12/22 09:25', desc: '출석 확인', },
   { id: 4, name: 'RB-01', type: '로봇', center: '시설B', time: '12/21 14:02', desc: '안부 전달',},

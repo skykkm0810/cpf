@@ -18,15 +18,7 @@ h4 {
 .contents .mat-form-field .mat-form-field-wrapper{
     padding-bottom: 0;
 }
-.contents .replaceIF {
-    width:75%;
-    border:1px solid rgb(100, 100, 100);
-    padding:0.5rem 0.3rem;
-}
-.contents .replaceIF:hover{
-    background-color: #eee;
-    cursor:pointer;
-}
+
 .buttonBox {
     padding:1rem 0;
     text-align: center;
