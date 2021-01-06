@@ -81,6 +81,10 @@ import { ActivityAddComponent } from './modal/activity-add/activity-add.componen
 import { PhotoAddComponent } from './modal/photo-add/photo-add.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
 import { EmergencyComponent } from './page/emergency/emergency.component';
+import { LoginComponent } from './layout/login/login.component';
+import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
+import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
+import { ActivityDetailComponent } from './modal/activity-detail/activity-detail.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +124,10 @@ import { EmergencyComponent } from './page/emergency/emergency.component';
     PhotoAddComponent,
     NoticeDetailComponent,
     EmergencyComponent,
+    LoginComponent,
+    PhotoUpdateComponent,
+    ActivityUpdateComponent,
+    ActivityDetailComponent,
   ],
   imports: [
     BrowserModule,

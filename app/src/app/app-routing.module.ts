@@ -23,7 +23,7 @@ import { PhotobookComponent } from './page/photobook/photobook.component';
 import { TaskAddComponent } from './page/task-add/task-add.component';
 import { CctvDetailComponent } from './page/cctv-detail/cctv-detail.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
-
+import { EmergencyComponent } from './page/emergency/emergency.component';
 const routes: Routes = [
   { path: TAGS.DASHBOARD, component: DashboardComponent },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
@@ -47,6 +47,7 @@ const routes: Routes = [
   { path: TAGS.TASKADD, component: TaskAddComponent },
   { path: TAGS.CCTVDETAIL, component: CctvDetailComponent },
   { path: TAGS.NOTICEDETAIL, component: NoticeDetailComponent },
+  { path: TAGS.EMERGENCY, component: EmergencyComponent },
 
 ];
 

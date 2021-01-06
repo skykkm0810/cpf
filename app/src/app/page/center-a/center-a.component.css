@@ -33,4 +33,13 @@
 .display {
   display:none;
 }
-
+.tableContainer p,
+.deviceLog p
+{
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+}
+/* 기기로그 */
+.deviceLog {
+  padding-top: 50px;
+}

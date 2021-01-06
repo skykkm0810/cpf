@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Activity, activityHeader, ACTIVITIES, activityFilter } from '../../interface/interface';
 import { ActivityAddComponent} from '../../modal/activity-add/activity-add.component';
+import { ActivityDetailComponent} from '../../modal/activity-detail/activity-detail.component';
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
@@ -49,7 +50,11 @@ export class ActivityListComponent implements AfterViewInit {
   updateAllComplete() {
     this.allComplete = this.filter.subFilters != null && this.filter.subFilters.every(t => t.completed);
   }
-
+  detailActivity(activity?:Activity): void {
+    const dialogRef2 = this.dialog.open(ActivityDetailComponent, {
+      width: '40%',
+    });
+  }
   someComplete(): boolean {
     if (this.filter.subFilters == null) {
       return false;

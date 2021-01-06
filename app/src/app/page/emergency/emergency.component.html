@@ -1,1 +1,89 @@
-<p>emergency works!</p>
+<mat-card class="m-b-10">
+  응급 서비스
+</mat-card>
+<div class="callBox m-b-10">
+  <mat-card class="emergencyCall">
+    <p class="title">응급</p>
+    <div class="contents">
+      <mat-form-field>
+        <mat-label>대상 시설</mat-label>
+        <mat-select>
+          <mat-option value="녹양주간보호센터">녹양주간보호센터</mat-option>
+          <mat-option value="요셉주간보호센터">요셉주간보호센터</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-radio-group>
+        <mat-radio-button value="1"> 긴급 구조 신고</mat-radio-button>
+        <mat-radio-button value="2"> 응급 환자 신고</mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button color="warn"> 호출 </button>
+    </div>
+  </mat-card>
+  <mat-card class="centerCall">
+    <p class="title">시설 호출</p>
+    <div class="contents">
+      <mat-form-field>
+        <mat-label>대상 시설</mat-label>
+        <mat-select>
+          <mat-option value="녹양주간보호센터">녹양주간보호센터</mat-option>
+          <mat-option value="요셉주간보호센터">요셉주간보호센터</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-radio-group>
+        <mat-radio-button value="어르신확인"> 피 보호자 확인 요망
+          <mat-form-field>
+            <mat-label>피보호자</mat-label>
+            <mat-select>
+              <mat-option value="김모모">김모모</mat-option>
+              <mat-option value="이모모">이모모</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-radio-button>
+        <mat-radio-button value="시설장비확인"> 시설/장비 확인 요망
+          <mat-form-field>
+            <mat-label>시설 / 장비</mat-label>
+            <mat-select>
+              <mat-option value="로봇">로봇 </mat-option>
+              <mat-option value="센서">화장실 센서</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-radio-button>
+      </mat-radio-group>
+      <button mat-button> 호출 </button>
+    </div>
+  </mat-card>
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" #sort='matSort' matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No</th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 일자 </th>
+        <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="center">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 시설 </th>
+        <td mat-cell *matCellDef="let row"> {{row.center}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="what">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청 </th>
+        <td mat-cell *matCellDef="let row"> {{row.what}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="desc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 내용 </th>
+        <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" #pagnator='matPaginator'></mat-paginator>
+
+  </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ACTIVITIES,Activity } from "../../interface/interface";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PhotoAddComponent} from '../../modal/photo-add/photo-add.component';
+import { PhotoUpdateComponent} from '../../modal/photo-update/photo-update.component';
 
 @Component({
   selector: 'app-photobook',
@@ -12,7 +13,6 @@ export class PhotobookComponent implements OnInit {
   activities = ACTIVITIES;
   constructor(public dialog: MatDialog,
     ) { }
-
 
   ngOnInit(): void {
   }
@@ -26,5 +26,11 @@ export class PhotobookComponent implements OnInit {
       width: '40%',
     });
   }
+  updatePhoto(activity?:Activity): void {
+    const dialogRef2 = this.dialog.open(PhotoUpdateComponent, {
+      width: '40%',
+    });
+  }
+
   
 }

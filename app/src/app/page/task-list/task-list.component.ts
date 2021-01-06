@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Task, taskHeader, TASKS, taskFilter } from '../../interface/interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -19,9 +20,11 @@ export class TaskListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
-  filter = taskFilter
+   filter = taskFilter
   
-  constructor() {
+  constructor(
+    public router : Router
+  ) {
     this.dataSource = new MatTableDataSource(TASKS);
   }
   
@@ -58,6 +61,6 @@ export class TaskListComponent implements AfterViewInit {
     this.filter.subFilters.forEach(t => t.completed = completed);
   }
   add(){
-    location.href="./taskAdd"
+    this.router.navigate(['/noticeAdd/']);
   }
 }

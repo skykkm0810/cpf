@@ -1,21 +1,21 @@
 <mat-card class="m-b-10">
-    녹양주간보호센터
+  녹양주간보호센터
 </mat-card>
 <div class="infoTab">
-    <mat-card class="infoOuter">
-        <mat-card class="infoContainer">
-            <div class="img">
-                <img src="assets/images/big/img4.jpg" width="100%">
-            </div>
-            <div class="desc">
-                <h2>시설 개요</h2>
-                <p>위치 : 의정부시 00동</p>
-                <p>수용 가능 인원 : 00명</p>
-                <p>관리자 : 김모모</p>
-                <p>연락처 : 031-0000-0000</p>
-            </div>
-        </mat-card>
-        <!-- <mat-card class="status">
+  <mat-card class="infoOuter">
+    <mat-card class="infoContainer">
+      <div class="img">
+        <img src="assets/images/big/img4.jpg" width="100%">
+      </div>
+      <div class="desc">
+        <h2>시설 개요</h2>
+        <p>위치 : 의정부시 00동</p>
+        <p>수용 가능 인원 : 00명</p>
+        <p>관리자 : 김모모</p>
+        <p>연락처 : 031-0000-0000</p>
+      </div>
+    </mat-card>
+    <!-- <mat-card class="status">
             <p>요청 현황</p>
             <div class="contents">
                 <ul>
@@ -26,155 +26,203 @@
                 </ul>
             </div>
         </mat-card> -->
-    </mat-card>
-    
-    
-    <mat-tab-group>
-        <mat-tab label="타임라인" (click)='select()'>
-            <div class="timelineContainer" *ngFor="let timeline of timelines" (click)='select()'>
-                <div class="timelineAvatar">
-                    <img src="assets/images/users/{{ timeline.img }}" class="avatar-circle" width="100%">
-                </div>
-                <mat-card class="timelineContent">
-                    <h2>{{ timeline.event }}</h2>
-                    <p class="black-50">{{ timeline.timelog }}</p>
-                    <h5 class="black-80">{{ timeline.desc }}</h5>
-                </mat-card>
-            </div>
-        </mat-tab>
-        <mat-tab label="요청관리">
-            <mat-card class="tableContainer">
-                
-                <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="requestDataSource" matSort>
-                
-                    <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="progress">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 상태 </th>
-                    <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.progress}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="from">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 출처 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.from}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="desc">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 내용 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="who">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청인 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.who}} </td>
-                    </ng-container>
-            
-                    <tr mat-header-row *matHeaderRowDef="requestDisplayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: requestDisplayedColumns;"></tr>
-                
-                    <!-- Row shown when there is no matching data. -->
-                    <tr class="mat-row" *matNoDataRow>
-                    </tr>
-                </table>
-                
-                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                </div>
-            </mat-card>
-        </mat-tab>
-        <mat-tab label="이용자 현황">
-            <mat-card class="tableContainer">
-                
-                <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="seniorDataSource" matSort>
-                
-                    <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 이름 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="gender">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 성별 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
-                    </ng-container>
-    
-                    <ng-container matColumnDef="age">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 나이 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.age}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="desc">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 특이사항 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="latest">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 최근방문일 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.latest}} </td>
-                    </ng-container>
-                
-                    <tr mat-header-row *matHeaderRowDef="seniorDisplayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: seniorDisplayedColumns;"></tr>
-                
-                    <!-- Row shown when there is no matching data. -->
-                    <tr class="mat-row" *matNoDataRow>
-                    </tr>
-                </table>
-                
-                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                </div>
-            </mat-card>
-        </mat-tab>
-        <mat-tab label="기기 현황">
-            <mat-card class="tableContainer">
-                
-                <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="deviceDataSource" matSort>
-                
-                    <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 종류 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.type}} </td>
-                    </ng-container>
-                    
-                    <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 모델명 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="location">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 위치 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.location}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> 상태 </th>
-                    <td mat-cell *matCellDef="let row"> {{row.status}} </td>
-                    </ng-container>
-            
-                    <tr mat-header-row *matHeaderRowDef="deviceDisplayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: deviceDisplayedColumns;"></tr>
-                
-                    <!-- Row shown when there is no matching data. -->
-                    <tr class="mat-row" *matNoDataRow>
-                    </tr>
-                </table>
-                
-                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                </div>
-            </mat-card>
-        </mat-tab>
-      </mat-tab-group>
+  </mat-card>
+
+
+  <mat-tab-group>
+    <mat-tab label="타임라인" (click)='select()'>
+      <div class="timelineContainer" *ngFor="let timeline of timelines" (click)='select()'>
+        <div class="timelineAvatar">
+          <img src="assets/images/users/{{ timeline.img }}" class="avatar-circle" width="100%">
+        </div>
+        <mat-card class="timelineContent">
+          <h2>{{ timeline.event }}</h2>
+          <p class="black-50">{{ timeline.timelog }}</p>
+          <h5 class="black-80">{{ timeline.desc }}</h5>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="요청관리">
+      <mat-card class="tableContainer">
+        
+        
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="requestDataSource" #sort1='matSort'  matSort >
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="progress">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 상태 </th>
+              <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.progress}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="from">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 출처 </th>
+              <td mat-cell *matCellDef="let row"> {{row.from}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="desc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 내용 </th>
+              <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="who">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청인 </th>
+              <td mat-cell *matCellDef="let row"> {{row.who}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="requestDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: requestDisplayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+
+          <mat-paginator #pagnator1='matPaginator' [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="이용자 현황">
+      <mat-card class="tableContainer">
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="seniorDataSource" #sort2='matSort' matSort>
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> No </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> d </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="gender">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 성별 </th>
+              <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 나이 </th>
+              <td mat-cell *matCellDef="let row"> {{row.age}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="desc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 특이사항 </th>
+              <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="latest">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 최근방문일 </th>
+              <td mat-cell *matCellDef="let row"> {{row.latest}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="seniorDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: seniorDisplayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+
+          <mat-paginator #pagnator2='matPaginator' [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="기기 현황">
+      <mat-card class="tableContainer m-b-20">
+        <p class="title">기기 목록</p>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="deviceDataSource" #sort3='matSort' matSort>
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 종류 </th>
+              <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 모델명 </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 위치 </th>
+              <td mat-cell *matCellDef="let row"> {{row.location}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 상태 </th>
+              <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="deviceDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: deviceDisplayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+
+          <mat-paginator #pagnator3='matPaginator' [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card>
+
+      <div class="deviceLog">
+        <p class="title">기기 로그</p>
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="deviceLogData" #Sort4='matSort' matSort>
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 번호 </th>
+              <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 시간 </th>
+              <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 모델명 </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 종류 </th>
+              <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="location">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 위치 </th>
+              <td mat-cell *matCellDef="let row"> {{row.location}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="desc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 내용 </th>
+              <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="deviceLogColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: deviceLogColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+            </tr>
+          </table>
+
+          <mat-paginator #pagnator4='matPaginator' [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
