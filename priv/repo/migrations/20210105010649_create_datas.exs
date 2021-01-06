@@ -3,14 +3,14 @@ defmodule Cpf.Repo.Migrations.CreateDatas do
 
   def change do
     create table(:datas) do
-      add :eventId, :integer
-      add :seniorId, :integer
-      add :title, :string
-      add :subtitle, :string
       add :desc, :string
-      add :progress, :string
-      add :endedData, :naive_datetime
       add :emergency, :boolean, default: false, null: false
+      add :endedData, :naive_datetime
+      add :eventId, :integer
+      add :progress, :string
+      add :seniorId, :integer
+      add :subtitle, :string
+      add :title, :string
 
       timestamps()
     end

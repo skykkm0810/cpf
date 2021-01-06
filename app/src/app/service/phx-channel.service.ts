@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Environment } from '../environment/environment';
 import { Socket } from 'phoenix';
+import { Device } from '../interface/interface';
 
 declare const Phoenix: any;
 
@@ -22,7 +23,7 @@ export class PhxChannelService {
   private init_channel() {
     this.socket = new Socket( `${Environment.socket_channel}/socket`, {
       logger: (kind, msg, data) => {
-        console.log( `${kind}: ${msg}`, data );
+        // console.log( `${kind}: ${msg}`, data );
       },
       transport: WebSocket
     });
@@ -38,11 +39,15 @@ export class PhxChannelService {
         console.log('Unable to join', resp);
       });
 
-    this.devicesChannel.on('deviceList', payload => {
+    // this.devicesChannel.on('deviceList', payload => {
+    //   console.log('cpf:device from phx channel: ', payload);
+    //   // this.Devices.emit(payload.body);
+    // })
+    this.devicesChannel.on('device:add', payload => {
       console.log('cpf:device from phx channel: ', payload);
-      this.Devices.emit(payload.body);
+      // this.Devices.emit(payload.body);
     })
-    // this.send('device', 'req:device', { status: 'device' } )
+        // this.send('device', 'req:device', { status: 'device' } )
   }
 
   // reqDevices() {
@@ -57,6 +62,21 @@ export class PhxChannelService {
 
       default:
         // this.devicesChannel.push(event, {body: message});
+        break;
+    }
+  }
+
+  gets(channel, message) : void {
+    let rec;
+    switch (channel) {
+      case 'device':
+          rec = this.devicesChannel.push('req:device:list', message);
+          // .receive('ok', body => {
+          //   console.log(body);
+          // });
+        break;
+
+      default:
         break;
     }
   }

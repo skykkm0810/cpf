@@ -8,6 +8,7 @@ import { Senior, SENIORS } from '../../interface/interface';
 import { Request, REQUESTS } from '../../interface/interface';
 
 import { PhxChannelService } from '../../service/phx-channel.service';
+import { GenService } from '../../service/gen.service';
 
 @Component({
   selector: 'app-center-a',
@@ -17,6 +18,7 @@ import { PhxChannelService } from '../../service/phx-channel.service';
 export class CenterAComponent implements AfterViewInit {
 
   timelines = TIMELINES;
+  deviceCalled : boolean = false;
 
   requestDisplayedColumns: string[] = [ 'id', 'progress', 'from', 'desc', 'who' ];
   requestDataSource: MatTableDataSource<Request>;
@@ -28,7 +30,10 @@ export class CenterAComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor( private phxChannel: PhxChannelService ) {
+  constructor( 
+    private phxChannel: PhxChannelService,
+    private gen: GenService
+    ) {
     this.requestDataSource = new MatTableDataSource(REQUESTS);
     this.seniorDataSource = new MatTableDataSource(SENIORS);
     this.deviceDataSource = new MatTableDataSource(DEVICES);
@@ -45,16 +50,11 @@ export class CenterAComponent implements AfterViewInit {
   }
   
   select(){
+    this.deviceCalled = true;
     this.phxChannel.send(
       "device",
-      "deviceAdd",
-      {
-        centerId: 1,
-        type: '로봇',
-        name: 'RB-01',
-        location: '활동실',
-        status: '정상'
-      })
+      "device:add",
+      this.gen.genDevice()
+    )
   }
-
 }
