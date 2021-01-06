@@ -6,6 +6,8 @@ import { Device, deviceHeader, DEVICES, deviceFilter } from '../../interface/int
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
+import { PhxChannelService } from 'src/app/service/phx-channel.service';
+import { MatTab } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-device-list',
@@ -24,25 +26,31 @@ export class DeviceListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   
   filter = deviceFilter
-  CheckFilter : Device[] = DEVICES;
+  CheckFilter : Device[] = [];
   filteredData : Device[] = [];
   constructor(
     public dialog: MatDialog,
-
+    private phxChannel: PhxChannelService
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
+    phxChannel.Devices.subscribe( data => {
+      const d = new Date(data.inserted);
+      data.inserted = d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일';
+      this.CheckFilter.push(data);
+      this.dataSource = new MatTableDataSource(this.CheckFilter);
+    })
   }
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.phxChannel.gets("device", { centerId: 1 });
+  }
+  
   addDevice( Device? : Device ): void {
     const dialogRef = this.dialog.open(DeviceAddComponent, {
       width: '40%',
     });
   }
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-  }
-  
   applyFilter(event: Event) { 
     
     const filterValue = (event.target as HTMLInputElement).value;

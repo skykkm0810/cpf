@@ -19,6 +19,8 @@ export class CenterAComponent implements AfterViewInit {
 
   timelines = TIMELINES;
   deviceCalled : boolean = false;
+  devices : Device[] = [];
+  seniors : Senior[] = [];
 
   requestDisplayedColumns: string[] = [ 'id', 'progress', 'from', 'desc', 'who' ];
   requestDataSource: MatTableDataSource<Request>;
@@ -36,10 +38,14 @@ export class CenterAComponent implements AfterViewInit {
     ) {
     this.requestDataSource = new MatTableDataSource(REQUESTS);
     this.seniorDataSource = new MatTableDataSource(SENIORS);
-    this.deviceDataSource = new MatTableDataSource(DEVICES);
+    this.deviceDataSource = new MatTableDataSource([]);
     phxChannel.Devices.subscribe( data => {
-      console.log(data);
-      // this.deviceDataSource = new MatTableDataSource(data);
+      this.devices.push(data);
+      this.deviceDataSource = new MatTableDataSource(this.devices);
+    })
+    phxChannel.Seniors.subscribe( data => {
+      this.seniors.push(data);
+      this.seniorDataSource = new MatTableDataSource(this.seniors);
     })
   }
   
@@ -47,10 +53,10 @@ export class CenterAComponent implements AfterViewInit {
     // this.phxChannel.reqDevices();
     this.deviceDataSource.paginator = this.paginator;
     this.deviceDataSource.sort = this.sort;
+    this.phxChannel.gets('device', { centerId: 1 });
   }
   
   select(){
-    this.deviceCalled = true;
     this.phxChannel.send(
       "device",
       "device:add",

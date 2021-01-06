@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhxChannelService } from '../../service/phx-channel.service';
 
 @Component({
   selector: 'app-top',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private phxChannel: PhxChannelService
+  ) { }
 
   ngOnInit(): void {
   }

@@ -12,9 +12,16 @@ declare const Phoenix: any;
 export class PhxChannelService {
 
   socket: any;
-  devicesChannel: any;
+  deviceChannel: any;
+  seniorChannel: any;
+  eventChannel: any;
+  requestChannel: any;
+  centerChannel: any;
 
   @Output() Devices: EventEmitter<any> = new EventEmitter();
+  @Output() Seniors: EventEmitter<any> = new EventEmitter();
+  @Output() Requests: EventEmitter<any> = new EventEmitter();
+  @Output() Users: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -28,9 +35,9 @@ export class PhxChannelService {
       transport: WebSocket
     });
     this.socket.connect();
-    this.devicesChannel = this.socket.channel('cpf:device', {});
 
-    this.devicesChannel
+    this.deviceChannel = this.socket.channel('cpf:device', {});
+    this.deviceChannel
       .join()
       .receive('ok', resp => {
         console.log('Joined successfully', resp);
@@ -38,30 +45,42 @@ export class PhxChannelService {
       .receive('error', resp => {
         console.log('Unable to join', resp);
       });
-
-    // this.devicesChannel.on('deviceList', payload => {
-    //   console.log('cpf:device from phx channel: ', payload);
-    //   // this.Devices.emit(payload.body);
-    // })
-    this.devicesChannel.on('device:add', payload => {
-      console.log('cpf:device from phx channel: ', payload);
-      // this.Devices.emit(payload.body);
+    this.deviceChannel.on('device:add', payload => {
+      // console.log('cpf:device from phx channel: ', payload);
+      this.Devices.emit(payload);
     })
-        // this.send('device', 'req:device', { status: 'device' } )
+    this.deviceChannel.on('device:list', payload => {
+      // console.log('cpf:device:list from phx socket: ', payload);
+      this.Devices.emit(payload);
+    })
+
+    this.seniorChannel = this.socket.channel('cpf:senior', {});
+    this.seniorChannel
+      .join()
+      .receive('ok', resp => {
+        console.log('Joined successfully', resp);
+      })
+      .receive('error', resp => {
+        console.log('Unable to join', resp);
+      });
+    this.deviceChannel.on('senior:list', payload => {
+      console.log('cpf:device:list from phx socket: ', payload);
+      this.Seniors.emit(payload);
+    })
+    
   }
 
   // reqDevices() {
-  //   this.devicesChannel.push('reqDevices', 'number: 5');
+  //   this.deviceChannel.push('reqDevices', 'number: 5');
   // }
 
   send(channel, event, message) {
     switch (channel) {
       case 'device':
-        this.devicesChannel.push(event, {body: message});
+        this.deviceChannel.push(event, {body: message});
         break;
 
       default:
-        // this.devicesChannel.push(event, {body: message});
         break;
     }
   }
@@ -70,14 +89,31 @@ export class PhxChannelService {
     let rec;
     switch (channel) {
       case 'device':
-          rec = this.devicesChannel.push('req:device:list', message);
-          // .receive('ok', body => {
-          //   console.log(body);
-          // });
+        rec = this.deviceChannel.push('device:list:req', message);
+        // .receive('ok', body => {
+        //   console.log(body);
+        // });
+        break;
+
+      case 'senior':
+        rec = this.seniorChannel.push('senior:list:req', message);
         break;
 
       default:
         break;
+    }
+  }
+
+  get(channel, message) : void {
+    let rec;
+    switch (channel) {
+      case 'center':
+        rec = this.centerChannel.push('center:detail:req', message);
+        break;
+
+      default:
+        break;
+    
     }
   }
 }

@@ -3,6 +3,7 @@ defmodule CpfWeb.UserSocket do
 
   ## Channels
   channel "cpf:device", CpfWeb.DeviceChannel
+  channel "cpf:senior", CpfWeb.SeniorChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

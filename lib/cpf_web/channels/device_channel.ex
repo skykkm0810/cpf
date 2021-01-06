@@ -25,14 +25,23 @@ defmodule CpfWeb.DeviceChannel do
   #   {:noreply, socket}
   # end
 
-  def handle_in("req:device:list", socket) do
-    body = list_devices()
-    {:reply, {:ok, body}, socket}
+  def handle_in("device:list:req", %{"centerId" => id}, socket) do
+    list_devices(id)
+    |> Enum.map(fn data -> push(socket, "device:list", %{
+      id: data.id,
+      centerId: data.centerId,
+      type: data.type,
+      name: data.name,
+      location: data.location,
+      inserted: data.inserted_at,
+      status: data.status
+    }) end)
+    {:reply, {:ok, id}, socket}
   end
 
   def handle_in("device:add", %{"body" => payload}, socket) do
     data = create_device(payload)
-    IO.puts "return of create_device ===>>  #{inspect data}"
+    # IO.puts "return of create_device ===>>  #{inspect data}"
     push(socket, "device:add", data)
     {:reply, {:ok, data}, socket}
   end
@@ -42,17 +51,12 @@ defmodule CpfWeb.DeviceChannel do
     true
   end
 
-  def list_devices() do
+  def list_devices(cId) do
     # devices = 
     Cpf.ControlDevice.list_devices()
-    |> Enum.map(fn data -> %{
-        id: data.id,
-        centerId: data.centerId,
-        type: data.type,
-        name: data.name,
-        location: data.location,
-        status: data.status
-      } end)
+    |> Enum.filter(fn data ->
+      data.centerId == cId 
+      end)
     # IO.puts "return of list_devices ===>>  #{inspect devices}"
     # devices
   end
@@ -68,17 +72,4 @@ defmodule CpfWeb.DeviceChannel do
       status: device.status
     }
   end
-
-  # def handle_info(:after_join, socket) do
-  #   Cpf.Control.list_devices()
-  #   |> Enum.each(fn data -> push(socket, "deviceList", %{
-  #       id: data.id,
-  #       centerId: data.centerId,
-  #       type: data.type,
-  #       name: data.name,
-  #       location: data.location,
-  #       status: data.status
-  #     }) end)
-  #   {:noreply, socket}
-  # end
 end
