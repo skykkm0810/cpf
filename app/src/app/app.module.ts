@@ -84,6 +84,7 @@ import { EmergencyComponent } from './page/emergency/emergency.component';
 import { ActivityDetailComponent } from './modal/activity-detail/activity-detail.component';
 import { VideosAddComponent } from './modal/videos-add/videos-add.component';
 import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
+import { CenterAddComponent } from './modal/center-add/center-add.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { PhotoUpdateComponent } from './modal/photo-update/photo-update.componen
     EmergencyComponent,
     ActivityDetailComponent,
     VideosAddComponent,
-    PhotoUpdateComponent
+    PhotoUpdateComponent,
+    CenterAddComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import { Senior, SENIORS } from '../../interface/interface';
 import { Request, REQUESTS } from '../../interface/interface';
 import {log, LOG} from '../../interface/interface';
 import { PhxChannelService } from '../../service/phx-channel.service';
+import { CenterAddComponent} from '../../modal/center-add/center-add.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-center-b',
@@ -36,7 +38,10 @@ export class CenterBComponent implements AfterViewInit {
   @ViewChild('pagnator4') paginator4: MatPaginator;
   @ViewChild('sort4') sort4: MatSort;
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog,
+    ) {
+    
     this.requestDataSource = new MatTableDataSource(REQUESTS);
     this.seniorDataSource = new MatTableDataSource(SENIORS);
     this.deviceDataSource = new MatTableDataSource(DEVICES);
@@ -53,5 +58,9 @@ export class CenterBComponent implements AfterViewInit {
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
   }
-
+  addCenter(){
+    const dialogRef = this.dialog.open(CenterAddComponent, {
+      width: '40%',
+    });
+  }
 }

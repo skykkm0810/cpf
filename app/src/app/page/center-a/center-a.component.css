@@ -1,3 +1,11 @@
+.header {
+  line-height: 36px;
+}
+.addButton{
+  float:right;
+  background-color: slateblue;
+  color:#fff;
+}
 .infoContainer {
   padding: 0;
 }

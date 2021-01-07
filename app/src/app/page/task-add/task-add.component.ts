@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TASKS } from '../../interface/interface'
 @Component({
   selector: 'app-task-add',
   templateUrl: './task-add.component.html',
@@ -11,5 +11,10 @@ export class TaskAddComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  back(){
 
+  }
+  value(){
+    
+  }
 }

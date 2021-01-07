@@ -10,6 +10,8 @@ import {log, LOG} from '../../interface/interface';
 import { PhxChannelService } from '../../service/phx-channel.service';
 import { GenService } from '../../service/gen.service';
 import { min } from 'date-fns';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CenterAddComponent} from '../../modal/center-add/center-add.component';
 
 @Component({
   selector: 'app-center-a',
@@ -44,6 +46,7 @@ export class CenterAComponent implements AfterViewInit {
   @ViewChild('sort4') sort4: MatSort;
 
   constructor( 
+    public dialog: MatDialog,
     private phxChannel: PhxChannelService,
     private gen: GenService
     ) {
@@ -123,6 +126,10 @@ export class CenterAComponent implements AfterViewInit {
       // flowtime.innerHTML = time;
     }
   }
-  
+  addCenter(){
+    const dialogRef = this.dialog.open(CenterAddComponent, {
+      width: '40%',
+    });
+  }
   
 }
