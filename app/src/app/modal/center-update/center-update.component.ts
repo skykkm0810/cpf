@@ -12,25 +12,18 @@ export class CenterUpdateComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<CenterBComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {centerName: string},
+    private dialogRef2: MatDialogRef<CenterAComponent>,
     ) {
-      
-      
     }
   
   center = CENTERS;
  
   
   ngOnInit(): void {
-    var thisCenter;
-      for(var i=0; i<this.center.length; i++){
-        if(this.center[i].name == this.data.centerName){
-           thisCenter = this.center[i];
-        }
-      }
+    
   }
   closeDialog(){
     this.dialogRef.close();
-    // this.dialogRef2.close();
+    this.dialogRef2.close();
   }
 }
