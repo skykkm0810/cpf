@@ -148,7 +148,19 @@ export const ASIDELISTS: AsideItem[] = [
     ]
   },
 ]
-
+export interface Center {
+  id:number;
+  name:string;
+  address:string;
+  maxUser:string;
+  manager:string;
+  contact:string;
+  email:string;
+}
+export const CENTERS : Center[] = [
+  {id:1,name:'녹양주간보호센터',address:'경기도 의정부시',maxUser:'30명',manager:'김모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
+  {id:2,name:'요셉주간보호센터',address:'충청남도 아산시',maxUser:'30명',manager:'이모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
+]
 export interface Filter {
   name: string;
   completed: boolean;

@@ -1,0 +1,46 @@
+<h4>센터정보 수정</h4>
+<div class="contents">
+    <form action="/">
+        <p class="name">
+            <span class="label">센터  이름</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.name}}'>
+            </mat-form-field>
+        </p>
+        <p class="address">
+            <span class="label">센터 주소</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.address}}'>
+            </mat-form-field>
+        </p>
+        <p class="maxUser">
+            <span class="label">제한 인원</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.maxUser}}'>
+            </mat-form-field>
+        </p>
+        <p class="manager">
+            <span class="label">담당자 이름</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.manager}}'>
+            </mat-form-field>
+        </p>
+        <p class="contact">
+            <span class="label">연락처</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.contact}}'>
+            </mat-form-field>
+        </p>
+        <p class="eMail">
+            <span class="label">이메일</span>
+            <mat-form-field>
+                <input matInput value='{{thisCenter.email}}'>
+            </mat-form-field>
+        </p>
+        
+        <div class="buttonBox">
+            <button mat-button class="submit">추가하기</button>
+            <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+        </div>
+    </form>
+</div>

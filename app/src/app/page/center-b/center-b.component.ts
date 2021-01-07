@@ -10,6 +10,7 @@ import {log, LOG} from '../../interface/interface';
 import { PhxChannelService } from '../../service/phx-channel.service';
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CenterUpdateComponent} from '../../modal/center-update/center-update.component';
 
 @Component({
   selector: 'app-center-b',
@@ -61,6 +62,14 @@ export class CenterBComponent implements AfterViewInit {
   addCenter(){
     const dialogRef = this.dialog.open(CenterAddComponent, {
       width: '40%',
+    });
+  }
+  updateCenter(event : Event){
+    var btnElement = event.target as HTMLElement;
+    var name = btnElement.closest('.header').childNodes[0].textContent;
+    console.log(name)
+    const dialogRef = this.dialog.open(CenterUpdateComponent, {
+      width: '40%', data:{ centerName : name  },
     });
   }
 }

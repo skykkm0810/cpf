@@ -85,6 +85,7 @@ import { ActivityDetailComponent } from './modal/activity-detail/activity-detail
 import { VideosAddComponent } from './modal/videos-add/videos-add.component';
 import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
 import { CenterAddComponent } from './modal/center-add/center-add.component';
+import { CenterUpdateComponent } from './modal/center-update/center-update.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { CenterAddComponent } from './modal/center-add/center-add.component';
     ActivityDetailComponent,
     VideosAddComponent,
     PhotoUpdateComponent,
-    CenterAddComponent
+    CenterAddComponent,
+    CenterUpdateComponent
   ],
   imports: [
     BrowserModule,

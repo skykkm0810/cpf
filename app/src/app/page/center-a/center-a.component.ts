@@ -12,6 +12,7 @@ import { GenService } from '../../service/gen.service';
 import { min } from 'date-fns';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
+import { CenterUpdateComponent} from '../../modal/center-update/center-update.component';
 
 @Component({
   selector: 'app-center-a',
@@ -127,5 +128,11 @@ export class CenterAComponent implements AfterViewInit {
       width: '40%',
     });
   }
-  
+  updateCenter(event : Event){
+    var btnElement = event.target as HTMLElement;
+    var name = btnElement.closest('.header').childNodes[0].textContent;
+    const dialogRef2 = this.dialog.open(CenterUpdateComponent, {
+      width: '40%', data:{ centerName : name  },
+    });
+  }
 }

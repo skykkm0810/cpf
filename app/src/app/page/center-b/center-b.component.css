@@ -5,6 +5,12 @@
   float:right;
   background-color: slateblue;
   color:#fff;
+  margin-left: 10px;
+}
+.updateButton {
+  float:right;
+  background-color:cadetblue;
+  color:#fff;
 }
 .infoContainer {
   padding: 0;
