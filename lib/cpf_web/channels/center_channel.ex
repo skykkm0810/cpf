@@ -24,9 +24,10 @@ defmodule CpfWeb.CenterChannel do
   #   broadcast socket, "shout", payload
   #   {:noreply, socket}
   # end
+
   def handle_in("center:add", %{"body" => payload}, socket) do
-    data = create_device(payload)
-    # IO.puts "return of create_device ===>>  #{inspect data}"
+    data = create_center(payload)
+    # IO.puts "return of create_center ===>>  #{inspect data}"
     push(socket, "center:add", data)
     {:reply, {:ok, data}, socket}
   end
@@ -36,12 +37,8 @@ defmodule CpfWeb.CenterChannel do
     # data = Cpf.ConCenter.get_center(payload)
     {:reply, {:ok, payload}, socket}
   end
-  
-  
   #   Function
   
-  def 
-
   def create_center(data) do
     {:ok, center} = Cpf.ConCenter.create_center(data)
     %{
@@ -50,7 +47,7 @@ defmodule CpfWeb.CenterChannel do
       address: center.address,
       limited: center.limited,
       manager: center.manager,
-      contact: center.contact
+      contact: center.contact,
       email: center.email
     }
   end

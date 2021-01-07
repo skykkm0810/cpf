@@ -79,7 +79,7 @@ export class PhxChannelService {
         console.log('Unable to join', resp);
       });
     this.centerChannel.on('center:detail', payload => {
-      console.log('cpf:device:list from phx socket: ', payload);
+      console.log('cpf:center:detail from phx socket: ', payload);
       this.Center.emit(payload);
     })
     
@@ -95,6 +95,10 @@ export class PhxChannelService {
         this.deviceChannel.push(event, {body: message});
         break;
 
+      case 'center':
+        this.centerChannel.push(event, {body: message});
+        break;
+
       default:
         break;
     }
@@ -103,14 +107,18 @@ export class PhxChannelService {
   gets(channel, message?) : void {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push('device:list:req', message);
+        this.deviceChannel.push('device:list:req', {body: message});
         // .receive('ok', body => {
         //   console.log(body);
         // });
         break;
 
       case 'senior':
-        this.seniorChannel.push('senior:list:req', message);
+        this.seniorChannel.push('senior:list:req', {body: message});
+        break;
+
+      case 'center':
+        this.centerChannel.push('center:detail:req', {body: message});
         break;
 
       default:
@@ -121,7 +129,7 @@ export class PhxChannelService {
   get(channel, message) : void {
     switch (channel) {
       case 'center':
-        this.centerChannel.push('center:detail:req', message);
+        this.centerChannel.push('center:detail:req', {body: message});
         break;
 
       default:
