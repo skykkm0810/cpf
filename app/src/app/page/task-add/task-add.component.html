@@ -1,1 +1,32 @@
-<p>task-add works!</p>
+<form>
+    <mat-card class="m-b-20">
+        <h4>일일기록지 작성</h4>
+        <mat-form-field appearance="fill" class="select">
+            <mat-label>대상 시설</mat-label>
+            <mat-select>
+                <mat-option value="녹양주간보호센터">녹양주간보호센터</mat-option>
+                <mat-option value="요셉주간보호센터">요셉주간보호센터</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+    </mat-card>
+    <mat-card class="contents">
+        <div class="title">
+            <span>제목</span>
+                <input type="text" class="input">
+        </div>
+        <div class="file">
+            <span>파일</span>
+            <label for="noticeFile"  class="input uploadfile"> 클릭해서 파일 추가  </label>
+            <input type="file" name="noticeFile" id="noticeFile" (change) = "value();">
+        </div>
+        <div class="text">
+            <span>내용 작성</span>
+            <textarea matInput class="textarea"></textarea>
+        </div>
+        <div class="buttonBox">
+            <button mat-button class="submit">확인</button>
+            <button mat-button class="back" (click)="back();">취소</button>
+        </div>
+    </mat-card>
+</form>
