@@ -25,18 +25,19 @@ defmodule CpfWeb.DeviceChannel do
   #   {:noreply, socket}
   # end
 
-  def handle_in("device:list:req", %{"centerId" => id}, socket) do
-    list_devices(id)
-    |> Enum.map(fn data -> push(socket, "device:list", %{
-      id: data.id,
-      centerId: data.centerId,
-      type: data.type,
-      name: data.name,
-      location: data.location,
-      inserted: data.inserted_at,
-      status: data.status
-    }) end)
-    {:reply, {:ok, id}, socket}
+  def handle_in("device:list:req", payload, socket) do
+    IO.puts "return of payload ===>> #{inspect payload}"
+    # list_devices(payload.id)
+    # |> Enum.map(fn data -> push(socket, "device:list", %{
+    #   id: data.id,
+    #   centerId: data.centerId,
+    #   type: data.type,
+    #   name: data.name,
+    #   location: data.location,
+    #   inserted: data.inserted_at,
+    #   status: data.status
+    # }) end)
+    {:reply, {:ok, payload.id}, socket}
   end
 
   def handle_in("device:add", %{"body" => payload}, socket) do
@@ -52,7 +53,7 @@ defmodule CpfWeb.DeviceChannel do
   end
 
   def list_devices(cId) do
-    # devices = 
+    devices = 
     Cpf.ControlDevice.list_devices()
     |> Enum.filter(fn data ->
       data.centerId == cId 

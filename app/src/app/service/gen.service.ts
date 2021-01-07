@@ -24,6 +24,18 @@ export class GenService {
     return dvv;
   }
 
+  genCenter( name, address, limited, manager, contact, email ) {
+    const dvv: any = {
+      address: address,
+      contact: contact,
+      email: email,
+      limited: limited,
+      manager: manager,
+      name: name
+    }
+    return dvv;
+  }
+
   randomEl(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
