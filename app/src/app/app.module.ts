@@ -81,15 +81,9 @@ import { ActivityAddComponent } from './modal/activity-add/activity-add.componen
 import { PhotoAddComponent } from './modal/photo-add/photo-add.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
 import { EmergencyComponent } from './page/emergency/emergency.component';
-<<<<<<< HEAD
 import { ActivityDetailComponent } from './modal/activity-detail/activity-detail.component';
 import { VideosAddComponent } from './modal/videos-add/videos-add.component';
-=======
-import { LoginComponent } from './layout/login/login.component';
 import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
-import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
-import { ActivityDetailComponent } from './modal/activity-detail/activity-detail.component';
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
 
 @NgModule({
   declarations: [
@@ -129,15 +123,9 @@ import { ActivityDetailComponent } from './modal/activity-detail/activity-detail
     PhotoAddComponent,
     NoticeDetailComponent,
     EmergencyComponent,
-<<<<<<< HEAD
     ActivityDetailComponent,
     VideosAddComponent,
-=======
-    LoginComponent,
-    PhotoUpdateComponent,
-    ActivityUpdateComponent,
-    ActivityDetailComponent,
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
+    PhotoUpdateComponent
   ],
   imports: [
     BrowserModule,

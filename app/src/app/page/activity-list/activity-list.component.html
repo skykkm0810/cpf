@@ -49,7 +49,6 @@
         <td mat-cell *matCellDef="let row"> {{row.teacher}} </td>
       </ng-container>
       
-<<<<<<< HEAD
       <ng-container matColumnDef="contact">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> 연락처 </th>
         <td mat-cell *matCellDef="let row"> {{row.contact}} </td>
@@ -82,43 +81,4 @@
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </mat-card>
-=======
-        <ng-container matColumnDef="teacher">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> 강사 </th>
-          <td mat-cell *matCellDef="let row"> {{row.teacher}} </td>
-        </ng-container>
-        
-        <ng-container matColumnDef="contact">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> 연락처 </th>
-          <td mat-cell *matCellDef="let row"> {{row.contact}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="center">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> 복지시설 </th>
-          <td mat-cell *matCellDef="let row"> {{row.center}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> 진행 </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.progress}} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="datetime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> 일정 </th>
-          <td mat-cell *matCellDef="let row"> {{row.datetime}} </td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)='detailActivity()'></tr>
-    
-        <!-- Row shown when there is no matching data. -->
-        <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-        </tr>
-      </table>
-    
-      <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </div>
-  </mat-card>
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
 </div>

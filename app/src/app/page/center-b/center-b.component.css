@@ -1,5 +1,4 @@
 .infoContainer {
-<<<<<<< HEAD
   padding: 0;
 }
 
@@ -19,24 +18,3 @@
 .deviceLog {
   padding-top: 50px;
 }
-=======
-    padding: 0;
-  }
-  
-  .desc {
-    padding: 20px;
-  }
-  .display {
-    display:none;
-  }
-  .tableContainer p,
-  .deviceLog p
-  {
-    font-size: 1.2rem;
-    padding-bottom: 10px;
-  }
-  /* 기기로그 */
-  .deviceLog {
-    padding-top: 50px;
-  }
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2

@@ -7,10 +7,6 @@ import { Device, DEVICES } from '../../interface/interface';
 import { Senior, SENIORS } from '../../interface/interface';
 import { Request, REQUESTS } from '../../interface/interface';
 import {log, LOG} from '../../interface/interface';
-<<<<<<< HEAD
-
-=======
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
 import { PhxChannelService } from '../../service/phx-channel.service';
 import { GenService } from '../../service/gen.service';
 import { min } from 'date-fns';
@@ -51,14 +47,9 @@ export class CenterAComponent implements AfterViewInit {
     ) {
     this.requestDataSource = new MatTableDataSource(REQUESTS);
     this.seniorDataSource = new MatTableDataSource(SENIORS);
-<<<<<<< HEAD
     this.deviceDataSource = new MatTableDataSource([]);
     this.deviceLogData = new MatTableDataSource([]);
 
-=======
-    this.deviceDataSource = new MatTableDataSource(DEVICES);
-    this.deviceLogData = new MatTableDataSource(LOG);
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
     phxChannel.Devices.subscribe( data => {
       this.devices.push(data);
       this.deviceDataSource = new MatTableDataSource(this.devices);
@@ -79,10 +70,7 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceDataSource.sort = this.sort3;
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
-<<<<<<< HEAD
     this.phxChannel.gets('device', { centerId: 1 });
-=======
->>>>>>> c4c5cd531b32681779c4095deb015e644f6413e2
   }
   
   select(){
