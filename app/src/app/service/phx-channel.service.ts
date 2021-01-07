@@ -22,6 +22,7 @@ export class PhxChannelService {
   @Output() Seniors: EventEmitter<any> = new EventEmitter();
   @Output() Requests: EventEmitter<any> = new EventEmitter();
   @Output() Users: EventEmitter<any> = new EventEmitter();
+  @Output() Center: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -63,9 +64,23 @@ export class PhxChannelService {
       .receive('error', resp => {
         console.log('Unable to join', resp);
       });
-    this.deviceChannel.on('senior:list', payload => {
+    this.seniorChannel.on('senior:list', payload => {
       console.log('cpf:device:list from phx socket: ', payload);
       this.Seniors.emit(payload);
+    })
+
+    this.centerChannel = this.socket.channel('cpf:center', {});
+    this.centerChannel
+      .join()
+      .receive('ok', resp => {
+        console.log('Joined successfully', resp);
+      })
+      .receive('error', resp => {
+        console.log('Unable to join', resp);
+      });
+    this.centerChannel.on('center:detail', payload => {
+      console.log('cpf:device:list from phx socket: ', payload);
+      this.Center.emit(payload);
     })
     
   }
@@ -85,18 +100,17 @@ export class PhxChannelService {
     }
   }
 
-  gets(channel, message) : void {
-    let rec;
+  gets(channel, message?) : void {
     switch (channel) {
       case 'device':
-        rec = this.deviceChannel.push('device:list:req', message);
+        this.deviceChannel.push('device:list:req', message);
         // .receive('ok', body => {
         //   console.log(body);
         // });
         break;
 
       case 'senior':
-        rec = this.seniorChannel.push('senior:list:req', message);
+        this.seniorChannel.push('senior:list:req', message);
         break;
 
       default:
@@ -105,10 +119,9 @@ export class PhxChannelService {
   }
 
   get(channel, message) : void {
-    let rec;
     switch (channel) {
       case 'center':
-        rec = this.centerChannel.push('center:detail:req', message);
+        this.centerChannel.push('center:detail:req', message);
         break;
 
       default:

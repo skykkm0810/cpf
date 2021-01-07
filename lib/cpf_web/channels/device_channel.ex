@@ -52,7 +52,7 @@ defmodule CpfWeb.DeviceChannel do
   end
 
   def list_devices(cId) do
-    # devices = 
+    devices = 
     Cpf.ControlDevice.list_devices()
     |> Enum.filter(fn data ->
       data.centerId == cId 

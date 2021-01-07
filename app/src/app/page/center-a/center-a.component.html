@@ -30,8 +30,8 @@
   
   
     <mat-tab-group>
-      <mat-tab label="타임라인" (click)='select()'>
-        <div class="timelineContainer" *ngFor="let timeline of timelines" (click)='select()'>
+      <mat-tab label="타임라인">
+        <div class="timelineContainer" *ngFor="let timeline of timelines">
           <div class="timelineAvatar">
             <img src="assets/images/users/{{ timeline.img }}" class="avatar-circle" width="100%">
           </div>
@@ -135,7 +135,7 @@
         </mat-card>
       </mat-tab>
       <mat-tab label="기기 현황">
-        <mat-card class="tableContainer m-b-20">
+        <mat-card class="tableContainer m-b-20" (click)='select();'>
           <p class="title">기기 목록</p>
           <div class="mat-elevation-z8">
             <table mat-table [dataSource]="deviceDataSource" #sort3='matSort' matSort>

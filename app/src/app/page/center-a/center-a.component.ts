@@ -18,10 +18,12 @@ import { min } from 'date-fns';
 })
 export class CenterAComponent implements AfterViewInit {
 
+  centerId = 1;
+
   timelines = TIMELINES;
-  deviceCalled : boolean = false;
-  devices : Device[] = [];
-  seniors : Senior[] = [];
+  deviceCalled: boolean = false;
+  devices: Device[] = [];
+  seniors: Senior[] = [];
 
   requestDisplayedColumns: string[] = [ 'id', 'progress', 'from', 'desc', 'who' ];
   requestDataSource: MatTableDataSource<Request>;
@@ -51,7 +53,9 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceLogData = new MatTableDataSource([]);
 
     phxChannel.Devices.subscribe( data => {
-      this.devices.push(data);
+      if ( data.centerId == this.centerId ) {
+        this.devices.push(data);
+      }
       this.deviceDataSource = new MatTableDataSource(this.devices);
     })
     phxChannel.Seniors.subscribe( data => {
@@ -70,7 +74,7 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceDataSource.sort = this.sort3;
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
-    this.phxChannel.gets('device', { centerId: 1 });
+    this.phxChannel.gets('device');
   }
   
   select(){
@@ -80,7 +84,7 @@ export class CenterAComponent implements AfterViewInit {
       this.gen.genDevice()
     )
   }
-  
+
   intoRestroom(event: Event) {
     var thisTime = new Date().getHours() + ":" +new Date().getMinutes() + ":" + new Date().getSeconds();
     var thisElement = (event.target as HTMLElement);
@@ -91,7 +95,7 @@ export class CenterAComponent implements AfterViewInit {
     // var seconds = 0;
     // var minutes = 0;
     // var flowing;
-    // var time : null | ReturnType<typeof setInterval>
+    // var time: null | ReturnType<typeof setInterval>
     // time = window.setInterval(function(){
     //   seconds = seconds + 1
     //   if(seconds == 60){
