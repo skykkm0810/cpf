@@ -151,3 +151,7 @@ button:focus{
 .mat-drawer-inner-container::-webkit-scrollbar {
   display: none;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

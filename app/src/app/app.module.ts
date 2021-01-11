@@ -86,6 +86,7 @@ import { VideosAddComponent } from './modal/videos-add/videos-add.component';
 import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
 import { CenterAddComponent } from './modal/center-add/center-add.component';
 import { CenterUpdateComponent } from './modal/center-update/center-update.component';
+import { LoginComponent } from './layout/login/login.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { CenterUpdateComponent } from './modal/center-update/center-update.compo
     VideosAddComponent,
     PhotoUpdateComponent,
     CenterAddComponent,
-    CenterUpdateComponent
+    CenterUpdateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

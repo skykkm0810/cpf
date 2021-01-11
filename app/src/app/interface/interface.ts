@@ -25,6 +25,7 @@ export const TAGS : Record<string, string> = {
   CCTVDETAIL: 'cctvDetail/:id',
   NOTICEDETAIL: 'noticeDetail',
   EMERGENCY: 'emergency',
+  LOGIN: 'login',
 } 
 
 export interface AsideItem {
@@ -286,7 +287,7 @@ export interface Senior {
 }
 
 export const SENIORS: Senior[] = [
-  { id: 1, photo: '1.jpg', name: '김모모', contact:"010-9550-8470" ,gender: '남', age: 74, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설A' ,guardianContact:"010-9550-8470"},
+  { id: 1, photo: '1.jpg', name: '김모모', contact:"010-1111-2222" ,gender: '남', age: 74, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설A' ,guardianContact:"010-9550-8470"},
   { id: 2, photo: '2.jpg', name: '윤모모', contact:"010-9550-8470" ,gender: '남', age: 68, temp: '36.5',  desc: '장애 5급', guardian: '김경민', latest: '어제', center: '시설A',guardianContact:"010-9550-8470"},
   { id: 3, photo: '3.jpg', name: '박모모', contact:"010-9550-8470" ,gender: '여', age: 64, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설B' ,guardianContact:"010-9550-8470"},
   { id: 4, photo: '4.jpg', name: '임모모', contact:"010-9550-8470" ,gender: '남', age: 72, temp: '36.5',  desc: '휠체어', guardian: '김경민', latest: '어제', center: '시설A',guardianContact:"010-9550-8470"},

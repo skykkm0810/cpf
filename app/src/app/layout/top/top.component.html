@@ -2,20 +2,35 @@
   <button mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>&nbsp;&nbsp;
-  <button mat-icon-button>
-    <mat-icon>card_giftcard</mat-icon>
-  </button>&nbsp;&nbsp;
-  <button mat-icon-button matBadge='2'>
+  <button mat-icon-button matBadge='2' [matMenuTriggerFor]='alarm'>
     <mat-icon>notification_important</mat-icon>
-  </button>&nbsp;&nbsp;
-  <button mat-icon-button>
-    <mat-icon>mail_outline</mat-icon>
+    <mat-menu #alarm >
+      <button mat-menu-item class="alarmList">
+        녹양주간보호센터에서 출석을 완료하였습니다.
+      </button>
+      <button mat-menu-item class="alarmList">
+        요셉주간보호센터의 '로봇'에게 '기능고장'이 나타났습니다.
+      </button>
+    </mat-menu>
   </button>&nbsp;&nbsp;
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
   </button>&nbsp;&nbsp;
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
-  </button>
+  </button> -->
+  <div class="manager" [matMenuTriggerFor]='userSetting' (mouseover)="Onmouse()" (mouseout)="mouseOut()">
+    <img src="../../../assets/images/users/{{user[0].img}}" alt="/" class="userImg">
+    <span class="userName">{{user[0].name}}</span>
+    <mat-menu #userSetting>
+      <span class="work">{{user[0].progress}}</span>
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>사용자 설정
+      </button>
+      <button mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>로그아웃
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>

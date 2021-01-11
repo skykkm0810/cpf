@@ -24,6 +24,7 @@ import { TaskAddComponent } from './page/task-add/task-add.component';
 import { CctvDetailComponent } from './page/cctv-detail/cctv-detail.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
 import { EmergencyComponent } from './page/emergency/emergency.component';
+import { LoginComponent } from './layout/login/login.component';
 const routes: Routes = [
   { path: TAGS.DASHBOARD, component: DashboardComponent },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: TAGS.CCTVDETAIL, component: CctvDetailComponent },
   { path: TAGS.NOTICEDETAIL, component: NoticeDetailComponent },
   { path: TAGS.EMERGENCY, component: EmergencyComponent },
+  { path: TAGS.LOGIN, component: LoginComponent },
 
 ];
 

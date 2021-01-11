@@ -11,7 +11,7 @@ export class SeniorContactComponent implements OnInit {
 
   constructor(
     public dialogRef2: MatDialogRef<SeniorContactComponent>,
-    ) {}
+    @Inject(MAT_DIALOG_DATA) public data: Senior) {}
 
   ngOnInit(): void {
   }
