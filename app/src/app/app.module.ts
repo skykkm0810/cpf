@@ -87,6 +87,9 @@ import { PhotoUpdateComponent } from './modal/photo-update/photo-update.componen
 import { CenterAddComponent } from './modal/center-add/center-add.component';
 import { CenterUpdateComponent } from './modal/center-update/center-update.component';
 import { LoginComponent } from './layout/login/login.component';
+import { RequstComponent } from './page/requst/requst.component';
+import { EventListComponent } from './page/event-list/event-list.component';
+import { AdministratorComponent } from './page/administrator/administrator.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +134,10 @@ import { LoginComponent } from './layout/login/login.component';
     PhotoUpdateComponent,
     CenterAddComponent,
     CenterUpdateComponent,
-    LoginComponent
+    LoginComponent,
+    RequstComponent,
+    EventListComponent,
+    AdministratorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+.eventBox {
+    display: grid;
+    grid-template-columns: 1fr;
+    width:1000px;
+    padding:1rem;
+    row-gap: 15px;
+}
+.eventList {
+    padding:0 2rem;
+    display: grid;
+    grid-template-columns: 100px calc(100% - 100px);
+}
+.avatar {
+    border-radius: 100%;
+    text-align: center;
+    width:70px;
+    height:70px;
+    line-height: 70px;
+    color:#fff;
+}
+.avatar img {
+    width:40px;
+}
+.male {
+    background-color: skyblue;
+}
+.female {
+    background-color: pink;
+}
+.main {
+    padding-bottom: 20px;
+}
+.desc {
+    font-size: 1.4rem;
+}
+.name {
+    color:#999;
+}
+.center {
+    font-size: 1.1rem;
+}
+.from {
+    color:#999;
+}

@@ -10,29 +10,29 @@ mat-icon {
   font-size: 30px;
 }
 /* 알람 */
-
-.alarmList {
-  width: 600px;
-  position: relative;
-  padding: 0 20px;
+::ng-deep.mat-menu-panel {
+  max-width: 600px !important;
 }
-.alarmList::before {
-  content: '';
-  display: block;
-  width:8px;
-  height:8px;
-  border-radius: 100%;
-  background-color: #ccc;;
-  position: absolute;
-  left:5px;
-  top:calc(50% - 4px);
+.alarmList .eventTime::before {
+  content: ' - ';
+  margin:0 5px
+}
+.alarmList .eventTime {
+  color:#aaa;
+}
+.new { 
+  background-color: rgba(173, 219, 116, 0.37);
+}
+.new:hover {
+  background-color: rgba(117, 160, 62, 0.5);
+
 }
 /* 상단 프로필 */
 .manager {
-  cursor:pointer;
   height:100%;
-  padding-right:3%;
+  margin-right:100px;
   line-height: 64px;
+  cursor: pointer;
 }
 .manager img {
   width:50px;

@@ -10,7 +10,7 @@
       </a>
     </mat-card>
     <mat-card class="grid-content">
-      <a href="/" mat-button>
+      <a [routerLink]="['event']" mat-button>
         <div class="iconWrap">
           <mat-icon class="headerIcon">event</mat-icon>
         </div>
@@ -19,7 +19,7 @@
       </a>
     </mat-card>
     <mat-card class="grid-content">
-      <a href="/" mat-button>
+      <a [routerLink]="['request']" mat-button>
         <div class="iconWrap">
           <mat-icon class="headerIcon">alarm</mat-icon>
         </div>
@@ -28,7 +28,7 @@
       </a>
     </mat-card>
     <mat-card class="grid-content">
-      <a href="/" mat-button>
+      <a [routerLink]="['emergency']" mat-button>
         <div class="iconWrap">
           <mat-icon class="headerIcon">priority_high</mat-icon>
         </div>
@@ -128,9 +128,7 @@
           <tr mat-header-row *matHeaderRowDef="logColumns"></tr>
           <tr mat-row *matRowDef="let row2; columns: logColumns;"></tr>
 
-
         </table>
-
         <mat-paginator [pageSize]="5" #pagnator2='matPaginator'></mat-paginator>
 
       </div>

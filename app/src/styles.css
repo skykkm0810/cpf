@@ -10,7 +10,8 @@
   box-sizing: border-box;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important;
+min-width: 1500px; max-width: 1920px; }
 
 mat-card {
   box-shadow: rgba(80, 80, 80, 0.2) 1px 1px 2px 2px !important;
@@ -154,4 +155,13 @@ button:focus{
 
 .uppercase {
   text-transform: uppercase;
+}
+.float-right {
+  float:right;
+}
+.float-left {
+  float:left;
+}
+.hidden {
+  display:none!important;
 }

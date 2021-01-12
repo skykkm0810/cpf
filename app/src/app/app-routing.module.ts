@@ -25,6 +25,9 @@ import { CctvDetailComponent } from './page/cctv-detail/cctv-detail.component';
 import { NoticeDetailComponent } from './page/notice-detail/notice-detail.component';
 import { EmergencyComponent } from './page/emergency/emergency.component';
 import { LoginComponent } from './layout/login/login.component';
+import { EventListComponent } from './page/event-list/event-list.component';
+import { RequstComponent } from './page/requst/requst.component';
+import { AdministratorComponent } from './page/administrator/administrator.component';
 const routes: Routes = [
   { path: TAGS.DASHBOARD, component: DashboardComponent },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
@@ -50,7 +53,9 @@ const routes: Routes = [
   { path: TAGS.NOTICEDETAIL, component: NoticeDetailComponent },
   { path: TAGS.EMERGENCY, component: EmergencyComponent },
   { path: TAGS.LOGIN, component: LoginComponent },
-
+  { path: TAGS.EVENT, component: EventListComponent },
+  { path: TAGS.REQUEST, component: RequstComponent },
+  { path: TAGS.ADMINISTRATOR, component: AdministratorComponent },
 ];
 
 @NgModule({
