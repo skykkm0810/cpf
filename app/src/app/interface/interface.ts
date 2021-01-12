@@ -29,6 +29,7 @@ export const TAGS : Record<string, string> = {
   EVENT: 'event',
   REQUEST: 'request',
   ADMINISTRATOR: 'administrator',
+  MYPAGE: 'mypage',
 } 
 
 export interface AsideItem {
@@ -185,10 +186,11 @@ export interface Account {
   email?:string;
   contact:string;
   authority:string;
+  belong:string;
 }
 export const ACCOUNTS :Account[] = [
-  {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자'},
-  {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'A센터-관리자'},
+  {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
+  {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
 ]
 export interface Filter {
   name: string;

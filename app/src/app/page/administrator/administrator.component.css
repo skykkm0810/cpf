@@ -1,3 +1,6 @@
+.hidden {
+    display: none!important;
+}
 .contentsWrap{
     width:100%;
     padding:1rem;
@@ -15,10 +18,17 @@ h4 {
     color:#fff;
     margin:0 10px;
 }
+.updateAccount, .updateCenter {
+    background-color: coral;
+    color:#fff;
+    margin:0 10px;
+}
 /* 수정 버튼이벤트 */
 .addedButton {
     line-height: 30px;
     margin:0 5px;
+    min-width: 50px;
+    padding:0 5px;
 }
 .revice {
     background-color: yellowgreen;

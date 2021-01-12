@@ -28,6 +28,8 @@ import { LoginComponent } from './layout/login/login.component';
 import { EventListComponent } from './page/event-list/event-list.component';
 import { RequstComponent } from './page/requst/requst.component';
 import { AdministratorComponent } from './page/administrator/administrator.component';
+import { MypageComponent } from './page/mypage/mypage.component';
+
 const routes: Routes = [
   { path: TAGS.DASHBOARD, component: DashboardComponent },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
@@ -56,6 +58,7 @@ const routes: Routes = [
   { path: TAGS.EVENT, component: EventListComponent },
   { path: TAGS.REQUEST, component: RequstComponent },
   { path: TAGS.ADMINISTRATOR, component: AdministratorComponent },
+  { path: TAGS.MYPAGE, component: MypageComponent },
 ];
 
 @NgModule({

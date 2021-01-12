@@ -1,0 +1,46 @@
+h4 {
+    font-size: 1.1rem;
+}
+.infoWrap {
+    padding:0 1rem;
+}
+.myinfo th, .myinfo td {
+    border:1px solid #000;
+    border-collapse: collapse;
+}
+.myinfo .label {
+    width:200px; background-color: rgba(0,0,0,0.3);
+}
+.myinfo th {
+    color:#fff;
+    text-align: center;
+    line-height: 50px;
+}
+.myinfo td {
+    position: relative;
+}
+.myinfo .contents {
+    width:100%;
+    height:50px;
+    border:0;
+    box-sizing: border-box;
+    padding:0 10px;
+}
+
+.changePW {
+    background-color: #5f6d94;
+    color:#fff;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+.editInfo {
+    background-color: cadetblue;
+    color:#fff;
+}
+.updateInfo {
+    background-color: coral;
+    color:#fff;
+}
+.hidden {
+    display: none!important;
+}

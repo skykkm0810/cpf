@@ -1,0 +1,46 @@
+<mat-card class="header m-b-20">
+  <h3>마이페이지</h3>
+</mat-card>
+<div class="infoWrap">
+  <h4>사용자 정보</h4>
+  <table class="myinfo m-b-20">
+    <colgroup>
+      <col class="label">
+      <col>
+      <col class="label">
+      <col>
+    </colgroup>
+    <tr>
+      <th>아이디</th>
+      <td>
+        <input type="text" value='skykkm0810' class="contents id" disabled>
+      </td>
+      <th>비밀번호</th>
+      <td>
+        <button mat-button class="changePW">비밀번호 변경하기</button>
+      </td>
+    </tr>
+    <tr>
+      <th>이름</th>
+      <td>
+        <input type="text" value='깽미' class="contents name" disabled>
+      </td>
+      <th>소속</th>
+      <td>
+        <input type="text" value='대구 달서구 복지부' class="contents belong" disabled>
+      </td>
+    </tr>
+    <tr>
+      <th>연락처</th>
+      <td>
+        <input type="text" value='010  0000  0000' class="contents contact" disabled>
+      </td>
+      <th>이메일</th>
+      <td>
+        <input type="email" value='ggangmi@ninanobiz.com' class="contents email" disabled>
+      </td>
+    </tr>
+  </table>
+  <button mat-button class="editInfo" (click)='editInfo()'>정보 변경</button>
+  <button mat-button class="updateInfo float-right hidden" (click)='updateInfo()'>적용하기</button>
+</div>
