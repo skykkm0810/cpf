@@ -7,7 +7,9 @@
 
     <mat-card class="body">
         <mat-tab-group [selectedIndex]="Month" class="tab">
-            <mat-tab label="1월"></mat-tab>
+            <mat-tab label="1월">
+                <iframe src="../../../assets/images/dietary/unuseful.pdf#zoom=145" frameborder="0" class="pdfViewer" ></iframe>
+            </mat-tab>
             <mat-tab label="2월"></mat-tab>
             <mat-tab label="3월"></mat-tab>
             <mat-tab label="4월"></mat-tab>
@@ -20,7 +22,7 @@
             <mat-tab label="11월"></mat-tab>
             <mat-tab label="12월"></mat-tab>
         </mat-tab-group>
-        <mat-grid-list cols='3' rowHeight="2:1">
+        <!-- <mat-grid-list cols='3' rowHeight="2:1">
             <mat-grid-tile *ngFor='let dietary of dietarys'>
                 <mat-card class="dietrayCard">
                     <mat-grid-list class="cardDiv" cols='2' rowHeight="1:1">
@@ -50,6 +52,6 @@
                       </mat-menu>
                 </mat-card>
             </mat-grid-tile>
-        </mat-grid-list>
+        </mat-grid-list> -->
     </mat-card>
 </div>

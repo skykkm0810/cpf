@@ -11,8 +11,7 @@ import { CENTERS} from '../../interface/interface';
 export class CenterUpdateComponent implements OnInit {
 
   constructor(
-    private dialogRef: MatDialogRef<CenterBComponent>,
-    private dialogRef2: MatDialogRef<CenterAComponent>,
+    private dialogRef: MatDialogRef<CenterAComponent>,
     ) {
     }
   
@@ -24,6 +23,5 @@ export class CenterUpdateComponent implements OnInit {
   }
   closeDialog(){
     this.dialogRef.close();
-    this.dialogRef2.close();
   }
 }

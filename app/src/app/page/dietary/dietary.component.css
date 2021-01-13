@@ -39,3 +39,8 @@ mat-grid-list { padding-top: 20px;}
     top:0;
     right:0;
 }
+/*  */
+.pdfViewer {
+    width:100%;
+    height:1000px;
+}
