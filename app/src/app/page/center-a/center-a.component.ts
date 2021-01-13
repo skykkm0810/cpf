@@ -84,7 +84,7 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceDataSource.sort = this.sort3;
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
-    this.phxChannel.gets('device');
+    this.phxChannel.gets('device', { centerId: this.centerId });
     this.phxChannel.get('center', { centerId: this.centerId });
   }
   

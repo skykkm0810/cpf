@@ -11,8 +11,7 @@ import { CENTERS} from '../../interface/interface';
 export class CenterUpdateComponent implements OnInit {
 
   constructor(
-    private dialogRef: MatDialogRef<CenterBComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {centerName: string},
+      private dialogRef: MatDialogRef<CenterBComponent>,
     ) {
       
       
@@ -22,12 +21,6 @@ export class CenterUpdateComponent implements OnInit {
  
   
   ngOnInit(): void {
-    var thisCenter;
-      for(var i=0; i<this.center.length; i++){
-        if(this.center[i].name == this.data.centerName){
-           thisCenter = this.center[i];
-        }
-      }
   }
   closeDialog(){
     this.dialogRef.close();

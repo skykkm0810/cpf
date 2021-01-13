@@ -107,18 +107,18 @@ export class PhxChannelService {
   gets(channel, message?) : void {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push('device:list:req', {body: message});
+        this.deviceChannel.push('device:list:req', message);
         // .receive('ok', body => {
         //   console.log(body);
         // });
         break;
 
       case 'senior':
-        this.seniorChannel.push('senior:list:req', {body: message});
+        this.seniorChannel.push('senior:list:req', message);
         break;
 
       case 'center':
-        this.centerChannel.push('center:detail:req', {body: message});
+        this.centerChannel.push('center:detail:req', message);
         break;
 
       default:
