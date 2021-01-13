@@ -34,8 +34,11 @@ export class DeviceListComponent implements AfterViewInit {
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
     phxChannel.Devices.subscribe( data => {
-      const d = new Date(data.inserted);
-      data.inserted = d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일';
+      // const d = new Date( data.inserted );
+      // const date = d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일';
+      // data.inserted = date+'';
+      // console.log(d, date);
+      // console.log(data);
       this.CheckFilter.push(data);
       this.dataSource = new MatTableDataSource(this.CheckFilter);
     })

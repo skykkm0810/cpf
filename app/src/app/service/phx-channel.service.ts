@@ -23,6 +23,7 @@ export class PhxChannelService {
   @Output() Requests: EventEmitter<any> = new EventEmitter();
   @Output() Users: EventEmitter<any> = new EventEmitter();
   @Output() Center: EventEmitter<any> = new EventEmitter();
+  @Output() Centers: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -65,7 +66,7 @@ export class PhxChannelService {
         console.log('Unable to join', resp);
       });
     this.seniorChannel.on('senior:list', payload => {
-      console.log('cpf:device:list from phx socket: ', payload);
+      // console.log('cpf:device:list from phx socket: ', payload);
       this.Seniors.emit(payload);
     })
 
@@ -78,10 +79,22 @@ export class PhxChannelService {
       .receive('error', resp => {
         console.log('Unable to join', resp);
       });
-    this.centerChannel.on('center:detail', payload => {
-      console.log('cpf:center:detail from phx socket: ', payload);
-      this.Center.emit(payload);
-    })
+      this.centerChannel.on('center:add', payload => {
+        console.log('cpf:center:add from phx socket: ', payload);
+        this.Center.emit(payload);
+      })
+      this.centerChannel.on('center:detail', payload => {
+        console.log('cpf:center:detail from phx socket: ', payload);
+        this.Center.emit(payload);
+      })
+      this.centerChannel.on('center:detail:update', payload => {
+        console.log('cpf:center:detail:update ', payload);
+      })
+      this.centerChannel.on('center:list', payload => {
+        // console.log('cpf:center:list from phx socket: ', payload);
+        this.Centers.emit(payload.body);
+      })
+
     
   }
 
@@ -108,9 +121,6 @@ export class PhxChannelService {
     switch (channel) {
       case 'device':
         this.deviceChannel.push('device:list:req', message);
-        // .receive('ok', body => {
-        //   console.log(body);
-        // });
         break;
 
       case 'senior':
@@ -118,7 +128,7 @@ export class PhxChannelService {
         break;
 
       case 'center':
-        this.centerChannel.push('center:detail:req', message);
+        this.centerChannel.push('center:list:req', message);
         break;
 
       default:
@@ -135,6 +145,28 @@ export class PhxChannelService {
       default:
         break;
     
+    }
+  }
+
+  up(channel, message) : void {
+    switch ( channel ) {
+      case 'center':
+        this.centerChannel.push('center:detail:update:req', {body: message});
+        break;
+      
+      default:
+        break;
+    }
+  }
+
+  del(channel, message) : void {
+    switch ( channel ) {
+      case 'center':
+        this.centerChannel.push('center:delete:req', {body: message});
+        break;
+      
+      default:
+        break;
     }
   }
 }

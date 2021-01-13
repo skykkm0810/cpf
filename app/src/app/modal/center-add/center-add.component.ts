@@ -32,12 +32,10 @@ export class CenterAddComponent implements OnInit {
   }
 
   add() {
-    // this.phxChannel.send(
-    //   "center",
-    //   "center:add",
-    //   this.center
-    // )
-    // this.center.email = 'llll';
-    console.log(this.center);
+    this.phxChannel.send(
+      "center",
+      "center:add:req",
+      this.center
+    )
   }
 }
