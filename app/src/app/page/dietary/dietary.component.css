@@ -3,10 +3,13 @@
     line-height: 36px;
     margin:0;
 }
-.header .addDietary{
+.addPDF {
     background-color: slateblue;
-    color:#fff;
-    float:right;
+    margin-left: 20px;
+    color:#fff
+}
+.centerSelect {
+    width:250px;
 }
 .bodyWrap { padding-top: 20px;}
 mat-grid-list { padding-top: 20px;}

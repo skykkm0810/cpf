@@ -93,6 +93,7 @@ import { AdministratorComponent } from './page/administrator/administrator.compo
 import { AccountAddComponent } from './modal/account-add/account-add.component';
 import { AccountUpdateComponent } from './modal/account-update/account-update.component';
 import { MypageComponent } from './page/mypage/mypage.component';
+import { DietaryAddComponent } from './modal/dietary-add/dietary-add.component';
 
 @NgModule({
   declarations: [
@@ -144,6 +145,7 @@ import { MypageComponent } from './page/mypage/mypage.component';
     AccountAddComponent,
     AccountUpdateComponent,
     MypageComponent,
+    DietaryAddComponent,
   ],
   imports: [
     BrowserModule,
