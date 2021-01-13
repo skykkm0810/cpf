@@ -34,7 +34,6 @@ export class CenterAddComponent implements OnInit {
   add() {
     this.phxChannel.send(
       "center",
-      "center:add:req",
       this.center
     )
   }

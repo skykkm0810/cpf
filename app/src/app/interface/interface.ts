@@ -178,20 +178,22 @@ export const CENTERS : Center[] = [
   {idx:9468462,name:'요셉주간보호센터',address:'충청남도 아산시',maxUser:'50명',manager:'임모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
 ]
 export interface Account {
-  idx:string;
-  id: string;
-  passward:string;
-  name:string;
-  birthday:string;
-  email?:string;
-  contact:string;
-  authority:string;
-  belong:string;
+  id?: string;
+  idx: string;
+  uname: string;
+  pwd: string;
+  name: string;
+  birth: string;
+  email?: string;
+  contact: string;
+  level: string;
+  centerId: string;
+  center: string;
 }
-export const ACCOUNTS :Account[] = [
-  {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
-  {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
-]
+// export const ACCOUNTS :Account[] = [
+//   {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
+//   {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
+// ]
 export interface Filter {
   name: string;
   completed: boolean;

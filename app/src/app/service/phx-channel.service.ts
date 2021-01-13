@@ -17,6 +17,7 @@ export class PhxChannelService {
   eventChannel: any;
   requestChannel: any;
   centerChannel: any;
+  accountChannel: any;
 
   @Output() Devices: EventEmitter<any> = new EventEmitter();
   @Output() Seniors: EventEmitter<any> = new EventEmitter();
@@ -24,6 +25,8 @@ export class PhxChannelService {
   @Output() Users: EventEmitter<any> = new EventEmitter();
   @Output() Center: EventEmitter<any> = new EventEmitter();
   @Output() Centers: EventEmitter<any> = new EventEmitter();
+  @Output() Account: EventEmitter<any> = new EventEmitter();
+  @Output() Accounts: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -95,6 +98,31 @@ export class PhxChannelService {
         this.Centers.emit(payload.body);
       })
 
+      this.accountChannel = this.socket.channel('cpf:account', {});
+      this.accountChannel
+        .join()
+        .receive('ok', resp => {
+          console.log('Joined successfully', resp);
+        })
+        .receive('error', resp => {
+          console.log('Unable to join', resp);
+        });
+        this.accountChannel.on('account:add', payload => {
+          console.log('cpf:account:add from phx socket: ', payload);
+          this.Account.emit(payload);
+        })
+        this.accountChannel.on('account:detail', payload => {
+          console.log('cpf:account:detail from phx socket: ', payload);
+          this.Account.emit(payload);
+        })
+        this.accountChannel.on('account:detail:update', payload => {
+          console.log('cpf:account:detail:update ', payload);
+        })
+        this.accountChannel.on('account:list', payload => {
+          // console.log('cpf:account:list from phx socket: ', payload);
+          this.Accounts.emit(payload.body);
+        })
+  
     
   }
 
@@ -102,16 +130,20 @@ export class PhxChannelService {
   //   this.deviceChannel.push('reqDevices', 'number: 5');
   // }
 
-  send(channel, event, message) {
+  send(channel, message) {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push(event, {body: message});
+        this.deviceChannel.push("device:add", {body: message});
         break;
 
       case 'center':
-        this.centerChannel.push(event, {body: message});
+        this.centerChannel.push("center:add:req", {body: message});
         break;
 
+      case 'account':
+        this.accountChannel.push("account:add:req", {body: message});
+        break;
+  
       default:
         break;
     }
@@ -129,6 +161,10 @@ export class PhxChannelService {
 
       case 'center':
         this.centerChannel.push('center:list:req', message);
+        break;
+
+      case 'account':
+        this.accountChannel.push('account:list:req', message);
         break;
 
       default:

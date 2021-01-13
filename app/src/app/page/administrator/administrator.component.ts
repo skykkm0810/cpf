@@ -2,7 +2,7 @@ import { Component, OnInit,AfterViewInit,ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ACCOUNTS, Account , Center } from '../../interface/interface';
+import { Account , Center } from '../../interface/interface';
 import { MatDialog} from '@angular/material/dialog';
 import { AccountAddComponent} from '../../modal/account-add/account-add.component';
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
@@ -20,12 +20,13 @@ import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
 export class AdministratorComponent implements AfterViewInit {
 
-  accountColumns: string[] =['idx','id','passward','name','contact','belong','authority','birthday','email']
+  accountColumns: string[] =['idx','uname','pwd','name','contact','center','level','birth','email']
   accountData: MatTableDataSource<Account>
   centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email']
   centerData: MatTableDataSource<Center>
 
   CENTERS: Center[] = [];
+  ACCOUNTS: Account[] = [];
 
   @ViewChild('pagnator1') paginator1: MatPaginator;
   @ViewChild('pagnator2') paginator2: MatPaginator;
@@ -54,8 +55,25 @@ export class AdministratorComponent implements AfterViewInit {
       });
       this.centerData = new MatTableDataSource(this.CENTERS);
     })
+    phxChannel.Accounts.subscribe( data => {
+      data.forEach( e => {
+        this.ACCOUNTS.push({
+          id: e.id,
+          idx: e.id,
+          uname: e.uname,
+          pwd: e.pwd,
+          name: e.name,
+          level: e.level,
+          birth: e.birth,
+          contact: e.contact,
+          center: e.address,
+          centerId: e.manager,
+          email: e.email
+        })
+      });
+    })
     
-    this.accountData = new MatTableDataSource(ACCOUNTS);
+    this.accountData = new MatTableDataSource(this.ACCOUNTS);
     this.centerData = new MatTableDataSource(this.CENTERS);
   }
 
@@ -65,6 +83,7 @@ export class AdministratorComponent implements AfterViewInit {
     this.accountData.sort = this.sort1;
     this.centerData.sort = this.sort2;
     this.phxChannel.gets("center", { body: '' });
+    this.phxChannel.gets("account", { body: '' });
   }
   addAccount(){
     const dialogRef = this.dialog1.open(AccountAddComponent,{

@@ -91,7 +91,6 @@ export class CenterAComponent implements AfterViewInit {
   select(){
     this.phxChannel.send(
       "device",
-      "device:add",
       this.gen.genDevice()
     )
   }
