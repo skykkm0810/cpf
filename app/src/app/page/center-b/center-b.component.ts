@@ -64,12 +64,9 @@ export class CenterBComponent implements AfterViewInit {
       width: '40%',
     });
   }
-  updateCenter(event : Event){
-    var btnElement = event.target as HTMLElement;
-    var name = btnElement.closest('.header').childNodes[0].textContent;
-    console.log(name)
+  updateCenter(){
     const dialogRef = this.dialog.open(CenterUpdateComponent, {
-      width: '40%', data:{ centerName : name  },
+      width: '40%', 
     });
   }
 }

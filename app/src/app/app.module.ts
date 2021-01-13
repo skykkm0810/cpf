@@ -86,6 +86,13 @@ import { VideosAddComponent } from './modal/videos-add/videos-add.component';
 import { PhotoUpdateComponent } from './modal/photo-update/photo-update.component';
 import { CenterAddComponent } from './modal/center-add/center-add.component';
 import { CenterUpdateComponent } from './modal/center-update/center-update.component';
+import { LoginComponent } from './layout/login/login.component';
+import { RequstComponent } from './page/requst/requst.component';
+import { EventListComponent } from './page/event-list/event-list.component';
+import { AdministratorComponent } from './page/administrator/administrator.component';
+import { AccountAddComponent } from './modal/account-add/account-add.component';
+import { AccountUpdateComponent } from './modal/account-update/account-update.component';
+import { MypageComponent } from './page/mypage/mypage.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +136,14 @@ import { CenterUpdateComponent } from './modal/center-update/center-update.compo
     VideosAddComponent,
     PhotoUpdateComponent,
     CenterAddComponent,
-    CenterUpdateComponent
+    CenterUpdateComponent,
+    LoginComponent,
+    RequstComponent,
+    EventListComponent,
+    AdministratorComponent,
+    AccountAddComponent,
+    AccountUpdateComponent,
+    MypageComponent,
   ],
   imports: [
     BrowserModule,

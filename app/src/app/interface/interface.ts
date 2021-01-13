@@ -25,6 +25,11 @@ export const TAGS : Record<string, string> = {
   CCTVDETAIL: 'cctvDetail/:id',
   NOTICEDETAIL: 'noticeDetail',
   EMERGENCY: 'emergency',
+  LOGIN: 'login',
+  EVENT: 'event',
+  REQUEST: 'request',
+  ADMINISTRATOR: 'administrator',
+  MYPAGE: 'mypage',
 } 
 
 export interface AsideItem {
@@ -120,6 +125,16 @@ export const ASIDELISTS: AsideItem[] = [
     icon: 'receipt_long'
   },
   { 
+    path: TAGS.EVENT, 
+    name: '이벤트 로그' ,
+    icon: 'event_note'
+  },
+  { 
+    path: TAGS.REQUEST, 
+    name: '요청 리스트' ,
+    icon: 'record_voice_over'
+  },
+  { 
     path: TAGS.EMERGENCY, 
     name: '응급서비스' ,
     icon: 'priority_high'
@@ -149,7 +164,7 @@ export const ASIDELISTS: AsideItem[] = [
   },
 ]
 export interface Center {
-  id:number;
+  idx:number;
   name:string;
   address:string;
   maxUser:string;
@@ -157,9 +172,25 @@ export interface Center {
   contact:string;
   email:string;
 }
+
 export const CENTERS : Center[] = [
-  {id:1,name:'녹양주간보호센터',address:'경기도 의정부시',maxUser:'30명',manager:'김모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
-  {id:2,name:'요셉주간보호센터',address:'충청남도 아산시',maxUser:'30명',manager:'이모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
+  {idx:3148638,name:'녹양주간보호센터',address:'경기도 의정부시',maxUser:'50명',manager:'설모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
+  {idx:9468462,name:'요셉주간보호센터',address:'충청남도 아산시',maxUser:'50명',manager:'임모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
+]
+export interface Account {
+  idx:string;
+  id: string;
+  passward:string;
+  name:string;
+  birthday:string;
+  email?:string;
+  contact:string;
+  authority:string;
+  belong:string;
+}
+export const ACCOUNTS :Account[] = [
+  {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
+  {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
 ]
 export interface Filter {
   name: string;
@@ -225,11 +256,11 @@ export interface log {
 }
 export const LOG : log[] =[
   { id: 1, name: 'RB-01', type: '로봇', center: '시설A', time: '12/22 14:05', desc: '플랫폼에 데이터 전송', },
-  { id: 1, name: 'RB-01', type: '로봇', center: '시설A', time: '12/22 14:05', desc: '플랫폼에 데이터 전송', },
-  { id: 2, name: 'ST-04', type: '센서', center: '시설B', time: '12/22 12:12', desc: '대화', },
-  { id: 3, name: 'ST-01', type: '센서', center: '시설C', time: '12/22 09:25', desc: '출석 확인', },
-  { id: 4, name: 'RB-01', type: '로봇', center: '시설B', time: '12/21 14:02', desc: '안부 전달',},
-  { id: 5, name: 'ST-02', type: '센서', center: '시설C', time: '12/21 11:30', desc: '이동 불가 : 확인요청', },
+  { id: 2, name: 'RB-01', type: '로봇', center: '시설A', time: '12/22 14:05', desc: '플랫폼에 데이터 전송', },
+  { id: 3, name: 'ST-04', type: '센서', center: '시설B', time: '12/22 12:12', desc: '대화', },
+  { id: 4, name: 'ST-01', type: '센서', center: '시설C', time: '12/22 09:25', desc: '출석 확인', },
+  { id: 5, name: 'RB-01', type: '로봇', center: '시설B', time: '12/21 14:02', desc: '안부 전달',},
+  { id: 6, name: 'ST-02', type: '센서', center: '시설C', time: '12/21 11:30', desc: '이동 불가 : 확인요청', },
 ]
 // weather
 export interface weather {
@@ -286,7 +317,7 @@ export interface Senior {
 }
 
 export const SENIORS: Senior[] = [
-  { id: 1, photo: '1.jpg', name: '김모모', contact:"010-9550-8470" ,gender: '남', age: 74, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설A' ,guardianContact:"010-9550-8470"},
+  { id: 1, photo: '1.jpg', name: '김모모', contact:"010-1111-2222" ,gender: '남', age: 74, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설A' ,guardianContact:"010-9550-8470"},
   { id: 2, photo: '2.jpg', name: '윤모모', contact:"010-9550-8470" ,gender: '남', age: 68, temp: '36.5',  desc: '장애 5급', guardian: '김경민', latest: '어제', center: '시설A',guardianContact:"010-9550-8470"},
   { id: 3, photo: '3.jpg', name: '박모모', contact:"010-9550-8470" ,gender: '여', age: 64, temp: '36.5',  desc: '', guardian: '김경민', latest: '어제', center: '시설B' ,guardianContact:"010-9550-8470"},
   { id: 4, photo: '4.jpg', name: '임모모', contact:"010-9550-8470" ,gender: '남', age: 72, temp: '36.5',  desc: '휠체어', guardian: '김경민', latest: '어제', center: '시설A',guardianContact:"010-9550-8470"},
@@ -414,24 +445,28 @@ export const TASKS: Task[] = [
 
 export interface Request {
   id : number;
-  color : string;
-  progress : string;
-  from : string;
-  desc : string;
   who : string;
+  desc : string;
+  from : string;
+  color : string;
+  center: string;
+  manager:string;
+  requestDate:string;
+  workDoneDate?:string;
+  progress : string;
 }
 
 export const REQUESTS: Request[] = [
-  { id: 1, color: 'info', progress: '진행 중', from: '관리자', desc: '택시 호출', who: '김모모'},
-  { id: 2, color: 'info', progress: '진행 중', from: '관리자', desc: '병원 동행', who: '윤모모'},
-  { id: 3, color: 'danger', progress: '취소', from: '로봇', desc: '노래 검색', who: '박모모'},
-  { id: 4, color: 'success', progress: '완료', from: '로봇', desc: '병원 동행', who: '임모모'},
-  { id: 5, color: 'info', progress: '진행 중', from: '로봇', desc: '택시 호출', who: '정모모'},
-  { id: 6, color: 'success', progress: '완료', from: '앱', desc: '택시 호출', who: '설모모'},
-  { id: 7, color: 'success', progress: '완료', from: '로봇', desc: '노래 검색', who: '이모모'},
-  { id: 8, color: 'danger', progress: '취소', from: '관리자', desc: '병원 동행', who: '김모모'},
-  { id: 9, color: 'success', progress: '완료', from: '앱', desc: '관공서 서비스', who: '최모모'},
-  { id: 10, color: 'success', progress: '완료', from: '관리자', desc: '관공서 서비스', who: '진모모'},
+  { id: 1, color: 'info', progress: '진행 중', from: '관리자', desc: '택시 호출', who: '김모모',center: '주간보호센터', manager: '김경민', requestDate: '1/11', workDoneDate:""},
+  { id: 2, color: 'info', progress: '진행 중', from: '관리자', desc: '병원 동행', who: '윤모모',center: '주간보호센터', manager: '김경민', requestDate: '1/10', workDoneDate:""},
+  { id: 3, color: 'danger', progress: '취소', from: '로봇', desc: '노래 검색', who: '박모모',center: '주간보호센터', manager: '김경민', requestDate: '1/9', workDoneDate:""},
+  { id: 4, color: 'success', progress: '완료', from: '로봇', desc: '병원 동행', who: '임모모',center: '주간보호센터', manager: '김경민', requestDate: '1/8', workDoneDate:"1/8"},
+  { id: 5, color: 'info', progress: '진행 중', from: '로봇', desc: '택시 호출', who: '정모모',center: '주간보호센터', manager: '김경민', requestDate: '1/7', workDoneDate:""},
+  { id: 6, color: 'success', progress: '완료', from: '앱', desc: '택시 호출', who: '설모모',center: '주간보호센터', manager: '김경민', requestDate: '1/6', workDoneDate:"1/6"},
+  { id: 7, color: 'success', progress: '완료', from: '로봇', desc: '노래 검색', who: '이모모',center: '주간보호센터', manager: '김경민', requestDate: '1/5', workDoneDate:"1/5"},
+  { id: 8, color: 'danger', progress: '취소', from: '관리자', desc: '병원 동행', who: '김모모',center: '주간보호센터', manager: '김경민', requestDate: '1/4', workDoneDate:""},
+  { id: 9, color: 'success', progress: '완료', from: '앱', desc: '관공서 서비스', who: '최모모',center: '주간보호센터', manager: '김경민', requestDate: '1/3', workDoneDate:"1/3"},
+  { id: 10, color: 'success', progress: '완료', from: '관리자', desc: '관공서 서비스', who: '진모모',center: '주간보호센터', manager: '김경민', requestDate: '1/2', workDoneDate:"1/2"},
 ]
 
 export interface Timeline {

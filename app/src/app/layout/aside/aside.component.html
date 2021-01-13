@@ -2,22 +2,6 @@
   <div class="logo">
     <a href="/"></a>
   </div>
-  <div class="manager">
-    <p><img src="../../../assets/images/users/{{user[0].img}}" class="userImg"
-        alt='관리자 {{user[0].name}}'></p>
-    <p>
-      <button mat-button [matMenuTriggerFor]='userSetting' class="userName">{{user[0].name}}</button>
-      <mat-menu #userSetting>
-        <button mat-menu-item>
-          <mat-icon>settings</mat-icon>사용자 설정
-        </button>
-        <button mat-menu-item>
-          <mat-icon>power_settings_new</mat-icon>로그아웃
-        </button>
-      </mat-menu>
-    </p>
-    <p class="work">{{user[0].progress}}</p>
-  </div>
   <mat-accordion>
     <div *ngFor="let item of items">
       <div *ngIf="!item.subItem">

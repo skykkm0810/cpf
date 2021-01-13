@@ -1,0 +1,54 @@
+<mat-card class="m-b-10">
+    <h3>요청사항 리스트</h3>
+</mat-card>
+<div class="tableContainer">
+    <table mat-table [dataSource]="dataSource" #sort='matSort' matSort>
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No.1 </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="who">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청인 </th>
+        <td mat-cell *matCellDef="let row"> {{row.who}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="desc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청 사항 </th>
+        <td mat-cell *matCellDef="let row"> {{row.desc}} </td>
+      </ng-container>
+      <ng-container matColumnDef="from">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청 방법 </th>
+        <td mat-cell *matCellDef="let row"> {{row.from}} </td>
+      </ng-container>
+      <ng-container matColumnDef="center">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청 시설 </th>
+        <td mat-cell *matCellDef="let row"> {{row.center}} </td>
+      </ng-container>
+      <ng-container matColumnDef="manager">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 담당자 </th>
+        <td mat-cell *matCellDef="let row"> {{row.manager}} </td>
+      </ng-container>
+      <ng-container matColumnDef="requestDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 요청 날짜 </th>
+        <td mat-cell *matCellDef="let row"> {{row.requestDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="workDoneDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 처리 날짜 </th>
+        <td mat-cell *matCellDef="let row"> {{row.workDoneDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> 상태 </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}} </td>
+      </ng-container>
+      
+  
+      <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataColumns;" ></tr>
+    </table>
+  
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" #pagnator='matPaginator'></mat-paginator>
+  
+  </div>
+  

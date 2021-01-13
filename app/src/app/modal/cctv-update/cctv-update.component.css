@@ -19,12 +19,13 @@ h4 {
     padding-bottom: 0;
 }
 .contents .fileUpload {
-    display: inline-block;
-    width: 75%;
-    border-bottom:1.5px solid #aaa;
+    width:75%;
+    border:1px solid rgb(100, 100, 100);
+    padding:0.5rem 0.3rem;
 }
-.contents .file span {
-    padding: 1rem 0;
+.contents .fileUpload:hover{
+    background-color: #eee;
+    cursor:pointer;
 }
 .buttonBox {
     padding:1rem 0;

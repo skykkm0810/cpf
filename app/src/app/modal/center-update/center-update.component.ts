@@ -13,8 +13,6 @@ export class CenterUpdateComponent implements OnInit {
   constructor(
       private dialogRef: MatDialogRef<CenterBComponent>,
     ) {
-      
-      
     }
   
   center = CENTERS;
@@ -24,6 +22,6 @@ export class CenterUpdateComponent implements OnInit {
   }
   closeDialog(){
     this.dialogRef.close();
-    // this.dialogRef2.close();
+    this.dialogRef2.close();
   }
 }
