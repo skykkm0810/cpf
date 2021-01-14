@@ -94,6 +94,8 @@ import { AccountAddComponent } from './modal/account-add/account-add.component';
 import { AccountUpdateComponent } from './modal/account-update/account-update.component';
 import { MypageComponent } from './page/mypage/mypage.component';
 import { DietaryAddComponent } from './modal/dietary-add/dietary-add.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.component';
 
 @NgModule({
   declarations: [
@@ -146,11 +148,13 @@ import { DietaryAddComponent } from './modal/dietary-add/dietary-add.component';
     AccountUpdateComponent,
     MypageComponent,
     DietaryAddComponent,
+    DietaryPhotoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
