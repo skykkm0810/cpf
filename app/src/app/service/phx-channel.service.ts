@@ -189,7 +189,12 @@ export class PhxChannelService {
       case 'center':
         this.centerChannel.push('center:detail:update:req', {body: message});
         break;
-      
+
+      case 'account':
+        this.accountChannel.push('account:detail:update:req', {body: message});
+        console.log(message);
+        break;
+        
       default:
         break;
     }
@@ -200,7 +205,11 @@ export class PhxChannelService {
       case 'center':
         this.centerChannel.push('center:delete:req', {body: message});
         break;
-      
+
+      case 'account':
+        this.accountChannel.push('account:delete:req', {body: message});
+        break;
+  
       default:
         break;
     }

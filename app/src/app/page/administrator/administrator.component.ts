@@ -20,13 +20,13 @@ import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
 export class AdministratorComponent implements AfterViewInit {
 
-  accountColumns: string[] =['idx','uname','pwd','name','contact','center','level','birth','email']
+  accountColumns: string[] =['idx','uname','name','contact','center','level','birth','email']
   accountData: MatTableDataSource<Account>
   centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email']
   centerData: MatTableDataSource<Center>
 
-  CENTERS: Center[] = [];
   ACCOUNTS: Account[] = [];
+  CENTERS: Center[] = [];
 
   @ViewChild('pagnator1') paginator1: MatPaginator;
   @ViewChild('pagnator2') paginator2: MatPaginator;
@@ -56,6 +56,7 @@ export class AdministratorComponent implements AfterViewInit {
       this.centerData = new MatTableDataSource(this.CENTERS);
     })
     phxChannel.Accounts.subscribe( data => {
+      this.ACCOUNTS = [];
       data.forEach( e => {
         this.ACCOUNTS.push({
           id: e.id,
@@ -71,6 +72,7 @@ export class AdministratorComponent implements AfterViewInit {
           email: e.email
         })
       });
+      this.accountData = new MatTableDataSource(this.ACCOUNTS);
     })
     
     this.accountData = new MatTableDataSource(this.ACCOUNTS);
@@ -110,9 +112,9 @@ export class AdministratorComponent implements AfterViewInit {
     editButton.classList.add('hidden')
     updateButton.classList.remove('hidden')
   }
-  reviceAccount(){
+  reviceAccount( info ){
     const reviceAccount = this.dialog2.open(AccountUpdateComponent,{
-      width:'40%', height:'70%',
+      width:'40%', height:'70%', data: info
     });
   }
   reviceCenter( info ){
@@ -172,7 +174,7 @@ export class AdministratorComponent implements AfterViewInit {
   }
   deleteAccount( d ){
     if(confirm('삭제하시겠습니까?')){
-      this.phxChannel.del("Account", { id: d.idx });
+      this.phxChannel.del("account", { id: d.id });
     }
   }
 

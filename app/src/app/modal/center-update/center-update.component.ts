@@ -14,14 +14,6 @@ export class CenterUpdateComponent implements OnInit {
 
   centerInfo : any;
 
-  constructor(
-    private dialogRef: MatDialogRef<AdministratorComponent>,
-    private phxChannel: PhxChannelService,
-    @Inject(MAT_DIALOG_DATA) data
-  ) {
-    this.centerInfo = data;
-  }
-  
   center: any = {
     id: '',
     name: '',
@@ -30,6 +22,14 @@ export class CenterUpdateComponent implements OnInit {
     manager: '',
     contact: '',
     email: ''
+  }
+  
+  constructor(
+    private dialogRef: MatDialogRef<AdministratorComponent>,
+    private phxChannel: PhxChannelService,
+    @Inject(MAT_DIALOG_DATA) data
+  ) {
+    this.centerInfo = data;
   }
   
   ngOnInit(): void {

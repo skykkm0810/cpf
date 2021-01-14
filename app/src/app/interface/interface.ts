@@ -670,3 +670,12 @@ export const CALLEMERGENCY : callEmergency[] = [
   {id:10,date:'20/10/11', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
   {id:11,date:'20/10/01', center:'Center B', what:"긴급 호출" ,desc:"긴급 구조 신고" },
 ]
+
+// select options
+
+export const SelLEVEL : any = [
+  { value: '기관관리자', name: '기관관리자'},
+  { value: '센터관리자', name: '센터관리자'},
+  { value: '사용자', name: '사용자 '},
+  { value: '외부접속자', name: '외부접속자'},
+]

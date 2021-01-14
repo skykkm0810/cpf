@@ -40,6 +40,7 @@ defmodule CpfWeb.AccountChannel do
   end
 
   def handle_in("account:detail:update:req", %{"body" => payload}, socket) do
+    IO.puts "===>> #{inspect payload}"
     update_account(payload)
     res = list_accounts()
     push(socket, "account:list", %{body: res})
@@ -102,6 +103,7 @@ defmodule CpfWeb.AccountChannel do
   def update_account(data) do
     account = Cpf.ConAccount.get_account!(data["id"])
     {:ok, res} = Cpf.ConAccount.update_account(account, data)
+    IO.puts "===>> #{inspect res}"
   end
 
   def delete_account(data) do
