@@ -1,0 +1,37 @@
+<div class="Wrap">
+  <div class='mealCardBox m-b-20'>
+    <mat-card class="mealCard" >
+      <div class="innerCard">
+        <div class="photoUploadBox">
+            <label for="photoUpload" class="fakeUpload" >클릭하여 사진 업로드</label>
+            <input type="file" id="photoUpload" class="hidden" (change) ='showPicture($event)'>
+        </div>
+        <div class="mealList">
+            <p class="date"><span class="label">날짜</span><input type="text" class="form-control float-right" value='{{today}}'></p>
+            <p class="when"><span class="label">식사 분류</span>
+              <select class="float-right form-control">
+                <option value="0" selected> 식사 분류</option>
+                <option value="1">점심</option>
+                <option value="2">저녁</option>
+                <option value="3">간식</option>
+              </select>
+            </p>
+            <div class="mealBox">
+                <p class="meal"><span class="label">식단1</span><input type="text" class="form-control float-right" required></p>
+                <p class="meal"><span class="label">식단2</span><input type="text" class="form-control float-right"></p>
+                <p class="meal"><span class="label">식단3</span><input type="text" class="form-control float-right"></p>
+                <p class="meal"><span class="label">식단4</span><input type="text" class="form-control float-right"></p>
+                <p class="meal"><span class="label">식단5</span><input type="text" class="form-control float-right"></p>
+                <p class="meal"><span class="label">식단6</span><input type="text" class="form-control float-right"></p>
+            </div>
+            <p class="info"><span class="label">추가정보</span><input type="text" class="form-control float-right"></p>
+        </div>
+      </div>
+      
+    </mat-card>
+  </div>
+  <div class="buttonBox">
+      <button mat-button class="upload">업로드</button>
+      <button mat-button class="cancel" (click)='cancel()'>취소</button>
+  </div>
+</div>

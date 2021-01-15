@@ -30,6 +30,7 @@ import { RequstComponent } from './page/requst/requst.component';
 import { AdministratorComponent } from './page/administrator/administrator.component';
 import { MypageComponent } from './page/mypage/mypage.component';
 import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.component';
+import { DietaryPhotoAddComponent } from './modal/dietary-photo-add/dietary-photo-add.component';
 
 const routes: Routes = [
   { path: TAGS.DASHBOARD, component: DashboardComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: TAGS.ADMINISTRATOR, component: AdministratorComponent },
   { path: TAGS.MYPAGE, component: MypageComponent },
   { path: TAGS.DIETARYPHOTO, component: DietaryPhotoComponent },
+  { path: TAGS.PRAC, component: DietaryPhotoAddComponent },
 ];
 
 @NgModule({

@@ -3,10 +3,8 @@
     line-height: 36px;
     margin:0;
 }
-.addPDF {
-    background-color: slateblue;
+.dietaryMenu {
     margin-left: 20px;
-    color:#fff
 }
 .centerSelect {
     width:250px;
@@ -45,5 +43,5 @@ mat-grid-list { padding-top: 20px;}
 /*  */
 .pdfViewer {
     width:100%;
-    height:1000px;
+    height:1730px;
 }

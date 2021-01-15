@@ -1,6 +1,6 @@
 <mat-card class="m-b-10 header">
-    일일 식단 게시판
-  <button mat-button class="float-right addDietary">사진추가</button>
+    <span class="centerMeal">일일 식단 게시판(센터별)</span>
+  <button mat-button class="float-right addDietary" (click)='addPhoto();'>사진추가</button>
 </mat-card>
 <mat-tab-group [selectedIndex]="Month" class="tab" dynamicHeight>
   <mat-tab label="1월">
@@ -10,7 +10,7 @@
           <img src="../../../assets/images/dietary/{{dietary.url}}" alt="{{dietary.month}}월 {{dietary.day}}일 식단"
             class="mealPhoto">
           <div class="mealList">
-            <p class="title">{{dietary.year}}-{{dietary.month}}-{{dietary.day}}</p>
+            <p class="title">{{dietary.year}}-{{dietary.month}}-{{dietary.day}} {{dietary.lunchDinner}}</p>
             <span *ngFor='let meal of dietary.meals' class="meal">{{meal}}</span>
             <span class="info">{{dietary.info}}</span>
           </div>

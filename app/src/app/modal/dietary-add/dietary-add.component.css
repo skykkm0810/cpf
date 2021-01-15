@@ -1,0 +1,19 @@
+.title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.buttonBox {
+    padding-top: 20px;
+    text-align: center;
+}
+.buttonBox button {
+    width:100px;
+    margin: 0 10px;
+}
+.upload {
+    background-color: royalblue;
+    color:#fff;
+}
+.cancel {
+    background-color: #ddd;
+}
