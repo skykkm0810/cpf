@@ -63,7 +63,7 @@ import { ScheduleComponent } from './page/schedule/schedule.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { PhotobookComponent } from './page/photobook/photobook.component';
@@ -93,6 +93,9 @@ import { AdministratorComponent } from './page/administrator/administrator.compo
 import { AccountAddComponent } from './modal/account-add/account-add.component';
 import { AccountUpdateComponent } from './modal/account-update/account-update.component';
 import { MypageComponent } from './page/mypage/mypage.component';
+import { DietaryAddComponent } from './modal/dietary-add/dietary-add.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.component';
 
 @NgModule({
   declarations: [
@@ -144,11 +147,14 @@ import { MypageComponent } from './page/mypage/mypage.component';
     AccountAddComponent,
     AccountUpdateComponent,
     MypageComponent,
+    DietaryAddComponent,
+    DietaryPhotoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -195,7 +201,9 @@ import { MypageComponent } from './page/mypage/mypage.component';
       useFactory: adapterFactory,
     }),
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

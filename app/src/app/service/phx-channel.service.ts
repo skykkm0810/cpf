@@ -83,15 +83,15 @@ export class PhxChannelService {
         console.log('Unable to join', resp);
       });
       this.centerChannel.on('center:add', payload => {
-        console.log('cpf:center:add from phx socket: ', payload);
+        // console.log('cpf:center:add from phx socket: ', payload);
         this.Center.emit(payload);
       })
       this.centerChannel.on('center:detail', payload => {
-        console.log('cpf:center:detail from phx socket: ', payload);
+        // console.log('cpf:center:detail from phx socket: ', payload);
         this.Center.emit(payload);
       })
       this.centerChannel.on('center:detail:update', payload => {
-        console.log('cpf:center:detail:update ', payload);
+        // console.log('cpf:center:detail:update ', payload);
       })
       this.centerChannel.on('center:list', payload => {
         // console.log('cpf:center:list from phx socket: ', payload);
@@ -108,15 +108,15 @@ export class PhxChannelService {
           console.log('Unable to join', resp);
         });
         this.accountChannel.on('account:add', payload => {
-          console.log('cpf:account:add from phx socket: ', payload);
+          // console.log('cpf:account:add from phx socket: ', payload);
           this.Account.emit(payload);
         })
         this.accountChannel.on('account:detail', payload => {
-          console.log('cpf:account:detail from phx socket: ', payload);
+          // console.log('cpf:account:detail from phx socket: ', payload);
           this.Account.emit(payload);
         })
         this.accountChannel.on('account:detail:update', payload => {
-          console.log('cpf:account:detail:update ', payload);
+          // console.log('cpf:account:detail:update ', payload);
         })
         this.accountChannel.on('account:list', payload => {
           // console.log('cpf:account:list from phx socket: ', payload);
@@ -126,14 +126,10 @@ export class PhxChannelService {
     
   }
 
-  // reqDevices() {
-  //   this.deviceChannel.push('reqDevices', 'number: 5');
-  // }
-
   send(channel, message) {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push("device:add", {body: message});
+        this.deviceChannel.push("device:add:req", {body: message});
         break;
 
       case 'center':

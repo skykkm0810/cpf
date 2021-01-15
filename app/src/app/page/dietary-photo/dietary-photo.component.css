@@ -1,0 +1,43 @@
+.header {
+    line-height: 36px;
+}
+.addDietary {
+    background-color:slateblue;
+}
+.mealCardBox {
+    padding:10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+.innerCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.innerCard .mealPhoto {
+    width:100%;
+}
+.innerCard .mealList {
+    padding: 0 1rem;
+}
+.innerCard .mealList .title {
+    text-align: center;
+    font-size: 1.2rem;
+    color:#000;
+    font-weight:bold;
+}
+.innerCard .mealList .meal {
+    display: block;
+    font-size: 1rem;
+    padding:10px 0 0 2rem;
+}
+.innerCard .mealList .meal::before{
+    content: '-';
+    padding-right: 10px;
+}
+.innerCard .mealList .info {
+    display: block;
+    font-size: 1rem;
+    padding:30px 0 0 2rem;
+    color:red; 
+}

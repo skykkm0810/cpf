@@ -30,6 +30,7 @@ export const TAGS : Record<string, string> = {
   REQUEST: 'request',
   ADMINISTRATOR: 'administrator',
   MYPAGE: 'mypage',
+  DIETARYPHOTO: 'dietaryPhoto',
 } 
 
 export interface AsideItem {
@@ -220,6 +221,7 @@ export interface Device {
   status: string;
   color?: string;
   center?: string;
+  centerId?: string;
   inserted?: string;
 };
 
@@ -496,28 +498,28 @@ export interface Dietary {
 }
 
 export const DIETARYS : Dietary[] =[
-  {year:2020, month:1, day:1, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:2, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:3, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:4, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:7, info:"나들이 도시락 대체", url:"dietary.jpg"},
-  {year:2020, month:1, day:8, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:9, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:10, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:11, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:14, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
-  {year:2020, month:1, day:15, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:16, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:17, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:18, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:21, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
-  {year:2020, month:1, day:22, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:23, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:24, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:28, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:29, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:30, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2020, month:1, day:31, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:1, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:2, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:3, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:4, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:7, info:"나들이 도시락 대체", url:"dietary.jpg"},
+  {year:2021, month:1, day:8, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:9, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:10, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:11, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:14, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
+  {year:2021, month:1, day:15, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:16, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:17, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:18, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:21, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
+  {year:2021, month:1, day:22, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:23, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:24, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:28, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:29, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:30, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:31, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
 ]
 
 // video
@@ -678,4 +680,16 @@ export const SelLEVEL : any = [
   { value: '센터관리자', name: '센터관리자'},
   { value: '사용자', name: '사용자 '},
   { value: '외부접속자', name: '외부접속자'},
+]
+
+export const SelDeviceTYPE: any = [
+  { name: '로봇' },
+  { name: '센서' },
+  { name: '스마트스피커' },
+]
+
+export const SelSTATUS: any = [
+  { name: '정상' },
+  { name: '이상' },
+  { name: '수리' },
 ]

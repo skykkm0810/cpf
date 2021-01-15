@@ -177,7 +177,7 @@
       </div>
     </mat-card>
     <mat-card>
-      <mat-card-title>코로나 정보</mat-card-title>
+      <mat-card-title (click)='getdata()'>코로나 정보</mat-card-title>
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="covidData" matSort #sort4='matSort'>
 

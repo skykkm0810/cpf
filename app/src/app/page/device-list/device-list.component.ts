@@ -2,12 +2,13 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Device, deviceHeader, DEVICES, deviceFilter } from '../../interface/interface';
+import { Device, deviceHeader, deviceFilter } from '../../interface/interface';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 import { MatTab } from '@angular/material/tabs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-device-list',
@@ -17,6 +18,7 @@ import { MatTab } from '@angular/material/tabs';
 export class DeviceListComponent implements AfterViewInit {
 
   allComplete: boolean = false;
+  DEVICES: Device[] = [];
   
   displayedColumns: string[] = deviceHeader;
   dataSource: MatTableDataSource<Device>;
@@ -28,25 +30,38 @@ export class DeviceListComponent implements AfterViewInit {
   filter = deviceFilter
   CheckFilter : Device[] = [];
   filteredData : Device[] = [];
+
   constructor(
     public dialog: MatDialog,
-    private phxChannel: PhxChannelService
+    private phxChannel: PhxChannelService,
+    private datepipe: DatePipe
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
     phxChannel.Devices.subscribe( data => {
-      // const d = new Date( data.inserted );
-      // const date = d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일';
-      // data.inserted = date+'';
-      // console.log(d, date);
-      // console.log(data);
-      this.CheckFilter.push(data);
+      this.CheckFilter = [];
+      data.body.forEach(el => {
+        // const _d = new Date(el.inserted);
+        // el.inserted = datepipe.transform(_d, 'yyyy년 MM월 dd일');
+        this.CheckFilter.push({ 
+          id: el.id,
+          name: el.name,
+          centerId: el.centerId,
+          location: el.location,
+          status: el.status,
+          type: el.type,
+          inserted: el.inserted
+        })
+
+      });
       this.dataSource = new MatTableDataSource(this.CheckFilter);
     })
   }
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.phxChannel.gets("device", { centerId: 1 });
+    this.phxChannel.gets("device", { body: 1 });
+    console.log('hello');
   }
   
   addDevice( Device? : Device ): void {
@@ -54,6 +69,7 @@ export class DeviceListComponent implements AfterViewInit {
       width: '40%',
     });
   }
+
   applyFilter(event: Event) { 
     
     const filterValue = (event.target as HTMLInputElement).value;
@@ -99,7 +115,7 @@ export class DeviceListComponent implements AfterViewInit {
       }
     }
     if ( !arrS.length && !arrT.length ) {
-      this.dataSource = new MatTableDataSource(DEVICES);
+      this.dataSource = new MatTableDataSource(this.DEVICES);
     } else {
       for ( var i = 0; i < 3; i++ ) {
         for ( var j = 0; j < this.CheckFilter.length; j++ ) {
