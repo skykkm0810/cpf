@@ -31,6 +31,7 @@ export const TAGS : Record<string, string> = {
   ADMINISTRATOR: 'administrator',
   MYPAGE: 'mypage',
   DIETARYPHOTO: 'dietaryPhoto',
+  PRAC: 'prac',
 } 
 
 export interface AsideItem {
@@ -492,34 +493,35 @@ export interface Dietary {
   year:number;
   month:number;
   day:number;
+  lunchDinner:string;
   meals?:string[];
   info?:string;
   url?:string;
 }
 
 export const DIETARYS : Dietary[] =[
-  {year:2021, month:1, day:1, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:2, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:3, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:4, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:7, info:"나들이 도시락 대체", url:"dietary.jpg"},
-  {year:2021, month:1, day:8, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:9, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:10, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:11, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:14, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
-  {year:2021, month:1, day:15, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:16, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:17, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:18, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:21, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
-  {year:2021, month:1, day:22, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:23, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:24, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:28, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:29, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:30, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
-  {year:2021, month:1, day:31, meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:1, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:2, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:3, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:4, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:7, lunchDinner:'점심', info:"나들이 도시락 대체", url:"dietary.jpg"},
+  {year:2021, month:1, day:8, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:9, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:10, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:11, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:14, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"특식 제공", url:"dietary.jpg"},
+  {year:2021, month:1, day:15, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:16, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:17, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:18, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:21, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"추가 간식", url:"dietary.jpg"},
+  {year:2021, month:1, day:22, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:23, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:24, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:28, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:29, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:30, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
+  {year:2021, month:1, day:31, lunchDinner:'점심', meals:["밥","국","반찬1","반찬2","반찬3","반찬4"], info:"", url:"dietary.jpg"},
 ]
 
 // video
