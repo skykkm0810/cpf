@@ -23,6 +23,9 @@
     width:80%;
     padding:0.3rem;
 }
+.addAttandant {
+    background-color: #eee;
+}
 .addAttandant:hover {
     text-decoration: underline;
 }

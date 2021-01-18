@@ -1,0 +1,60 @@
+<h4>인원 추가하기</h4>
+<div class="contents">
+  <form action="/">
+    <p class="name">
+      <span class="label">이름</span>
+      <mat-form-field>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <p class="contact">
+      <span class="label">연락처</span>
+      <mat-form-field>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <p class="photo">
+      <span class="label">사진</span>
+        <label for="photoFile" class="replaceIF"> 클릭해서 파일 추가 </label>
+        <input type="file" name="workerPhoto" id="photoFile" class="hidden" (change)="value();">
+    </p>
+    <p class="task">
+      <span class="label">업무</span>
+      <mat-form-field appearance="fill">
+        <mat-label>업무 선택</mat-label>
+        <mat-select>
+          <mat-option value="option">강사</mat-option>
+          <mat-option value="option">요양사</mat-option>
+          <mat-option value="option">지원</mat-option>
+          <mat-option value="option">봉사</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p class="center">
+      <span class="label">대상 시설</span>
+      <mat-form-field appearance="fill">
+        <mat-label>시설 선택</mat-label>
+        <mat-select>
+          <mat-option value="option">녹양주간보호센터</mat-option>
+          <mat-option value="option">요셉주간보호센터</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p class="region">
+      <span class="label">활동 지역</span>
+      <mat-form-field>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <p class="inserted">
+      <span class="label">등록일</span>
+      <mat-form-field>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <div class="buttonBox">
+      <button mat-button class="submit">추가하기</button>
+      <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+    </div>
+  </form>
+</div>

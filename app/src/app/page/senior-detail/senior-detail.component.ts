@@ -63,7 +63,7 @@ export class SeniorDetailComponent implements AfterViewInit {
     show.classList.remove('display');
     show.classList.add('inputMediInfo');
   }
-  remove() {
+  cancel() {
     var show = document.getElementsByClassName('present')[0]  
     show.classList.remove('inputMediInfo');
     show.classList.add('display');
@@ -72,6 +72,11 @@ export class SeniorDetailComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(SeniorUpdateComponent, {
       width: '40%',
     });
+  }
+  removeList(){
+    if(confirm('이 어르신의 정보를 삭제하시겠습니까?')){
+      alert('삭제되었습니다.')
+    }
   }
   // openNumber(obj1,obj2,obj3,obj4){
   //   const dialogRef2 = this.dialog.open(SeniorContactComponent, {

@@ -1,0 +1,60 @@
+.hidden {
+    display: none;
+}
+.Wrap {
+    width:800px;
+}
+.innerCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+.fakeUpload {
+    width:100%;
+    height:100%;
+    border: 2px solid #ccc;
+    font-size: 1.5rem;
+    position: relative;
+    color:#ccc;
+    text-align: center;
+}
+
+.fakeUpload:hover {
+    border-color: #aaa;
+    color:#aaa;
+    cursor: pointer;
+}
+
+/* 식단 */
+.mealList {
+    padding:0.5rem;
+    padding-right: 2rem;
+}
+.mealList .label {
+    display: inline-block;
+}
+.mealList p {
+    padding:0.3rem 0;
+    height:40px;
+    line-height: 40px;
+}
+.mealList p input,
+.mealList p select {
+    width: calc(100% - 70px);
+
+}
+/* button */
+.buttonBox {
+    text-align: center;
+}
+.buttonBox button {
+    width:100px;
+    margin: 0 10px;
+}
+.upload {
+    background-color: royalblue;
+    color:#fff;
+}
+.cancel {
+    background-color: #ddd;
+}

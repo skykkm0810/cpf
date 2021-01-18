@@ -6,6 +6,7 @@ import { Device, deviceHeader, DEVICES, deviceFilter } from '../../interface/int
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
+import { DeviceUpdateComponent} from '../../modal/device-update/device-update.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 import { MatTab } from '@angular/material/tabs';
 
@@ -30,6 +31,7 @@ export class DeviceListComponent implements AfterViewInit {
   filteredData : Device[] = [];
   constructor(
     public dialog: MatDialog,
+    public dialog2: MatDialog,
     private phxChannel: PhxChannelService
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
@@ -46,10 +48,20 @@ export class DeviceListComponent implements AfterViewInit {
     this.phxChannel.gets("device", { centerId: 1 });
   }
   
-  addDevice( Device? : Device ): void {
+  addDevice() {
     const dialogRef = this.dialog.open(DeviceAddComponent, {
       width: '40%',
     });
+  }
+  updateDevice( ) {
+    const dialogRef2 = this.dialog2.open(DeviceUpdateComponent, {
+      width: '40%',
+    });
+  }
+  removeDevice(){
+    if(confirm('삭제하시겠습니까?')){
+      
+    }
   }
   applyFilter(event: Event) { 
     
@@ -141,8 +153,8 @@ export class DeviceListComponent implements AfterViewInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
-   checkedNum(){
-    var checkBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input');
-    var checkedBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input:checked');
-   }
+  //  checkedNum(){
+  //   var checkBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input');
+  //   var checkedBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input:checked');
+  //  }
 }

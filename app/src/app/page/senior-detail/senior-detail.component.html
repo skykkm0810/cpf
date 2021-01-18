@@ -1,7 +1,19 @@
 <mat-card class="top m-b-20">
   <div class="show">
     <div class="cutton"></div>
-    <mat-icon class="update" (click)="updateSenior()">settings</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="update">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="updateSenior()" class="edit overflowCover">
+        <mat-icon>edit</mat-icon>
+        <span>수정</span>
+      </button>
+      <button mat-menu-item (click)='removeList()' class="remove overflowCover">
+        <mat-icon>remove_circle</mat-icon>
+        <span>삭제</span>
+      </button>
+    </mat-menu>
     <p>
       <img src="../../../assets/images/users/3.jpg" alt="/" width=80>
     </p>
@@ -178,7 +190,7 @@
       </p>
       <div class="buttonBox">
         <button mat-button class="adjust">추가</button>
-        <button mat-button class="cancel" (click)="remove();">취소</button>
+        <button mat-button class="cancel" (click)="cancel();">취소</button>
       </div>
     </div>
   </form>

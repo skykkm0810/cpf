@@ -1,4 +1,55 @@
 <p mat-dialog-title class='title'> 어르신 출석 추가</p> 
 <mat-dialog-content class="contents">
-    <div></div>
-</mat-dialog-content>  
+    <div class="innerbox">
+        <div class="cardBox">
+            <div class="profileCard pointer" (click)='attandChk($event)'>
+                <img
+                    class="avatar-circle seniorImg"
+                    src="../../../assets/images/users/1.jpg"
+                    width="80%">
+                <p>
+                    김모모
+                </p>
+                <p> 74 / 여 </p>
+                <p>어제</p>
+        
+                <!-- <mat-divider></mat-divider>
+        
+                <div class="btnContainer">
+                    <button mat-button class="call" (click)="openNumber(senior.name,senior.contact, senior.guardian, senior.guardianContact)">
+                        연락
+                    </button>
+                    <button mat-button class="info" (click)="detail(senior.id)">
+                        정보
+                    </button>
+                </div> -->
+            </div>
+            <div class="profileCard pointer" (click)='attandChk($event)'>
+                <img
+                    class="avatar-circle seniorImg"
+                    src="../../../assets/images/users/2.jpg"
+                    width="80%">
+                <p>
+                    이모모
+                </p>
+                <p> 78 / 남 </p>
+                <p>어제</p>
+        
+                <!-- <mat-divider></mat-divider>
+        
+                <div class="btnContainer">
+                    <button mat-button class="call" (click)="openNumber(senior.name,senior.contact, senior.guardian, senior.guardianContact)">
+                        연락
+                    </button>
+                    <button mat-button class="info" (click)="detail(senior.id)">
+                        정보
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>취소</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="attendance">출석 확인</button>
+  </mat-dialog-actions>

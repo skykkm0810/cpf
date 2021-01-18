@@ -9,7 +9,7 @@ import { Request, REQUESTS} from '../../interface/interface';
   styleUrls: ['./requst.component.css']
 })
 export class RequstComponent implements AfterViewInit {
-  dataColumns: string[] = ["id", "who", "desc",'from','center','manager','requestDate','workDoneDate','progress'];
+  dataColumns: string[] = ["id", "who", "desc",'from','center','manager','requestDate','workDoneDate','progress','control'];
   dataSource: MatTableDataSource<Request>;
   constructor() {
     this.dataSource = new MatTableDataSource(REQUESTS);

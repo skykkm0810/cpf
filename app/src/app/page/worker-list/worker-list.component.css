@@ -6,3 +6,15 @@
     color:#fff;
     float:right;
 }
+.delete {
+    color:red;
+}
+.revice {
+    color:peru;
+}
+.delete:hover{
+    text-decoration: underline;   
+}
+.revice:hover{
+    text-decoration: underline;   
+}

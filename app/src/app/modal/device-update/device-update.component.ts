@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DeviceListComponent } from 'src/app/page/device-list/device-list.component';
 
 @Component({
   selector: 'app-device-update',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceUpdateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<DeviceListComponent>) { }
 
   ngOnInit(): void {
   }
-
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }

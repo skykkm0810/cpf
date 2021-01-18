@@ -12,7 +12,7 @@ import { AttendantsAddComponent} from '../../modal/attendants-add/attendants-add
 })
 
 export class AttendantsComponent implements AfterViewInit {
-  dataColumns: string[] = ["id", "photo", "name","gender","age","desc","temp","guardian"];
+  dataColumns: string[] = ["id", "photo", "name","gender","age","desc","temp","guardian",'cancel'];
   dataSource: MatTableDataSource<Senior>;
   constructor(
     public dialog: MatDialog,

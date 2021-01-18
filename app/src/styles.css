@@ -162,3 +162,34 @@ button:focus{
 .float-left {
   float:left;
 }
+.pointer {
+  cursor:pointer;
+}
+.delete {
+  color: red;
+}
+.revice {
+  color: peru;
+}
+.delete:hover{
+    text-decoration: underline;   
+}
+.revice:hover{
+    text-decoration: underline;   
+}
+.filterBox {
+  display: inline-block;
+  width: 50%;
+}
+.overflowCover {
+  position: relative;
+}
+.overflowCover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left:0;
+  height:0;
+  width:100%;
+  height:100%;
+}

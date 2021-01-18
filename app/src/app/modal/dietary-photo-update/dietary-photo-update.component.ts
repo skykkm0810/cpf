@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivityListComponent } from '../../page/activity-list/activity-list.component';
+import { DietaryPhotoComponent } from '../../page/dietary-photo/dietary-photo.component';
 
 @Component({
-  selector: 'app-activity-update',
-  templateUrl: './activity-update.component.html',
-  styleUrls: ['./activity-update.component.css']
+  selector: 'app-dietary-photo-update',
+  templateUrl: './dietary-photo-update.component.html',
+  styleUrls: ['./dietary-photo-update.component.css']
 })
-export class ActivityUpdateComponent implements OnInit {
+export class DietaryPhotoUpdateComponent implements OnInit {
 
   constructor(
-    private dialogRef: MatDialogRef<ActivityListComponent>,
-
-  ) { 
-  }
-
+    private dialogRef: MatDialogRef<DietaryPhotoComponent>,
+  ) { }
+  
   ngOnInit(): void {
     this.cssSizing();
+    this.whattoday();
   }
   cssSizing(){
-    var box = document.getElementsByClassName('background')[0] as HTMLElement;
+    var box = document.getElementsByClassName('photoUploadBox')[0] as HTMLElement;
     var boxWidth = box.offsetWidth;
     box.style.height = boxWidth + 'px';
     box.style.lineHeight = box.clientHeight + 'px'; 
+  }
+  cancel(){
+    this.dialogRef.close();
   }
   showPicture(event : Event){
     console.log();
@@ -36,7 +38,12 @@ export class ActivityUpdateComponent implements OnInit {
     }
     reader.readAsDataURL(file);
   }
-  cancel(){
-    this.dialogRef.close();
+  today ="";
+  whattoday(){
+    var year = new Date().getFullYear();
+    var month = new Date().getMonth() + 1;
+    var day = new Date().getDate();
+    this.today = year+"-"+month+"-"+day;
+    
   }
 }

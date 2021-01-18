@@ -223,7 +223,7 @@ export interface Device {
   inserted?: string;
 };
 
-export const deviceHeader: string[] = ['select','id', 'type', 'name', 'center', 'location', 'inserted', 'status'];
+export const deviceHeader: string[] = ['select','id', 'type', 'name', 'center', 'location', 'inserted', 'status','control'];
 
 export const deviceFilter: Filter = {
   name: '전체',
@@ -340,7 +340,7 @@ export interface Worker {
   date?: string;
 }
 
-export const workerHeader: string[] = [ 'name', 'contact','task','center', 'region', 'date'];
+export const workerHeader: string[] = [ 'name', 'contact','task','center', 'region', 'date','control'];
 
 export const workerFilter: Filter = {
   name: '전체',
@@ -380,7 +380,7 @@ export interface Activity {
   photo : string;
 }
 
-export const activityHeader: string[] = ['task', 'teacher', 'contact', 'center', 'progress', 'datetime'];
+export const activityHeader: string[] = ['task', 'teacher', 'contact', 'center', 'progress', 'datetime','control'];
 
 export const activityFilter: Filter = {
   name: '전체',
@@ -416,7 +416,7 @@ export interface Task {
   datetime : string;
 }
 
-export const taskHeader: string[] = ['id', 'name', 'event', 'center', 'present', 'datetime'];
+export const taskHeader: string[] = ['id', 'name', 'event', 'center', 'present', 'datetime','control'];
 
 export const taskFilter: Filter = {
   name: '전체',
