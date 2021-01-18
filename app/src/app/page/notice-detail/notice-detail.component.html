@@ -20,6 +20,12 @@
         <span class="upFile contents"><a href="#none">wow.txt</a></span>
       </p>
     </div>
-    <p class="text"></p>
+    <textarea class="text"></textarea>
+  </div>
+  <div class="buttonBox">
+    <button mat-button class="delete" (click)='buttonclick($event)'>삭제</button>
+    <button mat-button class="revice" (click)='buttonclick($event)'>수정</button>
+    <button mat-button class="cancel hidden" (click)='buttonclick($event)'>취소</button>
+    <button mat-button class="update hidden" (click)='buttonclick($event)'>확인</button>
   </div>
 </mat-card>

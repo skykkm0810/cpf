@@ -20,9 +20,9 @@ import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
 export class AdministratorComponent implements AfterViewInit {
 
-  accountColumns: string[] =['idx','uname','name','contact','center','level','birth','email']
+  accountColumns: string[] =['idx','uname','name','contact','center','level','birth','email','control']
   accountData: MatTableDataSource<Account>
-  centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email']
+  centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email','control']
   centerData: MatTableDataSource<Center>
 
   ACCOUNTS: Account[] = [];

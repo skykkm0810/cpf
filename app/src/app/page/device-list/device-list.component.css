@@ -1,34 +1,45 @@
-.hide{
-    display: none;
-}
-.header {
-    line-height: 36px;
-}
-.addDevice {
-    float:right;
-    background-color:slateblue;
-    color:#fff;
-}
-.right_button {
-    float: right;
-}
-.icon {
-    display: inline-block;
-    margin:0 10px;
-    cursor:pointer;
-}
- .delete{
-    color:red;
-}
- .revice{
-    color:#444444;
+.hide {
+  display: none;
 }
 
-.filterBox {
-    display: inline-block;
-    width:50%;
+.header {
+  line-height: 36px;
 }
+
+.addDevice {
+  float: right;
+  background-color: slateblue;
+  color: #fff;
+}
+
+.right_button {
+  float: right;
+}
+
+.icon {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+}
+.revice {
+  color: peru;
+}
+.delete:hover{
+    text-decoration: underline;   
+}
+.revice:hover{
+    text-decoration: underline;   
+}
+.filterBox {
+  display: inline-block;
+  width: 50%;
+}
+
 .TableControl {
-    float: right;
-    color:#666;
+  float: right;
+  color: #666;
 }

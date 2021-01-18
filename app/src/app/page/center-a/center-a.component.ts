@@ -14,6 +14,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
 import { CenterUpdateComponent} from '../../modal/center-update/center-update.component';
 
+
+
 @Component({
   selector: 'app-center-a',
   templateUrl: './center-a.component.html',
@@ -144,4 +146,48 @@ export class CenterAComponent implements AfterViewInit {
       width: '40%',
     });
   }
+  filterView(e : Event){
+    var number = (e.index)
+    var requestFilter = document.getElementsByClassName('requestList')[0] as HTMLElement;
+    var userFilter = document.getElementsByClassName('userList')[0] as HTMLElement;
+    var deviceFilter = document.getElementsByClassName('deviceList')[0] as HTMLElement;
+
+    switch (number){
+      case 1 :
+          requestFilter.style.display = 'block';
+          userFilter.style.display = 'none';
+          deviceFilter.style.display = 'none';
+          break;
+      case 2 :
+          userFilter.style.display = 'block';
+          requestFilter.style.display = 'none';
+          deviceFilter.style.display = 'none';
+
+          break;
+      case 3 :
+          requestFilter.style.display = 'none';
+          userFilter.style.display = 'none';
+          deviceFilter.style.display = 'block';
+          break;
+      default : 
+          requestFilter.style.display = 'none';
+          userFilter.style.display = 'none';
+          deviceFilter.style.display = 'none';
+    }
+  }
+  requestFilter(e : Event){
+    var key =  (e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent;
+    var data = new Array;
+    var result = new Array;
+    data = this.requestDataSource.filteredData;
+    for(var i =0; i< data.length; i++){
+      console.log(data[i].progress)
+      console.log(key)
+      if(data[i].progress == key){
+        alert();
+      }
+      
+    }
+  }
+  
 }

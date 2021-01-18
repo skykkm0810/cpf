@@ -17,4 +17,36 @@ export class NoticeDetailComponent implements OnInit {
   backward(){
     this.router.navigate(['/noticeList/']);
   }
+  buttonclick(e : Event){
+    var remove = document.getElementsByClassName('delete')[0] as HTMLElement;
+    var revice = document.getElementsByClassName('revice')[0] as HTMLElement;
+    var cancel = document.getElementsByClassName('cancel')[0] as HTMLElement;
+    var update = document.getElementsByClassName('update')[0] as HTMLElement;
+    if((e.target as HTMLElement).classList.contains('revice')){
+      remove.style.display ='none';
+      revice.style.display ='none';
+      cancel.style.display ='inline-block';
+      update.style.display ='inline-block';
+    }
+    else if ((e.target as HTMLElement).classList.contains('cancel')){
+      remove.style.display ='inline-block';
+      revice.style.display ='inline-block';
+      cancel.style.display ='none';
+      update.style.display ='none';
+    }
+    else if ((e.target as HTMLElement).classList.contains('delete')){
+      if(confirm('이 게시글을 삭제하시겠습니까?')){
+        alert('삭제되었습니다.')
+      }
+    }
+    else if ((e.target as HTMLElement).classList.contains('update')){
+      if(confirm('수정하시겠습니까?')){
+        remove.style.display ='inline-block';
+        revice.style.display ='inline-block';
+        cancel.style.display ='none';
+        update.style.display ='none';
+      }
+    }
+  }
+  
 }

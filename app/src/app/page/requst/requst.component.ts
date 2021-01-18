@@ -9,7 +9,7 @@ import { Request, REQUESTS} from '../../interface/interface';
   styleUrls: ['./requst.component.css']
 })
 export class RequstComponent implements AfterViewInit {
-  dataColumns: string[] = ["id", "who", "desc",'from','center','manager','requestDate','workDoneDate','progress'];
+  dataColumns: string[] = ["id", "who", "desc",'from','center','manager','requestDate','workDoneDate','progress','control'];
   dataSource: MatTableDataSource<Request>;
   constructor() {
     this.dataSource = new MatTableDataSource(REQUESTS);
@@ -21,5 +21,9 @@ export class RequstComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
+  remove(){
+    if(confirm('삭제하시겠습니까?')){
+      alert('삭제되었습니다.')
+    }
+  }
 }

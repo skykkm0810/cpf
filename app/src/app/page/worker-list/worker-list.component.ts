@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { WorkerAddComponent } from 'src/app/modal/worker-add/worker-add.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
+import { WorkerUpdateComponent} from 'src/app/modal/worker-update/worker-update.component';
 @Component({
   selector: 'app-worker-list',
   templateUrl: './worker-list.component.html',
@@ -27,6 +28,7 @@ export class WorkerListComponent implements AfterViewInit {
   
   constructor(
     public dialog: MatDialog,
+    public dialog2: MatDialog,
     private phxChannel: PhxChannelService
   ) {
     this.dataSource = new MatTableDataSource([this.CheckFilter]);
@@ -47,6 +49,17 @@ export class WorkerListComponent implements AfterViewInit {
 
       this.dataSource = new MatTableDataSource(this.CheckFilter);
     })
+  }
+
+  updateWorker(){
+    const dialogRef2 = this.dialog2.open(WorkerUpdateComponent, {
+      width: '40%',
+    });
+  }
+  removeList() {
+    if(confirm('삭제하시겠습니까?')){
+      alert('삭제하였습니다.')
+    }
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

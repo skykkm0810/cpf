@@ -99,6 +99,9 @@ import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.compon
 import { DietaryPhotoAddComponent } from './modal/dietary-photo-add/dietary-photo-add.component';
 import { PasswordChangeComponent } from './modal/password-change/password-change.component';
 import { AttendantsAddComponent } from './modal/attendants-add/attendants-add.component';
+import { DietaryPhotoUpdateComponent } from './modal/dietary-photo-update/dietary-photo-update.component';
+import { VideosUpdateComponent } from './modal/videos-update/videos-update.component';
+import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +158,9 @@ import { AttendantsAddComponent } from './modal/attendants-add/attendants-add.co
     DietaryPhotoAddComponent,
     PasswordChangeComponent,
     AttendantsAddComponent,
+    DietaryPhotoUpdateComponent,
+    VideosUpdateComponent,
+    WorkerUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,5 +11,13 @@ export class AttendantsAddComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  attandChk(e:Event){
+    var card = e.target as HTMLElement;
+    if( card.classList.contains('clicked')){
+      card.classList.remove('clicked')
+    }
+    else{
+      card.classList.add('clicked')
+    }
+  }
 }

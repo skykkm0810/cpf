@@ -11,12 +11,22 @@ h4 {
     display: inline-block;
     width:25%;
 }
-.contents .mat-form-field {
+.contents .mat-form-field,
+.contents .likeFormField{
     display: inline-block;
     width: 75%;
 }
 .contents .mat-form-field .mat-form-field-wrapper{
     padding-bottom: 0;
+}
+.contents .replaceIF {
+    width:75%;
+    border:1px solid rgb(118, 118, 118);
+    padding:0.5rem 0.3rem;
+}
+.contents .replaceIF:hover{
+    background-color: #eee;
+    cursor:pointer;
 }
 
 .buttonBox {

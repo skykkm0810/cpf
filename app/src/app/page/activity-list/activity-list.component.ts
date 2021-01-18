@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Activity, activityHeader, ACTIVITIES, activityFilter } from '../../interface/interface';
 import { ActivityAddComponent} from '../../modal/activity-add/activity-add.component';
 import { ActivityDetailComponent} from '../../modal/activity-detail/activity-detail.component';
+import { ActivityUpdateComponent} from '../../modal/activity-update/activity-update.component';
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
@@ -25,6 +26,8 @@ export class ActivityListComponent implements AfterViewInit {
   
   constructor(
     public dialog: MatDialog,
+    public dialog2: MatDialog,
+    public dialog3: MatDialog,
   ) {
     this.dataSource = new MatTableDataSource(ACTIVITIES);
   }
@@ -33,10 +36,32 @@ export class ActivityListComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  addActivity( activity? : Activity ): void {
+  addActivity() {
     const dialogRef = this.dialog.open(ActivityAddComponent, {
       width: '40%',
     });
+  }
+  detailActivity(event:Event) {
+    var thisElement = event.target as HTMLElement;
+    console.log(thisElement)
+    if(thisElement.classList.contains('mat-button-wrapper') || thisElement.classList.contains('float-right')){
+      event.preventDefault()
+    }
+    else {
+      const dialogRef2 = this.dialog2.open(ActivityDetailComponent, {
+        width: '600px'
+      });
+    }
+  }
+  updateActivity() {
+    const dialogRef3 = this.dialog3.open(ActivityUpdateComponent, {
+      width: '600px',
+    });
+  }
+  removeList(){
+    if(confirm('삭제하시겠습니까?')){
+      alert('삭제되었습니다.')
+    }
   }
   applyFilter(event: Event) {  
     const filterValue = (event.target as HTMLInputElement).value;
@@ -50,11 +75,7 @@ export class ActivityListComponent implements AfterViewInit {
   updateAllComplete() {
     this.allComplete = this.filter.subFilters != null && this.filter.subFilters.every(t => t.completed);
   }
-  detailActivity(activity?:Activity): void {
-    const dialogRef2 = this.dialog.open(ActivityDetailComponent, {
-      width: '40%',
-    });
-  }
+  
   someComplete(): boolean {
     if (this.filter.subFilters == null) {
       return false;

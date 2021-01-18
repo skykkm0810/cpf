@@ -6,6 +6,7 @@ import { Device, deviceHeader, deviceFilter } from '../../interface/interface';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
+import { DeviceUpdateComponent} from '../../modal/device-update/device-update.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 import { MatTab } from '@angular/material/tabs';
 import { DatePipe } from '@angular/common';
@@ -35,7 +36,8 @@ export class DeviceListComponent implements AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private phxChannel: PhxChannelService,
-    private fn: FnService
+    private fn: FnService,
+    public dialog2: MatDialog,
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
     phxChannel.Devices.subscribe( data => {
@@ -63,14 +65,12 @@ export class DeviceListComponent implements AfterViewInit {
     this.phxChannel.gets("device", { body: 1 });
   }
   
-  addDevice( Device? : Device ): void {
+  addDevice() {
     const dialogRef = this.dialog.open(DeviceAddComponent, {
       width: '40%',
     });
   }
-
   applyFilter(event: Event) { 
-    
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if ( this.dataSource.paginator ) {
@@ -114,7 +114,7 @@ export class DeviceListComponent implements AfterViewInit {
       }
     }
     if ( !arrS.length && !arrT.length ) {
-      this.dataSource = new MatTableDataSource(this.DEVICES);
+      this.dataSource = new MatTableDataSource(this.CheckFilter);
     } else {
       for ( var i = 0; i < 3; i++ ) {
         for ( var j = 0; j < this.CheckFilter.length; j++ ) {
@@ -159,8 +159,8 @@ export class DeviceListComponent implements AfterViewInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
-   checkedNum(){
-    var checkBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input');
-    var checkedBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input:checked');
-   }
+  //  checkedNum(){
+  //   var checkBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input');
+  //   var checkedBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input:checked');
+  //  }
 }
