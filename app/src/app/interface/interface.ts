@@ -695,3 +695,10 @@ export const SelSTATUS: any = [
   { name: '이상' },
   { name: '수리' },
 ]
+
+export const SelTASKS: any = [
+  { name: '강사' },
+  { name: '요양사' },
+  { name: '지원' },
+  { name: '봉사' },
+]

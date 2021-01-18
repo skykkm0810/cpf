@@ -6,6 +6,7 @@ defmodule CpfWeb.UserSocket do
   channel "cpf:device", CpfWeb.DeviceChannel
   channel "cpf:senior", CpfWeb.SeniorChannel
   channel "cpf:center", CpfWeb.CenterChannel
+  channel "cpf:instructor", CpfWeb.InstructorChannel
   
 
   # Socket params are passed from the client and can

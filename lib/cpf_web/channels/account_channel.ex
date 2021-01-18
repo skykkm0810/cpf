@@ -24,7 +24,7 @@ defmodule CpfWeb.AccountChannel do
     create_account(payload)
     res = list_accounts()
     push(socket, "account:list", %{body: res})
-    {:reply, {:ok, res}, socket}
+    {:reply, {:ok, payload}, socket}
   end
 
   def handle_in("account:list:req", %{"body" => payload}, socket) do
@@ -63,23 +63,27 @@ defmodule CpfWeb.AccountChannel do
 
 
   def list_accounts() do
-    # center = Cpf.CenterChannel.list_centers()
+    center = Cpf.ConCenter.list_centers()
+    |> Enum.map(fn c -> %{
+      id: c.id,
+      name: c.name
+    } end)
+
     Cpf.ConAccount.list_accounts()
-    |> Enum.map(fn d ->
-      # f = Enum.filter( center, fn c ->
-      #   c.id == d.centerId
-      # end)
+    |> Enum.map(fn data ->
+      [c] = Enum.filter(center, fn d -> d.id == data.centerId end)
+
       %{
-        id: d.id,
-        name: d.name,
-        uname: d.uname,
-        pwd: d.pwd,
-        contact: d.contact,
-        birth: d.birth,
-        email: d.email,
-        level: d.level,
-        # center: c.name,
-        centerId: d.centerId
+        id: data.id,
+        name: data.name,
+        uname: data.uname,
+        pwd: data.pwd,
+        contact: data.contact,
+        birth: data.birth,
+        email: data.email,
+        level: data.level,
+        center: c.name,
+        centerId: data.centerId
       } end)
   end
 

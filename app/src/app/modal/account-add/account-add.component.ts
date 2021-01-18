@@ -21,15 +21,30 @@ export class AccountAddComponent implements OnInit {
     level: ''
   }
 
+  centers: any;
+
   levels = SelLEVEL;
 
   constructor(
     private dialogRef: MatDialogRef<AdministratorComponent>,
     private phxChannel: PhxChannelService,
-  ) { }
+  ) {
+    this.centers = [];
+    phxChannel.Centers.subscribe( data => {
+      this.centers = [];
+      data.forEach(el => {
+        this.centers.push({
+          value: el.id,
+          name: el.name
+        })
+      });
+    })
+  }
 
   ngOnInit(): void {
+    this.phxChannel.gets("center", { body: '' })
   }
+
   addDialog(){
     if(confirm('추가하시겠습니까?')){
       this.dialogRef.close();
@@ -45,5 +60,4 @@ export class AccountAddComponent implements OnInit {
       this.account
     )
   }
-
 }

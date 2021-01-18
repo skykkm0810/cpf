@@ -3,12 +3,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Device, deviceHeader, deviceFilter } from '../../interface/interface';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 import { MatTab } from '@angular/material/tabs';
 import { DatePipe } from '@angular/common';
+import { FnService } from '../../service/fn.service';
 
 @Component({
   selector: 'app-device-list',
@@ -34,24 +35,23 @@ export class DeviceListComponent implements AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private phxChannel: PhxChannelService,
-    private datepipe: DatePipe
+    private fn: FnService
   ) {
     this.dataSource = new MatTableDataSource(this.CheckFilter);
     phxChannel.Devices.subscribe( data => {
       this.CheckFilter = [];
       data.body.forEach(el => {
-        // const _d = new Date(el.inserted);
-        // el.inserted = datepipe.transform(_d, 'yyyy년 MM월 dd일');
+        let _d = fn.dateFormatting( el.inserted );
         this.CheckFilter.push({ 
           id: el.id,
           name: el.name,
+          center: el.center,
           centerId: el.centerId,
           location: el.location,
           status: el.status,
           type: el.type,
-          inserted: el.inserted
+          inserted: _d
         })
-
       });
       this.dataSource = new MatTableDataSource(this.CheckFilter);
     })
@@ -61,7 +61,6 @@ export class DeviceListComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.phxChannel.gets("device", { body: 1 });
-    console.log('hello');
   }
   
   addDevice( Device? : Device ): void {

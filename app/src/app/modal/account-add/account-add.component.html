@@ -34,16 +34,19 @@
     </p>
     <p class="learnNum">
       <span class="label">소속</span>
-      <mat-form-field>
-        <input matInput [(ngModel)]="account.centerId" name="centerId">
+      <mat-form-field appearance="fill">
+        <mat-label>소속</mat-label>
+        <mat-select name="center" [(ngModel)]="account.centerId">
+          <mat-option *ngFor="let center of centers" value="{{ center.value }}">{{ center.name }}</mat-option>
+        </mat-select>
       </mat-form-field>
     </p>
     <p class="learnNum">
       <span class="label">권한</span>
       <mat-form-field appearance="fill">
-        <mat-label>권한 설정</mat-label>
+        <mat-label>권한</mat-label>
         <mat-select name="level" [(ngModel)]="account.level">
-          <mat-option *ngFor="let l of levels" value="{{ l.value }}">{{ l.name }}</mat-option>
+          <mat-option *ngFor="let level of levels" value="{{ level.value }}">{{ level.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     </p>

@@ -67,8 +67,8 @@ export class AdministratorComponent implements AfterViewInit {
           level: e.level,
           birth: e.birth,
           contact: e.contact,
-          center: e.address,
-          centerId: e.manager,
+          center: e.center,
+          centerId: e.centerId,
           email: e.email
         })
       });
@@ -84,8 +84,8 @@ export class AdministratorComponent implements AfterViewInit {
     this.centerData.paginator = this.paginator2;
     this.accountData.sort = this.sort1;
     this.centerData.sort = this.sort2;
-    this.phxChannel.gets("center", { body: '' });
-    this.phxChannel.gets("account", { body: '' });
+    this.phxChannel.gets("center", '');
+    this.phxChannel.gets("account", '');
   }
   addAccount(){
     const dialogRef = this.dialog1.open(AccountAddComponent,{

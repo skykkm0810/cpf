@@ -25,16 +25,30 @@ export class AccountUpdateComponent implements OnInit {
 
   levels = SelLEVEL;
 
+  centers: any;
+
   constructor(
     private dialogRef: MatDialogRef<AdministratorComponent>,
     private phxChannel: PhxChannelService,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.accountInfo = data;
+    this.centers = [];
+    phxChannel.Centers.subscribe( data => {
+      this.centers = [];
+      data.forEach(el => {
+        this.centers.push({
+          value: el.id,
+          name: el.name
+        })
+      });
+      console.log(this.centers);
+    })
    }
 
 
   ngOnInit(): void {
+    this.phxChannel.gets('center', '');
     this.account = {
       id: this.accountInfo.id,
       uname: this.accountInfo.uname,
@@ -42,7 +56,7 @@ export class AccountUpdateComponent implements OnInit {
       name: this.accountInfo.name,
       birth: this.accountInfo.birth,
       contact: this.accountInfo.contact,
-      centerId: '1',
+      centerId: this.accountInfo.centerId,
       level: this.accountInfo.level
     }
   }

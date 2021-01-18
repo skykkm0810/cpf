@@ -58,20 +58,24 @@ defmodule CpfWeb.DeviceChannel do
 
 
   def list_devices() do
-    # center = Cpf.CenterChannel.list_centers()
+    center = Cpf.ConCenter.list_centers()
+    |> Enum.map(fn c -> %{
+      id: c.id,
+      name: c.name
+    } end)
+
     Cpf.ConDevice.list_devices()
-    |> Enum.map(fn d ->
-      # f = Enum.filter( center, fn c ->
-      #   c.id == d.centerId
-      # end)
+    |> Enum.map(fn data ->
+      [c] = Enum.filter(center, fn d -> d.id == data.centerId end)
       %{
-        id: d.id,
-        name: d.name,
-        centerId: d.centerId,
-        location: d.location,
-        status: d.status,
-        type: d.type,
-        inserted: d.updated_at
+        id: data.id,
+        name: data.name,
+        center: c.name,
+        centerId: data.centerId,
+        location: data.location,
+        status: data.status,
+        type: data.type,
+        inserted: data.updated_at
       } end)
   end
 

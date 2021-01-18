@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Worker, workerHeader, WORKERS, workerFilter } from '../../interface/interface';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { WorkerAddComponent } from 'src/app/modal/worker-add/worker-add.component';
+import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
 @Component({
   selector: 'app-worker-list',
@@ -16,28 +17,49 @@ export class WorkerListComponent implements AfterViewInit {
   allComplete: boolean = false;
   
   displayedColumns: string[] = workerHeader;
-  dataSource: MatTableDataSource<Worker>;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
-  filter = workerFilter
+  filter = workerFilter;
+  CheckFilter : any = [];
   
   constructor(
     public dialog: MatDialog,
+    private phxChannel: PhxChannelService
   ) {
-    this.dataSource = new MatTableDataSource(WORKERS);
-  }
-  addWorker( worker? : Worker ): void {
-    const dialogRef = this.dialog.open(WorkerAddComponent, {
-      width: '40%',
-    });
+    this.dataSource = new MatTableDataSource([this.CheckFilter]);
+    phxChannel.Instructors.subscribe( data => {
+      console.log(data);
+      this.CheckFilter = [];
+      data.forEach( el => {
+        this.CheckFilter.push({
+          id: el.id,
+          name: el.name,
+          centerId: el.centerId,
+          center: el.center,
+          task: el.task,
+          region: el.region,
+          contact: el.contact
+        })
+      })
+
+      this.dataSource = new MatTableDataSource(this.CheckFilter);
+    })
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.phxChannel.gets("instructor", { body: 0 });
   }
   
+  addWorker( worker? : Worker ): void {
+    const dialogRef = this.dialog.open(WorkerAddComponent, {
+      width: '40%',
+    });
+
+  }
   applyFilter(event: Event) {  
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
