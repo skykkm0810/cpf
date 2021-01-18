@@ -14,9 +14,9 @@ import { CenterUpdateComponent } from 'src/app/modal/center-update/center-update
   styleUrls: ['./administrator.component.css']
 })
 export class AdministratorComponent implements AfterViewInit {
-  accountColumns: string[] =['idx','id','passward','name','contact','belong','authority','birthday','email']
+  accountColumns: string[] =['idx','id','passward','name','contact','belong','authority','birthday','email','control']
   accountData: MatTableDataSource<Account>
-  centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email']
+  centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email','control']
   centerData: MatTableDataSource<Center>
   @ViewChild('pagnator1') paginator1: MatPaginator;
   @ViewChild('pagnator2') paginator2: MatPaginator;

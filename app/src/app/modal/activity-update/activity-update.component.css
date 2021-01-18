@@ -2,7 +2,8 @@
     display:none;
 }
 .background {
-    width:100%;
+    width:400px;
+    margin:0 auto;
 }
 .background .fakeUpload {
     width:100%;

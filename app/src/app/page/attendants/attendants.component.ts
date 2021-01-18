@@ -27,7 +27,9 @@ export class AttendantsComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
   addAttandant(): void {
-    const dialogRef = this.dialog.open(AttendantsAddComponent)
+    const dialogRef = this.dialog.open(AttendantsAddComponent, {
+      width: '40%',
+    })
   }
 
 }

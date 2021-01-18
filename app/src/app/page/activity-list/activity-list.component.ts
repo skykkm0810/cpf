@@ -55,7 +55,7 @@ export class ActivityListComponent implements AfterViewInit {
   }
   updateActivity() {
     const dialogRef3 = this.dialog3.open(ActivityUpdateComponent, {
-      width: '400px',
+      width: '600px',
     });
   }
   removeList(){

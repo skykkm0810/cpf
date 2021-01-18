@@ -21,5 +21,9 @@ export class RequstComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
+  remove(){
+    if(confirm('삭제하시겠습니까?')){
+      alert('삭제되었습니다.')
+    }
+  }
 }
