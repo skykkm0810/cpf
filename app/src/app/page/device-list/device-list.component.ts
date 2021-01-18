@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Device, deviceHeader, DEVICES, deviceFilter } from '../../interface/interface';
+import { Device, deviceHeader, deviceFilter } from '../../interface/interface';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DeviceAddComponent} from '../../modal/device-add/device-add.component';
@@ -108,7 +108,7 @@ export class DeviceListComponent implements AfterViewInit {
       }
     }
     if ( !arrS.length && !arrT.length ) {
-      this.dataSource = new MatTableDataSource(DEVICES);
+      this.dataSource = new MatTableDataSource(this.CheckFilter);
     } else {
       for ( var i = 0; i < 3; i++ ) {
         for ( var j = 0; j < this.CheckFilter.length; j++ ) {

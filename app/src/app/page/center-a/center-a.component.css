@@ -1,3 +1,6 @@
+.hidden {
+  display: none;
+}
 .header {
   line-height: 36px;
 }
@@ -129,4 +132,13 @@ p .label {
 }
 .usingTime {
   display: none;
+}
+/* filter */
+.filterBox {
+  padding:1rem;
+  width:100%;
+}
+.mat-radio-button {
+  display:block;
+  padding:0.3rem 0;
 }
