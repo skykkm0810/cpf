@@ -156,7 +156,7 @@
       </mat-card>
     </mat-tab>
     <mat-tab label="기기 현황">
-      <mat-card class="tableContainer m-b-20" (click)='select();'>
+      <mat-card class="tableContainer m-b-20">
         <p class="title">기기 목록</p>
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="deviceDataSource" #sort3='matSort' matSort class="deviceTable">

@@ -159,8 +159,15 @@ export class DeviceListComponent implements AfterViewInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
-  //  checkedNum(){
-  //   var checkBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input');
-  //   var checkedBoxes = document.querySelectorAll('td .mat-checkbox .mat-checkbox-input:checked');
-  //  }
+
+  removeDevice( info ) {
+    if(confirm('삭제하시겠습니까?')){
+      this.phxChannel.del("device", { id: info.id });
+    }
+  }
+  updateDevice( info ) {
+    const updateDevice = this.dialog2.open(DeviceUpdateComponent, {
+      width:'40%', data:info
+    });
+  }
 }

@@ -13,6 +13,7 @@ import { min } from 'date-fns';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
 import { CenterUpdateComponent} from '../../modal/center-update/center-update.component';
+import { FnService } from 'src/app/service/fn.service';
 
 
 
@@ -29,7 +30,7 @@ export class CenterAComponent implements AfterViewInit {
 
   timelines = TIMELINES;
   deviceCalled: boolean = false;
-  devices: Device[] = [];
+  devices: any = [];
   seniors: Senior[] = [];
 
   requestDisplayedColumns: string[] = [ 'id', 'progress', 'from', 'desc', 'who' ];
@@ -53,7 +54,8 @@ export class CenterAComponent implements AfterViewInit {
   constructor( 
     public dialog: MatDialog,
     private phxChannel: PhxChannelService,
-    private gen: GenService
+    private gen: GenService,
+    private fn: FnService
   ) {
     this.requestDataSource = new MatTableDataSource(REQUESTS);
     this.seniorDataSource = new MatTableDataSource(SENIORS);
@@ -61,9 +63,24 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceLogData = new MatTableDataSource([]);
 
     phxChannel.Devices.subscribe( data => {
-      if ( data.centerId == this.centerId ) {
-        this.devices.push(data);
-      }
+      this.devices = [];
+      console.log(data);
+      data.body.forEach( el => {
+        let _d = fn.dateFormatting( el.inserted );
+        this.devices.push({
+          id: el.id,
+          name: el.name,
+          center: el.center,
+          centerId: el.centerId,
+          location: el.location,
+          status: el.status,
+          type: el.type,
+          inserted: _d
+        })
+      })
+      // if ( data.centerId == this.centerId ) {
+      //   this.devices.push(data);
+      // }
       this.deviceDataSource = new MatTableDataSource(this.devices);
     })
     phxChannel.Seniors.subscribe( data => {
@@ -87,7 +104,7 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
     this.phxChannel.gets('device', { centerId: this.centerId });
-    this.phxChannel.get('center', { centerId: this.centerId });
+    // this.phxChannel.get('center', { centerId: this.centerId });
   }
   
   select(){
@@ -146,8 +163,8 @@ export class CenterAComponent implements AfterViewInit {
       width: '40%',
     });
   }
-  filterView(e : Event){
-    var number = (e.index)
+  filterView(e){
+    var number = (e.index);
     var requestFilter = document.getElementsByClassName('requestList')[0] as HTMLElement;
     var userFilter = document.getElementsByClassName('userList')[0] as HTMLElement;
     var deviceFilter = document.getElementsByClassName('deviceList')[0] as HTMLElement;

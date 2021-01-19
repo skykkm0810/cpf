@@ -16,6 +16,6 @@ defmodule Cpf.ConDevice.Device do
   def changeset(device, attrs) do
     device
     |> cast(attrs, [:name, :centerId, :type, :location, :status])
-    |> validate_required([:name, :centerId, :type, :status])
+    |> validate_required([:name, :type, :status])
   end
 end

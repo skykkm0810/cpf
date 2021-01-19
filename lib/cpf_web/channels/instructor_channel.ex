@@ -69,29 +69,29 @@ defmodule CpfWeb.InstructorChannel do
     } end)
 
     Cpf.ConInstructor.list_instructors()
-    |> Enum.map(fn d -> 
-      [c] = Enum.filter(center, fn d -> d.id == d.centerId end)
+    |> Enum.map(fn data -> 
+      [c] = Enum.filter(center, fn d -> d.id == data.centerId end)
       %{
-        id: d.id,
-        name: d.name,
-        contact: d.contact,
-        task: d.task,
+        id: data.id,
+        name: data.name,
+        contact: data.contact,
+        task: data.task,
         center: c.name,
-        centerId: d.centerId,
-        region: d.region
+        centerId: data.centerId,
+        region: data.region
       }
     end)
   end
 
-  def get_instructor(d) do
-    {:ok, res} = Cpf.ConInstructor.get_instructor!(d["id"])
+  def get_instructor(data) do
+    {:ok, res} = Cpf.ConInstructor.get_instructor!(data["id"])
     %{
-      id: d.id,
-      name: d.name,
-      contact: d.contact,
-      task: d.task,
-      centerId: d.centerId,
-      region: d.region
+      id: data.id,
+      name: data.name,
+      contact: data.contact,
+      task: data.task,
+      centerId: data.centerId,
+      region: data.region
     }
   end
 

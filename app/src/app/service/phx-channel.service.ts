@@ -238,6 +238,11 @@ export class PhxChannelService {
 
   del(channel, message) : void {
     switch ( channel ) {
+      case 'device':
+        this.deviceChannel.push('device:delete:req', {body: message});
+        break;
+
+
       case 'center':
         this.centerChannel.push('center:delete:req', {body: message});
         break;
