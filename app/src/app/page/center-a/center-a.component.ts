@@ -147,7 +147,7 @@ export class CenterAComponent implements AfterViewInit {
       width: '40%',
     });
   }
-  filterView(e : Event){
+  filterView(e){
     var number = (e.index)
     var requestFilter = document.getElementsByClassName('requestList')[0] as HTMLElement;
     var userFilter = document.getElementsByClassName('userList')[0] as HTMLElement;
@@ -177,18 +177,51 @@ export class CenterAComponent implements AfterViewInit {
     }
   }
   requestFilter(e : Event){
-    var key =  (e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent;
+    this.requestDataSource = new MatTableDataSource(REQUESTS);
+    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
     var data = new Array;
-    var result = new Array;
-    data = this.requestDataSource.filteredData;
-    for(var i =0; i< data.length; i++){
-      console.log(data[i].progress)
-      console.log(key)
-      if(data[i].progress == key){
-        alert();
+    var result : Request[] = [];
+    if( key !== '전체'){
+      data = this.requestDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].progress == key){
+          result.push(data[i])
+        }
       }
-      
+      this.requestDataSource = new MatTableDataSource(result);
     }
   }
-  
+  userFilter(e : Event){
+    this.seniorDataSource = new MatTableDataSource(SENIORS);
+    var value =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    var extract = value.match(/\d/g);
+    var key = Number(extract.join(""));
+    var data = new Array;
+    var result : Senior[] = [];
+    if( value !== '전체'){
+      data = this.seniorDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].age >= key && data[i].age < key+10){
+          result.push(data[i])
+        }
+      }
+      this.seniorDataSource = new MatTableDataSource(result);
+    }
+  }
+  deviceFilter(e : Event){
+    this.deviceDataSource = new MatTableDataSource(DEVICES);
+    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    var data = new Array;
+    var result : Device[] = [];
+    if( key !== '전체'){
+      data = this.deviceDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].type == key){
+          result.push(data[i])
+        }
+      }
+      console.log(result)
+      this.deviceDataSource = new MatTableDataSource(result);
+    }
+  }
 }

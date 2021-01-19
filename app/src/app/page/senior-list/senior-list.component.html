@@ -2,9 +2,12 @@
     어르신 목록
     <button mat-button class="addSenior" (click)="addSenior()">인원 추가</button>
 </mat-card>
-
+<mat-form-field class="filterBox">
+    <mat-label>search</mat-label>
+    <input matInput (keyup)="Filter()" placeholder="Ex. Mia" id="filter">
+</mat-form-field>
 <div class="card-grid-container">
-    <mat-card class="grid-content" *ngFor="let senior of seniors">
+    <mat-card class="grid-content itemcard" *ngFor="let senior of seniors" >
         <img
             class="avatar-circle"
             src="assets/images/users/{{ senior.photo }}"

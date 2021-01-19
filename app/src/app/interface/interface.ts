@@ -196,7 +196,7 @@ export const ACCOUNTS :Account[] = [
 ]
 export interface Filter {
   name: string;
-  completed: boolean;
+  completed?: boolean;
   color: ThemePalette;
   subFilters?: Filter[];
 }
@@ -457,7 +457,19 @@ export interface Request {
   workDoneDate?:string;
   progress : string;
 }
-
+export const requestFilter: Filter = {
+  name: '전체',
+  completed: false,
+  color: 'primary',
+  subFilters: [
+    {name: '정상', completed: false, color: 'primary'},
+    {name: '이상', completed: false, color: 'primary'},
+    {name: '수리', completed: false, color: 'primary'},
+    {name: '로봇', completed: false, color: 'primary'},
+    {name: '센서', completed: false, color: 'primary'},
+    {name: '스마트 스피커', completed: false, color: 'primary'},
+  ]
+}
 export const REQUESTS: Request[] = [
   { id: 1, color: 'info', progress: '진행 중', from: '관리자', desc: '택시 호출', who: '김모모',center: '주간보호센터', manager: '김경민', requestDate: '1/11', workDoneDate:""},
   { id: 2, color: 'info', progress: '진행 중', from: '관리자', desc: '병원 동행', who: '윤모모',center: '주간보호센터', manager: '김경민', requestDate: '1/10', workDoneDate:""},
