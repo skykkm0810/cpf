@@ -2,9 +2,12 @@ defmodule CpfWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
+  channel "cpf:account", CpfWeb.AccountChannel
   channel "cpf:device", CpfWeb.DeviceChannel
   channel "cpf:senior", CpfWeb.SeniorChannel
   channel "cpf:center", CpfWeb.CenterChannel
+  channel "cpf:instructor", CpfWeb.InstructorChannel
+  
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

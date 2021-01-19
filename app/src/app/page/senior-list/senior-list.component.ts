@@ -36,7 +36,7 @@ export class SeniorListComponent implements OnInit {
       data: {name: obj1, contact: obj2, guardian: obj3, guardianContact: obj4}
     });
   }
-  Filter(e){
+  Filter(){
     var filter, input, text,card ;
     input = document.getElementById('filter');
     filter = input.value;

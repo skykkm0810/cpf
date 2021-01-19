@@ -17,18 +17,26 @@ export class PhxChannelService {
   eventChannel: any;
   requestChannel: any;
   centerChannel: any;
+  accountChannel: any;
+  instructorChannel: any;
 
   @Output() Devices: EventEmitter<any> = new EventEmitter();
   @Output() Seniors: EventEmitter<any> = new EventEmitter();
   @Output() Requests: EventEmitter<any> = new EventEmitter();
   @Output() Users: EventEmitter<any> = new EventEmitter();
   @Output() Center: EventEmitter<any> = new EventEmitter();
+  @Output() Centers: EventEmitter<any> = new EventEmitter();
+  @Output() Account: EventEmitter<any> = new EventEmitter();
+  @Output() Accounts: EventEmitter<any> = new EventEmitter();
+  @Output() Instructors: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
   }
 
   private init_channel() {
+
+
     this.socket = new Socket( `${Environment.socket_channel}/socket`, {
       logger: (kind, msg, data) => {
         // console.log( `${kind}: ${msg}`, data );
@@ -36,6 +44,7 @@ export class PhxChannelService {
       transport: WebSocket
     });
     this.socket.connect();
+
 
     this.deviceChannel = this.socket.channel('cpf:device', {});
     this.deviceChannel
@@ -55,6 +64,7 @@ export class PhxChannelService {
       this.Devices.emit(payload);
     })
 
+
     this.seniorChannel = this.socket.channel('cpf:senior', {});
     this.seniorChannel
       .join()
@@ -65,9 +75,10 @@ export class PhxChannelService {
         console.log('Unable to join', resp);
       });
     this.seniorChannel.on('senior:list', payload => {
-      console.log('cpf:device:list from phx socket: ', payload);
+      // console.log('cpf:device:list from phx socket: ', payload);
       this.Seniors.emit(payload);
     })
+
 
     this.centerChannel = this.socket.channel('cpf:center', {});
     this.centerChannel
@@ -78,27 +89,93 @@ export class PhxChannelService {
       .receive('error', resp => {
         console.log('Unable to join', resp);
       });
-    this.centerChannel.on('center:detail', payload => {
-      console.log('cpf:center:detail from phx socket: ', payload);
-      this.Center.emit(payload);
-    })
-    
+      this.centerChannel.on('center:add', payload => {
+        // console.log('cpf:center:add from phx socket: ', payload);
+        this.Center.emit(payload);
+      })
+      this.centerChannel.on('center:detail', payload => {
+        // console.log('cpf:center:detail from phx socket: ', payload);
+        this.Center.emit(payload);
+      })
+      this.centerChannel.on('center:detail:update', payload => {
+        // console.log('cpf:center:detail:update ', payload);
+      })
+      this.centerChannel.on('center:list', payload => {
+        // console.log('cpf:center:list from phx socket: ', payload);
+        this.Centers.emit(payload.body);
+      })
+
+
+      this.accountChannel = this.socket.channel('cpf:account', {});
+      this.accountChannel
+        .join()
+        .receive('ok', resp => {
+          console.log('Joined successfully', resp);
+        })
+        .receive('error', resp => {
+          console.log('Unable to join', resp);
+        });
+        this.accountChannel.on('account:add', payload => {
+          // console.log('cpf:account:add from phx socket: ', payload);
+          // this.Account.emit(payload);
+        })
+        this.accountChannel.on('account:detail', payload => {
+          // console.log('cpf:account:detail from phx socket: ', payload);
+          // this.Account.emit(payload);
+        })
+        this.accountChannel.on('account:detail:update', payload => {
+          // console.log('cpf:account:detail:update ', payload);
+        })
+        this.accountChannel.on('account:list', payload => {
+          // console.log('cpf:account:list from phx socket: ', payload);
+          this.Accounts.emit(payload.body);
+        })
+  
+      this.instructorChannel = this.socket.channel('cpf:instructor', {} );
+      this.instructorChannel
+        .join()
+        .receive('ok', resp => {
+          console.log('Joined successfully', resp);
+        })
+        .receive('error', resp => {
+          console.log('Unable to join', resp);
+        });
+        this.instructorChannel.on('instructor:add', payload => {
+          // console.log('cpf:instructor:add from phx socket: ', payload);
+          // this.Instructors.emit(payload);
+        })
+        this.instructorChannel.on('instructor:detail', payload => {
+          // console.log('cpf:instructor:detail from phx socket: ', payload);
+          // this.Instructors.emit(payload);
+        })
+        this.instructorChannel.on('instructor:detail:update', payload => {
+          // console.log('cpf:instructor:detail:update ', payload);
+        })
+        this.instructorChannel.on('instructor:list', payload => {
+          // console.log('cpf:instructor:list from phx socket: ', payload);
+          this.Instructors.emit(payload.body);
+        })
+
   }
 
-  // reqDevices() {
-  //   this.deviceChannel.push('reqDevices', 'number: 5');
-  // }
-
-  send(channel, event, message) {
+  send(channel, message) {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push(event, {body: message});
+        this.deviceChannel.push("device:add:req", {body: message});
         break;
 
       case 'center':
-        this.centerChannel.push(event, {body: message});
+        this.centerChannel.push("center:add:req", {body: message});
         break;
 
+      case 'account':
+        this.accountChannel.push("account:add:req", {body: message});
+        break;
+
+      case 'instructor':
+        this.instructorChannel.push("instructor:add:req", {body: message});
+        break;
+  
       default:
         break;
     }
@@ -107,18 +184,23 @@ export class PhxChannelService {
   gets(channel, message?) : void {
     switch (channel) {
       case 'device':
-        this.deviceChannel.push('device:list:req', {body: message});
-        // .receive('ok', body => {
-        //   console.log(body);
-        // });
+        this.deviceChannel.push('device:list:req', { body: message });
         break;
 
       case 'senior':
-        this.seniorChannel.push('senior:list:req', {body: message});
+        this.seniorChannel.push('senior:list:req', { body: message });
         break;
 
       case 'center':
-        this.centerChannel.push('center:detail:req', {body: message});
+        this.centerChannel.push('center:list:req', { body: message });
+        break;
+
+      case 'account':
+        this.accountChannel.push('account:list:req', { body: message });
+        break;
+
+      case 'instructor':
+        this.instructorChannel.push('instructor:list:req', { body: message });
         break;
 
       default:
@@ -135,6 +217,37 @@ export class PhxChannelService {
       default:
         break;
     
+    }
+  }
+
+  up(channel, message) : void {
+    switch ( channel ) {
+      case 'center':
+        this.centerChannel.push('center:detail:update:req', {body: message});
+        break;
+
+      case 'account':
+        this.accountChannel.push('account:detail:update:req', {body: message});
+        console.log(message);
+        break;
+        
+      default:
+        break;
+    }
+  }
+
+  del(channel, message) : void {
+    switch ( channel ) {
+      case 'center':
+        this.centerChannel.push('center:delete:req', {body: message});
+        break;
+
+      case 'account':
+        this.accountChannel.push('account:delete:req', {body: message});
+        break;
+  
+      default:
+        break;
     }
   }
 }

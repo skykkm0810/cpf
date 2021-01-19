@@ -180,20 +180,22 @@ export const CENTERS : Center[] = [
   {idx:9468462,name:'요셉주간보호센터',address:'충청남도 아산시',maxUser:'50명',manager:'임모모',contact:'010-0000-0000',email:'abcd1234@good.com'},
 ]
 export interface Account {
-  idx:string;
-  id: string;
-  passward:string;
-  name:string;
-  birthday:string;
-  email?:string;
-  contact:string;
-  authority:string;
-  belong:string;
+  id?: string;
+  idx: string;
+  uname: string;
+  pwd: string;
+  name: string;
+  birth: string;
+  email?: string;
+  contact: string;
+  level: string;
+  centerId: string;
+  center: string;
 }
-export const ACCOUNTS :Account[] = [
-  {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
-  {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
-]
+// export const ACCOUNTS :Account[] = [
+//   {idx:'#132101',id:'ggangmi',passward:'skyggangmi', name:'깽미',birthday:'1993-08-10',email:'ggangmi@ninanobiz.com',contact:'010-9550-8470',authority:'관리자',belong:'대구 달서구 복지부'},
+//   {idx:'#192101',id:'chanchan',passward:'purplechan', name:'연미복',birthday:'1993-03-21',email:'guenchan@ninanobiz.com',contact:'010-2927-2966',authority:'센터관리자',belong:'A센터'},
+// ]
 export interface Filter {
   name: string;
   completed?: boolean;
@@ -220,6 +222,7 @@ export interface Device {
   status: string;
   color?: string;
   center?: string;
+  centerId?: string;
   inserted?: string;
 };
 
@@ -682,4 +685,32 @@ export const CALLEMERGENCY : callEmergency[] = [
   {id:9,date:'20/10/13', center:'Center B', what:"시설 호출" ,desc:"시설 / 장비 확인요망 : 화장실 센서" },
   {id:10,date:'20/10/11', center:'Center A', what:"긴급 호출" ,desc:"긴급 구조 신고" },
   {id:11,date:'20/10/01', center:'Center B', what:"긴급 호출" ,desc:"긴급 구조 신고" },
+]
+
+// select options
+
+export const SelLEVEL : any = [
+  { value: '기관관리자', name: '기관관리자'},
+  { value: '센터관리자', name: '센터관리자'},
+  { value: '사용자', name: '사용자 '},
+  { value: '외부접속자', name: '외부접속자'},
+]
+
+export const SelDeviceTYPE: any = [
+  { name: '로봇' },
+  { name: '센서' },
+  { name: '스마트스피커' },
+]
+
+export const SelSTATUS: any = [
+  { name: '정상' },
+  { name: '이상' },
+  { name: '수리' },
+]
+
+export const SelTASKS: any = [
+  { name: '강사' },
+  { name: '요양사' },
+  { name: '지원' },
+  { name: '봉사' },
 ]

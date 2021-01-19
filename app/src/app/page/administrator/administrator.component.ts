@@ -2,34 +2,81 @@ import { Component, OnInit,AfterViewInit,ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ACCOUNTS, Account,CENTERS , Center } from '../../interface/interface';
+import { Account , Center } from '../../interface/interface';
 import { MatDialog} from '@angular/material/dialog';
 import { AccountAddComponent} from '../../modal/account-add/account-add.component';
 import { CenterAddComponent} from '../../modal/center-add/center-add.component';
 import { AccountUpdateComponent } from 'src/app/modal/account-update/account-update.component';
 import { CenterUpdateComponent } from 'src/app/modal/center-update/center-update.component';
+import { PhxChannelService } from 'src/app/service/phx-channel.service';
+
 @Component({
   selector: 'app-administrator',
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.css']
 })
+
+
+
 export class AdministratorComponent implements AfterViewInit {
-  accountColumns: string[] =['idx','id','passward','name','contact','belong','authority','birthday','email','control']
+
+  accountColumns: string[] =['idx','uname','name','contact','center','level','birth','email','control']
   accountData: MatTableDataSource<Account>
   centerColumns: string[] =['idx','name','address','maxUser','manager','contact','email','control']
   centerData: MatTableDataSource<Center>
+
+  ACCOUNTS: Account[] = [];
+  CENTERS: Center[] = [];
+
   @ViewChild('pagnator1') paginator1: MatPaginator;
   @ViewChild('pagnator2') paginator2: MatPaginator;
   @ViewChild('sort1') sort1: MatSort;
   @ViewChild('sort2') sort2: MatSort;
+
   constructor(
     public dialog1:MatDialog,
     public dialog2:MatDialog,
     public dialog3:MatDialog,
     public dialog4:MatDialog,
-  ) { 
-    this.accountData = new MatTableDataSource(ACCOUNTS);
-    this.centerData = new MatTableDataSource(CENTERS);
+    private phxChannel: PhxChannelService
+  ) {
+    phxChannel.Centers.subscribe( data => {
+      this.CENTERS = [];
+      data.forEach( e => {
+        this.CENTERS.push({
+          idx: e.id,
+          contact: e.contact,
+          maxUser: e.limited,
+          address: e.address,
+          manager: e.manager,
+          name: e.name,
+          email: e.email
+        })
+      });
+      this.centerData = new MatTableDataSource(this.CENTERS);
+    })
+    phxChannel.Accounts.subscribe( data => {
+      this.ACCOUNTS = [];
+      data.forEach( e => {
+        this.ACCOUNTS.push({
+          id: e.id,
+          idx: e.id,
+          uname: e.uname,
+          pwd: e.pwd,
+          name: e.name,
+          level: e.level,
+          birth: e.birth,
+          contact: e.contact,
+          center: e.center,
+          centerId: e.centerId,
+          email: e.email
+        })
+      });
+      this.accountData = new MatTableDataSource(this.ACCOUNTS);
+    })
+    
+    this.accountData = new MatTableDataSource(this.ACCOUNTS);
+    this.centerData = new MatTableDataSource(this.CENTERS);
   }
 
   ngAfterViewInit(): void {
@@ -37,6 +84,8 @@ export class AdministratorComponent implements AfterViewInit {
     this.centerData.paginator = this.paginator2;
     this.accountData.sort = this.sort1;
     this.centerData.sort = this.sort2;
+    this.phxChannel.gets("center", '');
+    this.phxChannel.gets("account", '');
   }
   addAccount(){
     const dialogRef = this.dialog1.open(AccountAddComponent,{
@@ -63,16 +112,15 @@ export class AdministratorComponent implements AfterViewInit {
     editButton.classList.add('hidden')
     updateButton.classList.remove('hidden')
   }
-  reviceAccount(){
+  reviceAccount( info ){
     const reviceAccount = this.dialog2.open(AccountUpdateComponent,{
-      width:'40%', height:'70%',
+      width:'40%', height:'70%', data: info
     });
   }
-  reviceCenter(){
+  reviceCenter( info ){
     const reviceCenter = this.dialog4.open(CenterUpdateComponent,{
-      width:'40%', height:'70%',
+      width:'40%', height:'70%', data: info
     });
-    
   }
   editCenter(){
       var centerTable = document.getElementById('centerTable');
@@ -118,9 +166,15 @@ export class AdministratorComponent implements AfterViewInit {
       editButton.classList.remove('hidden');
     }
   }
-  delete(event:Event){
+  
+  deleteCenter( d ){
     if(confirm('삭제하시겠습니까?')){
-      (event.target as HTMLElement).parentElement.parentElement.remove();
+      this.phxChannel.del("center", { id: d.idx });
+    }
+  }
+  deleteAccount( d ){
+    if(confirm('삭제하시겠습니까?')){
+      this.phxChannel.del("account", { id: d.id });
     }
   }
 

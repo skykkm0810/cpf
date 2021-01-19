@@ -6,3 +6,7 @@
     color:#fff;
     float: right;
 }
+.mat-radio-button {
+    display: block;
+    padding:0.2rem;
+}

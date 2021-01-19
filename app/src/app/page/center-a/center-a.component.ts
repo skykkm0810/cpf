@@ -86,14 +86,13 @@ export class CenterAComponent implements AfterViewInit {
     this.deviceDataSource.sort = this.sort3;
     this.deviceLogData.paginator = this.paginator4;
     this.deviceLogData.sort = this.sort4;
-    this.phxChannel.gets('device');
+    this.phxChannel.gets('device', { centerId: this.centerId });
     this.phxChannel.get('center', { centerId: this.centerId });
   }
   
   select(){
     this.phxChannel.send(
       "device",
-      "device:add",
       this.gen.genDevice()
     )
   }
@@ -194,11 +193,11 @@ export class CenterAComponent implements AfterViewInit {
   userFilter(e : Event){
     this.seniorDataSource = new MatTableDataSource(SENIORS);
     var value =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
-    var extract = value.match(/\d/g);
-    var key = Number(extract.join(""));
     var data = new Array;
     var result : Senior[] = [];
     if( value !== '전체'){
+      var extract = value.match(/\d/g);
+      var key = Number(extract.join(""));
       data = this.seniorDataSource.filteredData;
       for(var i =0; i< data.length; i++){
         if(data[i].age >= key && data[i].age < key+10){

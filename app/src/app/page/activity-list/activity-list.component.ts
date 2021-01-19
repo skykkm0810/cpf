@@ -55,7 +55,7 @@ export class ActivityListComponent implements AfterViewInit {
   }
   updateActivity() {
     const dialogRef3 = this.dialog3.open(ActivityUpdateComponent, {
-      width: '600px',
+      width: '600px', height:'700px',
     });
   }
   removeList(){
@@ -71,24 +71,20 @@ export class ActivityListComponent implements AfterViewInit {
     }
     console.log(this.dataSource);
   }
-  
-  updateAllComplete() {
-    this.allComplete = this.filter.subFilters != null && this.filter.subFilters.every(t => t.completed);
-  }
-  
-  someComplete(): boolean {
-    if (this.filter.subFilters == null) {
-      return false;
-    }
-    return this.filter.subFilters.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
 
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.filter.subFilters == null) {
-      return;
+  radioFilter(e : Event){
+    this.dataSource = new MatTableDataSource(ACTIVITIES);
+    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    var data = new Array;
+    var result : Activity[] = [];
+    if( key !== '전체'){
+      data = this.dataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].progress == key){
+          result.push(data[i])
+        }
+      }
+      this.dataSource = new MatTableDataSource(result);
     }
-    this.filter.subFilters.forEach(t => t.completed = completed);
   }
-
 }

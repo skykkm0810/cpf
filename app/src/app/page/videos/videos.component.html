@@ -2,8 +2,12 @@
   <h3>동영상 목록</h3>
   <button mat-button class="addVideo" (click)="addvideo()">영상 추가</button>
 </mat-card>
+<mat-form-field class="filterBox">
+  <mat-label>search</mat-label>
+  <input matInput (keyup)="Filter()" placeholder="Ex. Mia" id="filter">
+</mat-form-field>
 <div class="videoList">
-  <mat-card *ngFor="let video of videos">
+  <mat-card *ngFor="let video of videos" class="itemCard">
     <img class="thumnail" src="../../../assets/images/users/{{video.thum}}" alt='/' (click)="detail()">
     <p class="title" (click)="detail()">{{video.title}}</p>
     <p class="update">{{video.update}}</p>

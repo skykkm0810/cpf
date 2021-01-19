@@ -1,12 +1,12 @@
-defmodule Cpf.ControlDevice do
+defmodule Cpf.ConDevice do
   @moduledoc """
-  The ControlDevice context.
+  The ConDevice context.
   """
 
   import Ecto.Query, warn: false
   alias Cpf.Repo
 
-  alias Cpf.ControlDevice.Device
+  alias Cpf.ConDevice.Device
 
   @doc """
   Returns the list of devices.

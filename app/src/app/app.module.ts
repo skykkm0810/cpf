@@ -63,7 +63,7 @@ import { ScheduleComponent } from './page/schedule/schedule.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { PhotobookComponent } from './page/photobook/photobook.component';
@@ -213,7 +213,9 @@ import { WorkerUpdateComponent } from './modal/worker-update/worker-update.compo
       useFactory: adapterFactory,
     }),
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

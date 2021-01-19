@@ -31,6 +31,23 @@ export class PhotobookComponent implements OnInit {
       width: '40%',
     });
   }
+  Filter(){
+    var filter, input, text,card ;
+    input = document.getElementById('filter');
+    filter = input.value;
+    card = document.getElementsByClassName('gridItem')
+    
+    for(var i=0; i<card.length; i++){
+      card[i].style.display = 'none';
+      text = card[i].getElementsByTagName('input');
+      for(var j=0; j< text.length; j++){
+        if(text[j].value.indexOf(filter) > -1) {
+          card[i].style.display="block";
+        }
+      }
+    }
+
+  }
 
   
 }

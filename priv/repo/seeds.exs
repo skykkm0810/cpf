@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+
+# alias Cpf.Repo
+# alias Cpf.ApiEvent.Event
+
+# Repo.insert! %Event{ vid: 1, centerId: 1, robotId: 1, type: "mybot" }
+# Repo.insert! %Event{ vid: 2, centerId: 1, robotId: 2, type: "mybot" }
+# Repo.insert! %Event{ vid: 3, centerId: 1, robotId: 1, type: "mybot" }

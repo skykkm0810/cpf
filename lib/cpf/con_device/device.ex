@@ -1,4 +1,4 @@
-defmodule Cpf.ControlDevice.Device do
+defmodule Cpf.ConDevice.Device do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,7 +15,7 @@ defmodule Cpf.ControlDevice.Device do
   @doc false
   def changeset(device, attrs) do
     device
-    |> cast(attrs, [:centerId, :location, :name, :status, :type])
-    |> validate_required([:centerId, :location, :name, :status, :type])
+    |> cast(attrs, [:name, :centerId, :type, :location, :status])
+    |> validate_required([:name, :centerId, :type, :status])
   end
 end

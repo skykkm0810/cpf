@@ -3,11 +3,11 @@ defmodule Cpf.Repo.Migrations.CreateDevices do
 
   def change do
     create table(:devices) do
-      add :centerId, :integer
-      add :location, :string
       add :name, :string
-      add :status, :string
+      add :centerId, :integer
       add :type, :string
+      add :location, :string
+      add :status, :string
 
       timestamps()
     end

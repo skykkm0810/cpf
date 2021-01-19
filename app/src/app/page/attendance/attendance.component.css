@@ -2,3 +2,9 @@ table tr:not(.mat-header-row):hover {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+.selectCenter {
+    width:250px;
+}
+.tableWrap{
+    clear: both;
+}
