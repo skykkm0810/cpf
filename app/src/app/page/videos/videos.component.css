@@ -9,7 +9,7 @@ h3 {
     float: right;
 }
 .videoList { 
-    padding-top : 30px;
+    padding-top : 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px 20px;

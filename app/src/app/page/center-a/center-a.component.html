@@ -36,18 +36,18 @@
     </mat-card>
     <mat-card class="userList filterBox hidden">
       <mat-radio-group>
-        <mat-radio-button value="0">전체</mat-radio-button>
-        <mat-radio-button value="1">60대</mat-radio-button>
-        <mat-radio-button value="2">70대</mat-radio-button>
-        <mat-radio-button value="3">80대</mat-radio-button>
-        <mat-radio-button value="4">90대</mat-radio-button>
+        <mat-radio-button value="0" (click)='userFilter($event)'>전체</mat-radio-button>
+        <mat-radio-button value="1" (click)='userFilter($event)'>60대</mat-radio-button>
+        <mat-radio-button value="2" (click)='userFilter($event)'>70대</mat-radio-button>
+        <mat-radio-button value="3" (click)='userFilter($event)'>80대</mat-radio-button>
+        <mat-radio-button value="4" (click)='userFilter($event)'>90대</mat-radio-button>
       </mat-radio-group>
     </mat-card>
     <mat-card class="deviceList filterBox hidden">
       <mat-radio-group>
-        <mat-radio-button value="0">전체</mat-radio-button>
-        <mat-radio-button value="1">로봇</mat-radio-button>
-        <mat-radio-button value="2">센서</mat-radio-button>
+        <mat-radio-button value="0" (click)='deviceFilter($event)'>전체</mat-radio-button>
+        <mat-radio-button value="1" (click)='deviceFilter($event)'>로봇</mat-radio-button>
+        <mat-radio-button value="2" (click)='deviceFilter($event)'>센서</mat-radio-button>
       </mat-radio-group>
     </mat-card>
   </mat-card>

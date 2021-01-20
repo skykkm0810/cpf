@@ -193,18 +193,51 @@ export class CenterAComponent implements AfterViewInit {
     }
   }
   requestFilter(e : Event){
-    var key =  (e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent;
+    this.requestDataSource = new MatTableDataSource(REQUESTS);
+    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
     var data = new Array;
-    var result = new Array;
-    data = this.requestDataSource.filteredData;
-    for(var i =0; i< data.length; i++){
-      console.log(data[i].progress)
-      console.log(key)
-      if(data[i].progress == key){
-        alert();
+    var result : Request[] = [];
+    if( key !== '전체'){
+      data = this.requestDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].progress == key){
+          result.push(data[i])
+        }
       }
-      
+      this.requestDataSource = new MatTableDataSource(result);
     }
   }
-  
+  userFilter(e : Event){
+    this.seniorDataSource = new MatTableDataSource(SENIORS);
+    var value =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    var data = new Array;
+    var result : Senior[] = [];
+    if( value !== '전체'){
+      var extract = value.match(/\d/g);
+      var key = Number(extract.join(""));
+      data = this.seniorDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].age >= key && data[i].age < key+10){
+          result.push(data[i])
+        }
+      }
+      this.seniorDataSource = new MatTableDataSource(result);
+    }
+  }
+  deviceFilter(e : Event){
+    this.deviceDataSource = new MatTableDataSource(DEVICES);
+    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    var data = new Array;
+    var result : Device[] = [];
+    if( key !== '전체'){
+      data = this.deviceDataSource.filteredData;
+      for(var i =0; i< data.length; i++){
+        if(data[i].type == key){
+          result.push(data[i])
+        }
+      }
+      console.log(result)
+      this.deviceDataSource = new MatTableDataSource(result);
+    }
+  }
 }

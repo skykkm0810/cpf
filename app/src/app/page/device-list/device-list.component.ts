@@ -29,9 +29,6 @@ export class DeviceListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
-  filter = deviceFilter
-  CheckFilter : Device[] = [];
-  filteredData : Device[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -97,6 +94,9 @@ export class DeviceListComponent implements AfterViewInit {
     }
     this.filter.subFilters.forEach(t => t.completed = completed);
   }
+  filter = deviceFilter
+  CheckFilter : Device[] = [];
+  filteredData : Device[] = [];
   checkFilter(filter){
 
     this.filteredData = [];
@@ -167,7 +167,7 @@ export class DeviceListComponent implements AfterViewInit {
   }
   updateDevice( info ) {
     const updateDevice = this.dialog2.open(DeviceUpdateComponent, {
-      width:'40%', data:info
+      width:'40%', data: info
     });
   }
 }

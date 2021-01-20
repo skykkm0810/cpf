@@ -9,7 +9,6 @@ h3 {
     float: right;
 }
 .CCTVlist { 
-    padding-top : 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px 20px;
@@ -38,4 +37,8 @@ h3 {
 .CCTVlist .update {
     text-align: right;
     margin:0!important;
+}
+/* 필터 */
+.filterBox {
+    padding-top: 10px;
 }

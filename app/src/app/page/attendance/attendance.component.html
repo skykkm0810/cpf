@@ -1,8 +1,11 @@
-<mat-card class="m-b-20">
+<mat-card class="m-b-10">
     출석부
 </mat-card>
-
-  <div class="mat-elevation-z8">
+<select class="form-control selectCenter m-b-10 float-right" id="filter" (change)='Filter()'>
+  <option value="0" selected>시설 선택</option>
+  <option *ngFor='let center of centers' value="{{center.idx}}">{{center.name}}</option>
+</select>
+  <div class="mat-elevation-z8 tableWrap">
     <table mat-table [dataSource]="dataSource" #sort='matSort' matSort>
   
       <ng-container matColumnDef="date">
@@ -26,7 +29,7 @@
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: dataColumns;" (click)="fuc();"></tr>
+      <tr mat-row *matRowDef="let row; columns: dataColumns;" (click)="fuc(row.id);"></tr>
     </table>
   
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" #pagnator='matPaginator'></mat-paginator>
