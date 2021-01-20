@@ -19,6 +19,7 @@ export class PhxChannelService {
   centerChannel: any;
   accountChannel: any;
   instructorChannel: any;
+  activityChannel: any;
 
   @Output() Device: EventEmitter<any> = new EventEmitter();
   @Output() Devices: EventEmitter<any> = new EventEmitter();
@@ -30,6 +31,7 @@ export class PhxChannelService {
   @Output() Account: EventEmitter<any> = new EventEmitter();
   @Output() Accounts: EventEmitter<any> = new EventEmitter();
   @Output() Instructors: EventEmitter<any> = new EventEmitter();
+  @Output() Activities: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -157,6 +159,31 @@ export class PhxChannelService {
           this.Instructors.emit(payload.body);
         })
 
+      this.activityChannel = this.socket.channel('cpf:activity', {} );
+      this.activityChannel
+        .join()
+        .receive('ok', resp => {
+          console.log('Joined successfully', resp);
+        })
+        .receive('error', resp => {
+          console.log('Unable to join', resp);
+        });
+        this.activityChannel.on('activity:add', payload => {
+          // console.log('cpf:activity:add from phx socket: ', payload);
+          // this.activitys.emit(payload);
+        })
+        this.activityChannel.on('activity:detail', payload => {
+          // console.log('cpf:activity:detail from phx socket: ', payload);
+          // this.activitys.emit(payload);
+        })
+        this.activityChannel.on('activity:detail:update', payload => {
+          // console.log('cpf:activity:detail:update ', payload);
+        })
+        this.activityChannel.on('activity:list', payload => {
+          // console.log('cpf:activity:list from phx socket: ', payload);
+          this.Activities.emit(payload.body);
+        })
+    
   }
 
   send(channel, message) {
@@ -175,6 +202,10 @@ export class PhxChannelService {
 
       case 'instructor':
         this.instructorChannel.push("instructor:add:req", {body: message});
+        break;
+
+      case 'activity':
+        this.activityChannel.push("activity:add:req", {body: message});
         break;
   
       default:
@@ -204,6 +235,10 @@ export class PhxChannelService {
         this.instructorChannel.push('instructor:list:req', { body: message });
         break;
 
+      case 'activity':
+        this.activityChannel.push('activity:list:req', { body: message });
+        break;
+      
       default:
         break;
     }
@@ -223,12 +258,21 @@ export class PhxChannelService {
 
   up(channel, message) : void {
     switch ( channel ) {
+      case 'device':
+        this.deviceChannel.push('device:detail:update:req', {body: message});
+        break;
+
       case 'center':
         this.centerChannel.push('center:detail:update:req', {body: message});
         break;
 
       case 'account':
         this.accountChannel.push('account:detail:update:req', {body: message});
+        console.log(message);
+        break;
+
+      case 'activity':
+        this.activityChannel.push('activity:detail:update:req', {body: message});
         console.log(message);
         break;
         
@@ -243,13 +287,16 @@ export class PhxChannelService {
         this.deviceChannel.push('device:delete:req', {body: message});
         break;
 
-
       case 'center':
         this.centerChannel.push('center:delete:req', {body: message});
         break;
 
       case 'account':
         this.accountChannel.push('account:delete:req', {body: message});
+        break;
+
+      case 'activity':
+        this.activityChannel.push('activity:delete:req', {body: message});
         break;
   
       default:

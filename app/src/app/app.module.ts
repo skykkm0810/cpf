@@ -164,6 +164,7 @@ import { WorkerUpdateComponent } from './modal/worker-update/worker-update.compo
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

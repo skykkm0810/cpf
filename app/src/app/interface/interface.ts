@@ -373,8 +373,8 @@ export const WORKERS: Worker[] = [
 ]
 
 export interface Activity {
-  task : string;
-  teacher : string;
+  name : string;
+  instructor : string;
   contact : string;
   center : string;
   color : string;
@@ -383,7 +383,7 @@ export interface Activity {
   photo : string;
 }
 
-export const activityHeader: string[] = ['task', 'teacher', 'contact', 'center', 'progress', 'datetime','control'];
+export const activityHeader: string[] = ['name', 'instructor', 'contact', 'center', 'progress', 'datetime','control'];
 
 export const activityFilter: Filter = {
   name: '전체',
@@ -391,23 +391,23 @@ export const activityFilter: Filter = {
   color: 'primary',
   subFilters: [
     {name: '예정', completed: false, color: 'primary'},
-    {name: '진행중', completed: false, color: 'primary'},
+    {name: '진행', completed: false, color: 'primary'},
     {name: '완료', completed: false, color: 'primary'},
     {name: '취소', completed: false, color: 'primary'},
   ]
 }
 
 export const ACTIVITIES: Activity[] = [
-  { teacher : '김모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '1.jpg', datetime: '2020.10.15 14:13', task : '스트레칭', color: 'info'},
-  { teacher : '윤모모', progress: '진행', center : '시설B', contact: '010-0000-0000', photo: '2.jpg', datetime: '2020.10.17 10:15', task : '노래교실', color: 'warning'},
-  { teacher : '박모모', progress: '예정', center : '시설C', contact: '010-0000-0000', photo: '3.jpg', datetime: '2020.10.19 16:24', task : '실버스포츠', color: 'info'},
-  { teacher : '임모모', progress: '완료', center : '시설A', contact: '010-0000-0000', photo: '4.jpg', datetime: '2020.10.22 14:13', task : '댄스스포츠', color: 'success'},
-  { teacher : '정모모', progress: '완료', center : '시설B', contact: '010-0000-0000', photo: '5.jpg', datetime: '2020.10.26 14:13', task : '볼링', color: 'success'},
-  { teacher : '설모모', progress: '취소', center : '시설C', contact: '010-0000-0000', photo: '6.jpg', datetime: '2020.11.01 14:13', task : '볼링', color: 'danger'},
-  { teacher : '이모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '7.jpg', datetime: '2020.11.05 14:13', task : '스트레칭', color: 'info'},
-  { teacher : '김모모', progress: '진행', center : '시설B', contact: '010-0000-0000', photo: '8.jpg', datetime: '2020.11.17 14:13', task : '노래교실', color: 'warning'},
-  { teacher : '최모모', progress: '완료', center : '시설C', contact: '010-0000-0000', photo: '1.jpg', datetime: '2020.11.20 14:13', task : '댄스스포츠', color: 'success'},
-  { teacher : '진모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '2.jpg', datetime: '2020.12.01 14:13', task : '볼링', color: 'info'},
+  { instructor : '김모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '1.jpg', datetime: '2020.10.15 14:13', name : '스트레칭', color: 'info'},
+  { instructor : '윤모모', progress: '진행', center : '시설B', contact: '010-0000-0000', photo: '2.jpg', datetime: '2020.10.17 10:15', name : '노래교실', color: 'warning'},
+  { instructor : '박모모', progress: '예정', center : '시설C', contact: '010-0000-0000', photo: '3.jpg', datetime: '2020.10.19 16:24', name : '실버스포츠', color: 'info'},
+  { instructor : '임모모', progress: '완료', center : '시설A', contact: '010-0000-0000', photo: '4.jpg', datetime: '2020.10.22 14:13', name : '댄스스포츠', color: 'success'},
+  { instructor : '정모모', progress: '완료', center : '시설B', contact: '010-0000-0000', photo: '5.jpg', datetime: '2020.10.26 14:13', name : '볼링', color: 'success'},
+  { instructor : '설모모', progress: '취소', center : '시설C', contact: '010-0000-0000', photo: '6.jpg', datetime: '2020.11.01 14:13', name : '볼링', color: 'danger'},
+  { instructor : '이모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '7.jpg', datetime: '2020.11.05 14:13', name : '스트레칭', color: 'info'},
+  { instructor : '김모모', progress: '진행', center : '시설B', contact: '010-0000-0000', photo: '8.jpg', datetime: '2020.11.17 14:13', name : '노래교실', color: 'warning'},
+  { instructor : '최모모', progress: '완료', center : '시설C', contact: '010-0000-0000', photo: '1.jpg', datetime: '2020.11.20 14:13', name : '댄스스포츠', color: 'success'},
+  { instructor : '진모모', progress: '예정', center : '시설A', contact: '010-0000-0000', photo: '2.jpg', datetime: '2020.12.01 14:13', name : '볼링', color: 'info'},
 ]
 
 export interface Task {
@@ -713,4 +713,11 @@ export const SelTASKS: any = [
   { name: '요양사' },
   { name: '지원' },
   { name: '봉사' },
+]
+
+export const SelPROGRESS: any = [
+  { name: '예정' },
+  { name: '진행' },
+  { name: '완료' },
+  { name: '취소' },
 ]

@@ -22,7 +22,11 @@ export class CenterAddComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<CenterAComponent>,
     private phxChannel: PhxChannelService
-  ) { }
+  ) {
+    phxChannel.Centers.subscribe( data => {
+      this.closeDialog();
+    })
+  }
 
   ngOnInit(): void {
   }

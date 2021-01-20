@@ -1,12 +1,17 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Activity, activityHeader, ACTIVITIES, activityFilter } from '../../interface/interface';
 import { ActivityAddComponent} from '../../modal/activity-add/activity-add.component';
 import { ActivityDetailComponent} from '../../modal/activity-detail/activity-detail.component';
 import { ActivityUpdateComponent} from '../../modal/activity-update/activity-update.component';
+import { PhxChannelService } from 'src/app/service/phx-channel.service';
+import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
+
+
 @Component({
   selector: 'app-activity-list',
   templateUrl: './activity-list.component.html',
@@ -17,7 +22,8 @@ export class ActivityListComponent implements AfterViewInit {
   allComplete: boolean = false;
   
   displayedColumns: string[] = activityHeader;
-  dataSource: MatTableDataSource<Activity>;
+  dataSource: MatTableDataSource<any>;
+  activities: any = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,13 +34,40 @@ export class ActivityListComponent implements AfterViewInit {
     public dialog: MatDialog,
     public dialog2: MatDialog,
     public dialog3: MatDialog,
+    private phxChannel: PhxChannelService
   ) {
-    this.dataSource = new MatTableDataSource(ACTIVITIES);
+    this.dataSource = new MatTableDataSource([]);
+    phxChannel.Activities.subscribe( data => {
+      this.activities = [];
+      data.forEach( el => {
+        // console.log(el.center[0].name);
+        let con
+        if ( el.contact == null ) {
+          con = el.instructor[0].contact;
+        } else {
+          con = el.contact;
+        }
+        // console.log(con);
+        this.activities.push({
+          id: el.id,
+          name: el.name,
+          contact: con,
+          center: el.center[0].name,
+          centerId: el.center[0].id,
+          instructor: el.instructor[0].name,
+          instructorId: el.instructor[0].id,
+          progress: el.progress,
+          datetime: el.datetime
+        })
+      })
+      this.dataSource = new MatTableDataSource(this.activities);
+    })
   }
   
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.phxChannel.gets("activity", '');
   }
   addActivity() {
     const dialogRef = this.dialog.open(ActivityAddComponent, {
@@ -43,7 +76,6 @@ export class ActivityListComponent implements AfterViewInit {
   }
   detailActivity(event:Event) {
     var thisElement = event.target as HTMLElement;
-    console.log(thisElement)
     if(thisElement.classList.contains('mat-button-wrapper') || thisElement.classList.contains('float-right')){
       event.preventDefault()
     }
@@ -53,14 +85,14 @@ export class ActivityListComponent implements AfterViewInit {
       });
     }
   }
-  updateActivity() {
-    const dialogRef3 = this.dialog3.open(ActivityUpdateComponent, {
-      width: '600px', height:'700px',
+  updateActivity( info ) {
+    const dialogRef = this.dialog3.open(ActivityUpdateComponent, {
+      width: '40%', data: info
     });
   }
-  removeList(){
+  removeActivity( info ){
     if(confirm('삭제하시겠습니까?')){
-      alert('삭제되었습니다.')
+      this.phxChannel.del("activity", { id: info.id });
     }
   }
   applyFilter(event: Event) {  

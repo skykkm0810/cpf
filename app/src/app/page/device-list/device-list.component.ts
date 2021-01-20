@@ -44,8 +44,8 @@ export class DeviceListComponent implements AfterViewInit {
         this.CheckFilter.push({ 
           id: el.id,
           name: el.name,
-          center: el.center,
-          centerId: el.centerId,
+          center: el.center[0].name,
+          centerId: el.center[0].id,
           location: el.location,
           status: el.status,
           type: el.type,

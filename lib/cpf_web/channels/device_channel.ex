@@ -35,7 +35,6 @@ defmodule CpfWeb.DeviceChannel do
   end
 
   def handle_in("device:detail:update:req", %{"body" => payload}, socket) do
-    IO.puts "===>> #{inspect payload}"
     update_device(payload)
     res = list_devices()
     push(socket, "device:list", %{body: res})
@@ -66,12 +65,11 @@ defmodule CpfWeb.DeviceChannel do
 
     Cpf.ConDevice.list_devices()
     |> Enum.map(fn data ->
-      [c] = Enum.filter(center, fn d -> d.id == data.centerId end)
+      c = Enum.filter(center, fn d -> d.id == data.centerId end)
       %{
         id: data.id,
         name: data.name,
-        center: c.name,
-        centerId: data.centerId,
+        center: c,
         location: data.location,
         status: data.status,
         type: data.type,

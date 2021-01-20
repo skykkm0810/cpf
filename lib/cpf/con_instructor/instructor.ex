@@ -8,6 +8,7 @@ defmodule Cpf.ConInstructor.Instructor do
     field :name, :string
     field :region, :string
     field :task, :string
+    field :img, :string
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Cpf.ConInstructor.Instructor do
   @doc false
   def changeset(instructor, attrs) do
     instructor
-    |> cast(attrs, [:name, :contact, :centerId, :task, :region])
+    |> cast(attrs, [:name, :contact, :centerId, :task, :region, :img])
     |> validate_required([:name, :contact, :centerId, :task])
   end
 end

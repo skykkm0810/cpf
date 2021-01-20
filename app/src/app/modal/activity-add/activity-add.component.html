@@ -11,22 +11,22 @@
             <span class="label">강사명</span>
             <mat-form-field appearance="fill">
                 <mat-label>강사명</mat-label>
-                <mat-select name="instructor" [(ngModel)]="activity.instructorId">
-                  <mat-option *ngFor="let instructor of instructors" value="{{ instructor.value }}">{{ instructor.name }}</mat-option>
+                <mat-select name="instructor" [(ngModel)]="activity.instructorId" required>
+                  <mat-option *ngFor="let instructor of instructors" value="{{ instructor.value }}">{{ instructor.name }}, {{ instructor.contact }}</mat-option>
                 </mat-select>
               </mat-form-field>
         </p>
         <p class="contact">
             <span class="label">연락처</span>
             <mat-form-field>
-                <input matInput matInput [(ngModel)]="activity.contact" name="contact" required>
+                <input matInput matInput [(ngModel)]="activity.contact" name="contact">
             </mat-form-field>
         </p>
         <p class="center">
             <span class="label">시설</span>
             <mat-form-field appearance="fill">
                 <mat-label>시설</mat-label>
-                <mat-select name="center" [(ngModel)]="activity.centerId">
+                <mat-select name="center" [(ngModel)]="activity.centerId" required>
                   <mat-option *ngFor="let center of centers" value="{{ center.value }}">{{ center.name }}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -37,10 +37,19 @@
                 <input matInput type="datetime-local" matInput [(ngModel)]="activity.date" name="date" required>
             </mat-form-field>
         </p>
+        <p class="inserted">
+            <span class="label">상태</span>
+            <mat-form-field appearance="fill">
+                <mat-label>상태</mat-label>
+                <mat-select name="status" [(ngModel)]="activity.progress" required>
+                    <mat-option *ngFor="let p of progress" value="{{ p.name }}">{{ p.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
         
         
         <div class="buttonBox">
-            <button mat-button class="submit">추가하기</button>
+            <button mat-button class="submit" (click)="add()">추가하기</button>
             <button mat-button class="cancel" (click)="closeDialog()">취소</button>
         </div>
     </form>

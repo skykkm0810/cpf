@@ -55,7 +55,7 @@ export class DeviceUpdateComponent implements OnInit {
       name: this.info.name,
       status: this.info.status,
       location: this.info.location,
-      centerId: this.info.center,
+      centerId: this.info.centerId,
     }
   }
 

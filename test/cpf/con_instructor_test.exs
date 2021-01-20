@@ -36,6 +36,7 @@ defmodule Cpf.ConInstructorTest do
       assert instructor.name == "some name"
       assert instructor.region == "some region"
       assert instructor.task == "some task"
+      assert instructor.img == "some img"
     end
 
     test "create_instructor/1 with invalid data returns error changeset" do
@@ -50,6 +51,7 @@ defmodule Cpf.ConInstructorTest do
       assert instructor.name == "some updated name"
       assert instructor.region == "some updated region"
       assert instructor.task == "some updated task"
+      assert instructor.img == "some updated img"
     end
 
     test "update_instructor/2 with invalid data returns error changeset" do

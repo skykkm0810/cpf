@@ -37,6 +37,9 @@ export class DeviceAddComponent implements OnInit {
         })
       });
     })
+    phxChannel.Devices.subscribe( data => {
+      this.closeDialog();
+    })
   }
   
   ngOnInit(): void {

@@ -1,30 +1,56 @@
-<div class="background">
-    <label for="photoUpload" class="fakeUpload">클릭해서 이미지 추가 </label>
-    <input type="file" id="photoUpload" class="hidden" (change)='showPicture($event)'>
-</div>
-<div class="contentsWrap">
-  <p class="title">
-    <span class="label">프로그램명</span>
-    <input type="text" class="form-control contents">
-  </p>
-  <p class="learnNum">
-    <span class="label">수강 인원</span>
-    <input type="text" class="form-control contents">
-  </p>
-  <p class="teacher">
-    <span class="label">강사</span>
-    <input type="text" class="form-control contents">
-  </p>
-  <p class="contact">
-    <span class="label">강사 연락처</span>
-    <input type="text" class="form-control contents">
-  </p>
-  <p class="datetime">
-    <span class="label">일정</span>
-    <input type="text" class="form-control contents">
-  </p>
-</div>
-<div class="buttonBox">
-    <button mat-button class="adjust">적용하기</button>
-    <button mat-button class="cancel" (click)="cancel()">취소</button>
-</div>
+<!-- <h4>프로그램 수정</h4>
+<div class="contents">
+    <form action="/">
+        <p class="title">
+            <span class="label">활동명</span>
+            <mat-form-field>
+                <input matInput matInput [(ngModel)]="activity.name" name="uname" required>
+            </mat-form-field>
+        </p>
+        <p class="teacher">
+            <span class="label">강사명</span>
+            <mat-form-field appearance="fill">
+                <mat-label>강사명</mat-label>
+                <mat-select name="instructor" [(ngModel)]="activity.instructorId" required>
+                  <mat-option *ngFor="let instructor of instructors" value="{{ instructor.value }}">{{ instructor.name }}, {{ instructor.contact }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </p>
+        <p class="contact">
+            <span class="label">연락처</span>
+            <mat-form-field>
+                <input matInput matInput [(ngModel)]="activity.contact" name="contact">
+            </mat-form-field>
+        </p>
+        <p class="center">
+            <span class="label">시설</span>
+            <mat-form-field appearance="fill">
+                <mat-label>시설</mat-label>
+                <mat-select name="center" [(ngModel)]="activity.centerId" required>
+                  <mat-option *ngFor="let center of centers" value="{{ center.value }}">{{ center.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </p>
+        <p class="datetime">
+            <span class="label">일정</span>
+            <mat-form-field>
+                <input matInput type="datetime-local" matInput [(ngModel)]="activity.date" name="date" required>
+            </mat-form-field>
+        </p>
+        <p class="inserted">
+            <span class="label">상태</span>
+            <mat-form-field appearance="fill">
+                <mat-label>상태</mat-label>
+                <mat-select name="status" [(ngModel)]="activity.progress" required>
+                    <mat-option *ngFor="let p of progress" value="{{ p.name }}">{{ p.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        
+        
+        <div class="buttonBox">
+            <button mat-button class="submit" (click)="up()">수정하기</button>
+            <button mat-button class="cancel" (click)="closeDialog()">취소</button>
+        </div>
+    </form>
+</div> -->

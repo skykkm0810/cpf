@@ -8,6 +8,7 @@ defmodule Cpf.Repo.Migrations.CreateInstructors do
       add :centerId, :integer
       add :task, :string
       add :region, :string
+      add :img, :string
 
       timestamps()
     end
