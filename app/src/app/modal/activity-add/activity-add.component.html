@@ -4,38 +4,37 @@
         <p class="title">
             <span class="label">활동명</span>
             <mat-form-field>
-                <input matInput>
+                <input matInput matInput [(ngModel)]="activity.name" name="uname" required>
             </mat-form-field>
         </p>
         <p class="teacher">
-            <span class="label">이름</span>
-            <mat-form-field>
-                <input matInput>
-            </mat-form-field>
+            <span class="label">강사명</span>
+            <mat-form-field appearance="fill">
+                <mat-label>강사명</mat-label>
+                <mat-select name="instructor" [(ngModel)]="activity.instructorId">
+                  <mat-option *ngFor="let instructor of instructors" value="{{ instructor.value }}">{{ instructor.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
         </p>
-        
         <p class="contact">
             <span class="label">연락처</span>
             <mat-form-field>
-                <input matInput>
+                <input matInput matInput [(ngModel)]="activity.contact" name="contact" required>
             </mat-form-field>
         </p>
         <p class="center">
             <span class="label">시설</span>
-            <mat-form-field>
-                <input matInput>
-            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>시설</mat-label>
+                <mat-select name="center" [(ngModel)]="activity.centerId">
+                  <mat-option *ngFor="let center of centers" value="{{ center.value }}">{{ center.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
         </p>
         <p class="datetime">
             <span class="label">일정</span>
             <mat-form-field>
-                <input matInput type="datetime-local">
-            </mat-form-field>
-        </p>
-        <p class="learnNum">
-            <span class="label">참여인원 수</span>
-            <mat-form-field>
-                <input matInput>
+                <input matInput type="datetime-local" matInput [(ngModel)]="activity.date" name="date" required>
             </mat-form-field>
         </p>
         

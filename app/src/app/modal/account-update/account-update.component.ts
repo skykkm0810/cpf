@@ -42,7 +42,6 @@ export class AccountUpdateComponent implements OnInit {
           name: el.name
         })
       });
-      console.log(this.centers);
     })
    }
 
