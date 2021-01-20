@@ -14,9 +14,9 @@ defmodule CpfWeb.RobotEventView do
     %{id: robot_event.id,
       vId: robot_event.vId,
       centerId: robot_event.centerId,
-      robotId: robot_event.robotId,
+      deviceId: robot_event.deviceId,
       event: robot_event.event,
-      eventtime: robot_event.eventtime,
-      eventdate: robot_event.eventdate}
+      eventdate: robot_event.eventdate,
+      eventtime: robot_event.eventtime}
   end
 end

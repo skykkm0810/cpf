@@ -6,21 +6,21 @@ defmodule CpfWeb.RobotEventControllerTest do
 
   @create_attrs %{
     centerId: 42,
+    deviceId: 42,
     event: "some event",
     eventdate: "some eventdate",
     eventtime: "some eventtime",
-    robotId: 42,
     vId: 42
   }
   @update_attrs %{
     centerId: 43,
+    deviceId: 43,
     event: "some updated event",
     eventdate: "some updated eventdate",
     eventtime: "some updated eventtime",
-    robotId: 43,
     vId: 43
   }
-  @invalid_attrs %{centerId: nil, event: nil, eventdate: nil, eventtime: nil, robotId: nil, vId: nil}
+  @invalid_attrs %{centerId: nil, deviceId: nil, event: nil, eventdate: nil, eventtime: nil, vId: nil}
 
   def fixture(:robot_event) do
     {:ok, robot_event} = Event.create_robot_event(@create_attrs)
@@ -48,10 +48,10 @@ defmodule CpfWeb.RobotEventControllerTest do
       assert %{
                "id" => id,
                "centerId" => 42,
+               "deviceId" => 42,
                "event" => "some event",
                "eventdate" => "some eventdate",
                "eventtime" => "some eventtime",
-               "robotId" => 42,
                "vId" => 42
              } = json_response(conn, 200)["data"]
     end
@@ -74,10 +74,10 @@ defmodule CpfWeb.RobotEventControllerTest do
       assert %{
                "id" => id,
                "centerId" => 43,
+               "deviceId" => 43,
                "event" => "some updated event",
                "eventdate" => "some updated eventdate",
                "eventtime" => "some updated eventtime",
-               "robotId" => 43,
                "vId" => 43
              } = json_response(conn, 200)["data"]
     end

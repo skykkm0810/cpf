@@ -33,7 +33,7 @@ import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.compon
 import { DietaryPhotoAddComponent } from './modal/dietary-photo-add/dietary-photo-add.component';
 
 const routes: Routes = [
-  { path: TAGS.DASHBOARD, component: DashboardComponent },
+  { path: TAGS.DASHBOARD, component: DashboardComponent, data: { title: 'dashboard'} },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
   { path: TAGS.SENIORLIST, component: SeniorListComponent },
   { path: TAGS.ACTIVITYLIST, component: ActivityListComponent },

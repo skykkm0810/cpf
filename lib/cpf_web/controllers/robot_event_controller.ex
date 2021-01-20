@@ -12,7 +12,6 @@ defmodule CpfWeb.RobotEventController do
   end
 
   def create(conn, robot_event_params) do
-    IO.puts "===>> #{inspect robot_event_params}"
     with {:ok, %RobotEvent{} = robot_event} <- Event.create_robot_event(robot_event_params) do
       conn
       |> put_status(:created)
@@ -20,15 +19,6 @@ defmodule CpfWeb.RobotEventController do
       |> render("show.json", robot_event: robot_event)
     end
   end
-  # def create(conn, %{"robot_event" => robot_event_params}) do
-  #   IO.puts "===>> #{inspect robot_event_params}"
-  #   with {:ok, %RobotEvent{} = robot_event} <- Event.create_robot_event(robot_event_params) do
-  #     conn
-  #     |> put_status(:created)
-  #     |> put_resp_header("location", Routes.robot_event_path(conn, :show, robot_event))
-  #     |> render("show.json", robot_event: robot_event)
-  #   end
-  # end
 
   def show(conn, %{"id" => id}) do
     robot_event = Event.get_robot_event!(id)

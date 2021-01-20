@@ -101,4 +101,100 @@ defmodule Cpf.Event do
   def change_robot_event(%RobotEvent{} = robot_event, attrs \\ %{}) do
     RobotEvent.changeset(robot_event, attrs)
   end
+
+  alias Cpf.Event.SleepEvent
+
+  @doc """
+  Returns the list of sleepevents.
+
+  ## Examples
+
+      iex> list_sleepevents()
+      [%SleepEvent{}, ...]
+
+  """
+  def list_sleepevents do
+    Repo.all(SleepEvent)
+  end
+
+  @doc """
+  Gets a single sleep_event.
+
+  Raises `Ecto.NoResultsError` if the Sleep event does not exist.
+
+  ## Examples
+
+      iex> get_sleep_event!(123)
+      %SleepEvent{}
+
+      iex> get_sleep_event!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_sleep_event!(id), do: Repo.get!(SleepEvent, id)
+
+  @doc """
+  Creates a sleep_event.
+
+  ## Examples
+
+      iex> create_sleep_event(%{field: value})
+      {:ok, %SleepEvent{}}
+
+      iex> create_sleep_event(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_sleep_event(attrs \\ %{}) do
+    %SleepEvent{}
+    |> SleepEvent.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a sleep_event.
+
+  ## Examples
+
+      iex> update_sleep_event(sleep_event, %{field: new_value})
+      {:ok, %SleepEvent{}}
+
+      iex> update_sleep_event(sleep_event, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_sleep_event(%SleepEvent{} = sleep_event, attrs) do
+    sleep_event
+    |> SleepEvent.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a sleep_event.
+
+  ## Examples
+
+      iex> delete_sleep_event(sleep_event)
+      {:ok, %SleepEvent{}}
+
+      iex> delete_sleep_event(sleep_event)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_sleep_event(%SleepEvent{} = sleep_event) do
+    Repo.delete(sleep_event)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking sleep_event changes.
+
+  ## Examples
+
+      iex> change_sleep_event(sleep_event)
+      %Ecto.Changeset{data: %SleepEvent{}}
+
+  """
+  def change_sleep_event(%SleepEvent{} = sleep_event, attrs \\ %{}) do
+    SleepEvent.changeset(sleep_event, attrs)
+  end
 end

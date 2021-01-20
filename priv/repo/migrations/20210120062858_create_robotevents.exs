@@ -5,10 +5,10 @@ defmodule Cpf.Repo.Migrations.CreateRobotevents do
     create table(:robotevents) do
       add :vId, :integer
       add :centerId, :integer
-      add :robotId, :integer
+      add :deviceId, :integer
       add :event, :string
-      add :eventtime, :string
       add :eventdate, :string
+      add :eventtime, :string
 
       timestamps()
     end

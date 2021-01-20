@@ -20,6 +20,7 @@ export class PhxChannelService {
   accountChannel: any;
   instructorChannel: any;
 
+  @Output() Device: EventEmitter<any> = new EventEmitter();
   @Output() Devices: EventEmitter<any> = new EventEmitter();
   @Output() Seniors: EventEmitter<any> = new EventEmitter();
   @Output() Requests: EventEmitter<any> = new EventEmitter();

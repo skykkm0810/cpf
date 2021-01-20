@@ -9,7 +9,7 @@ defmodule CpfWeb.Router do
   scope "/api", CpfWeb do
     pipe_through :api
     resources "/robot/event", RobotEventController, except: [:new, :edit]
-    # resources "/sleep/event", SleepEventController, except: [:new, :edit]
+    resources "/sleep/event", SleepEventController, except: [:new, :edit]
   end
 
   pipeline :browser do
