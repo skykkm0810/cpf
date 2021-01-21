@@ -4,4 +4,5 @@ export const Environment = {
     http: 'http://',
     ws: 'ws://',
     app_version: 3.3,
+    nodeSocket: 'http://localhost:3000'
   };

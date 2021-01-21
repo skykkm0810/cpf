@@ -36,6 +36,7 @@ import {
 } from '../../interface/interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WeatherService } from '../../service/weather.service';
+import { SocketioService } from 'src/app/service/socketio.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -63,13 +64,18 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild('sort4') sort4: MatSort;
 
   constructor(
-    private http: HttpClient,
-    private weather: WeatherService
+    private nodeio: SocketioService
   ) {
     this.requestData = new MatTableDataSource(REQUESTS);
     this.logData = new MatTableDataSource(LOG);
     this.weatherData = new MatTableDataSource(WEATHER);
     this.covidData = new MatTableDataSource(COVID);
+    nodeio.Covid.subscribe(data => {
+      console.log(data);
+    })
+    nodeio.Weather.subscribe(data => {
+      console.log(data);
+    })
   }
   ngAfterViewInit(): void {
     this.requestData.paginator = this.paginator1;
@@ -80,7 +86,8 @@ export class DashboardComponent implements AfterViewInit {
     this.weatherData.sort = this.sort3;
     this.covidData.paginator = this.paginator4;
     this.covidData.sort = this.sort4;
-    this.getdata();
+    this.nodeio.weatherCall();
+    this.nodeio.covidCall();
   }
 
   public lineChartData: ChartDataSets[] = [{
@@ -102,16 +109,4 @@ export class DashboardComponent implements AfterViewInit {
   public lineChartColors: Color[] = []
   public lineChartLegend = true;
 
-  getdata() {
-    this.weather.getWeather()
-      .subscribe( d => console.log(d));
-    // var xhr = new XMLHttpRequest();
-    // xhr.addEventListener("readystatechange", function() {
-    //   if (this.readyState === 4) {
-    //     console.log(this.responseText);
-    //   }
-    // }); 
-    // xhr.open('GET','//localhost:4200/weather.php');
-    // xhr.send();
-  }
 }

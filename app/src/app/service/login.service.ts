@@ -5,13 +5,10 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 })
 export class LoginService {
 
-  Logined: boolean = false;
-  one: string = 'one';
-  two: string = 'two';
+  Logined: boolean = true;
   userInfo: any;
 
   @Output() Log: EventEmitter<any> = new EventEmitter();
-  @Output() Cla: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 

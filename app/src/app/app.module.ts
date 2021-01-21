@@ -103,6 +103,7 @@ import { DietaryPhotoUpdateComponent } from './modal/dietary-photo-update/dietar
 import { VideosUpdateComponent } from './modal/videos-update/videos-update.component';
 import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
 import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
+import { SocketioService } from './service/socketio.service';
 
 @NgModule({
   declarations: [
@@ -217,7 +218,8 @@ import { ActivityUpdateComponent } from './modal/activity-update/activity-update
     }),
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    SocketioService
   ],
   bootstrap: [AppComponent]
 })
