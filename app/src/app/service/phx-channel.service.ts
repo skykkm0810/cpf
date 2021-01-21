@@ -20,6 +20,7 @@ export class PhxChannelService {
   accountChannel: any;
   instructorChannel: any;
   activityChannel: any;
+  accessChannel: any;
 
   @Output() Device: EventEmitter<any> = new EventEmitter();
   @Output() Devices: EventEmitter<any> = new EventEmitter();
@@ -32,6 +33,7 @@ export class PhxChannelService {
   @Output() Accounts: EventEmitter<any> = new EventEmitter();
   @Output() Instructors: EventEmitter<any> = new EventEmitter();
   @Output() Activities: EventEmitter<any> = new EventEmitter();
+  @Output() Access: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.init_channel();
@@ -183,7 +185,20 @@ export class PhxChannelService {
           // console.log('cpf:activity:list from phx socket: ', payload);
           this.Activities.emit(payload.body);
         })
-    
+
+      this.accessChannel = this.socket.channel('cpf:access', {});
+      this.accessChannel
+        .join()
+        .receive('ok', resp => {
+          console.log('Joined successfully', resp);
+        })
+        .receive('error', resp => {
+          console.log('Unable to join', resp);
+        });
+        this.accessChannel.on('access:resp', payload => {
+          // console.log('cpf:access:add from phx socket: ', payload);
+          this.Access.emit(payload);
+        })
   }
 
   send(channel, message) {
@@ -206,6 +221,10 @@ export class PhxChannelService {
 
       case 'activity':
         this.activityChannel.push("activity:add:req", {body: message});
+        break;
+
+      case 'access':
+        this.accessChannel.push("access:req", {body: message});
         break;
   
       default:

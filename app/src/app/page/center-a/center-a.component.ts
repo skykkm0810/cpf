@@ -64,7 +64,6 @@ export class CenterAComponent implements AfterViewInit {
 
     phxChannel.Devices.subscribe( data => {
       this.devices = [];
-      console.log(data);
       data.body.forEach( el => {
         let _d = fn.dateFormatting( el.inserted );
         this.devices.push({

@@ -6,13 +6,13 @@
         <form action="#none">
             <div class="inputData">
                 <mat-form-field>
-                    <input matInput placeholder="ID">
+                    <input matInput placeholder="ID" name="uname" [(ngModel)]="data.uname">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput type='password' placeholder="PW">
+                    <input matInput type='password' placeholder="PW" name="pwd" [(ngModel)]="data.pwd">
                 </mat-form-field>
             </div>
-            <button mat-button class="uppercase loginButton">log in</button>
+            <button mat-button class="uppercase loginButton" (click)="access()">log in</button>
             <div class="AccountBox">
                 <a href="#none" class="findAccount uppercase">id / 비밀번호 찾기</a>
                 <a href='#none' class="enrollAccount">계정 등록하기 </a>

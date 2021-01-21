@@ -52,6 +52,9 @@ export class ActivityUpdateComponent implements OnInit {
         })
       })
     })
+    phxChannel.Activities.subscribe( data => {
+      this.closeDialog();
+    })
   }
 
 
@@ -60,6 +63,7 @@ export class ActivityUpdateComponent implements OnInit {
     this.phxChannel.gets("center", { body: '' })
     this.activity = {
       id: this.info.id,
+      name: this.info.name,
       instructorId: this.info.instructorId,
       contact: this.info.contact,
       centerId: this.info.centerId,

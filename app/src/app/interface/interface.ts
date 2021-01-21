@@ -2,7 +2,7 @@ import { ThemePalette } from "@angular/material/core"
 
 export const TAGS : Record<string, string> = {
   DASHBOARD: '',
-  DEVICELIST: 'devistList',
+  DEVICELIST: 'deviceList',
   SENIORLIST: 'seniorList',
   SENIORPRESENTLIST: 'seniorPresentList',
   ACTIVITYLIST: 'activityList',
@@ -31,7 +31,7 @@ export const TAGS : Record<string, string> = {
   ADMINISTRATOR: 'administrator',
   MYPAGE: 'mypage',
   DIETARYPHOTO: 'dietaryPhoto',
-  PRAC: 'prac',
+  PRAC: 'prac', 
 } 
 
 export interface AsideItem {
@@ -343,7 +343,7 @@ export interface Worker {
   date?: string;
 }
 
-export const workerHeader: string[] = [ 'name', 'contact','task','center', 'region', 'date','control'];
+export const workerHeader: string[] = [ 'name', 'contact','task','center', 'region', 'control'];
 
 export const workerFilter: Filter = {
   name: '전체',

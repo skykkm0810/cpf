@@ -33,7 +33,8 @@ import { DietaryPhotoComponent } from './page/dietary-photo/dietary-photo.compon
 import { DietaryPhotoAddComponent } from './modal/dietary-photo-add/dietary-photo-add.component';
 
 const routes: Routes = [
-  { path: TAGS.DASHBOARD, component: DashboardComponent, data: { title: 'dashboard'} },
+  { path: TAGS.LOGIN, component: LoginComponent, data: { type: 'one' } },
+  { path: TAGS.DASHBOARD, component: DashboardComponent },
   { path: TAGS.DEVICELIST, component: DeviceListComponent },
   { path: TAGS.SENIORLIST, component: SeniorListComponent },
   { path: TAGS.ACTIVITYLIST, component: ActivityListComponent },
@@ -56,7 +57,6 @@ const routes: Routes = [
   { path: TAGS.CCTVDETAIL, component: CctvDetailComponent },
   { path: TAGS.NOTICEDETAIL, component: NoticeDetailComponent },
   { path: TAGS.EMERGENCY, component: EmergencyComponent },
-  { path: TAGS.LOGIN, component: LoginComponent },
   { path: TAGS.EVENT, component: EventListComponent },
   { path: TAGS.REQUEST, component: RequstComponent },
   { path: TAGS.ADMINISTRATOR, component: AdministratorComponent },

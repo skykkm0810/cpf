@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Worker, workerHeader, WORKERS, workerFilter } from '../../interface/interface';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { WorkerAddComponent } from 'src/app/modal/worker-add/worker-add.component';
 import { PhxChannelService } from 'src/app/service/phx-channel.service';
 
@@ -33,7 +33,6 @@ export class WorkerListComponent implements AfterViewInit {
   ) {
     this.dataSource = new MatTableDataSource([this.CheckFilter]);
     phxChannel.Instructors.subscribe( data => {
-      console.log(data);
       this.CheckFilter = [];
       data.forEach( el => {
         this.CheckFilter.push({
@@ -79,7 +78,6 @@ export class WorkerListComponent implements AfterViewInit {
     if ( this.dataSource.paginator ) {
       this.dataSource.paginator.firstPage();
     }
-    console.log(this.dataSource);
   }
   
   updateAllComplete() {

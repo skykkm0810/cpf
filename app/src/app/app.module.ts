@@ -102,6 +102,7 @@ import { AttendantsAddComponent } from './modal/attendants-add/attendants-add.co
 import { DietaryPhotoUpdateComponent } from './modal/dietary-photo-update/dietary-photo-update.component';
 import { VideosUpdateComponent } from './modal/videos-update/videos-update.component';
 import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
+import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +139,7 @@ import { WorkerUpdateComponent } from './modal/worker-update/worker-update.compo
     DeviceUpdateComponent,
     WorkerAddComponent,
     ActivityAddComponent,
+    ActivityUpdateComponent,
     PhotoAddComponent,
     NoticeDetailComponent,
     EmergencyComponent,

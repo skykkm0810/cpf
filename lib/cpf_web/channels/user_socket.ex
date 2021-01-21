@@ -8,6 +8,7 @@ defmodule CpfWeb.UserSocket do
   channel "cpf:center", CpfWeb.CenterChannel
   channel "cpf:instructor", CpfWeb.InstructorChannel
   channel "cpf:activity", CpfWeb.ActivityChannel
+  channel "cpf:access", CpfWeb.AccessChannel
   
 
   # Socket params are passed from the client and can

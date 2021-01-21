@@ -1,9 +1,9 @@
 <mat-drawer-container class="main">
-  <mat-drawer class="aside" mode="side" opened>
+  <mat-drawer class="aside" mode="side" opened *ngIf="logined">
     <app-aside></app-aside>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="top">
+    <div class="top" *ngIf="logined">
       <app-top></app-top>
     </div>
     <div class="app">
