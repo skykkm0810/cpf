@@ -103,6 +103,8 @@ import { DietaryPhotoUpdateComponent } from './modal/dietary-photo-update/dietar
 import { VideosUpdateComponent } from './modal/videos-update/videos-update.component';
 import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
 import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
+import { ContactFamilyComponent } from './modal/contact-family/contact-family.component';
+import { EmergencySMSComponent } from './modal/emergency-sms/emergency-sms.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +165,8 @@ import { ActivityUpdateComponent } from './modal/activity-update/activity-update
     DietaryPhotoUpdateComponent,
     VideosUpdateComponent,
     WorkerUpdateComponent,
+    ContactFamilyComponent,
+    EmergencySMSComponent,
   ],
   imports: [
     BrowserModule,

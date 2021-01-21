@@ -9,6 +9,8 @@ import {CALLEMERGENCY, callEmergency } from '../../interface/interface';
   styleUrls: ['./emergency.component.css']
 })
 export class EmergencyComponent implements AfterViewInit {
+  where :any
+  why :any
   dataColumns: string[] = ["id","date","center","what","desc"];
   dataSource: MatTableDataSource<callEmergency>;
   @ViewChild('pagnator') paginator: MatPaginator;
@@ -20,5 +22,17 @@ export class EmergencyComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+  sendSMS(){
+    var mes = "위치: "+this.where +"\n"+"요청사항:"+this.why; 
+    console.log(mes)
+  }
+  place(e:Event){
+    this.where = (e.target as HTMLElement).textContent;
+  }
+  for(){
+    setTimeout(()=>{
+    this.why = document.getElementsByClassName('mat-radio-checked')[0].querySelector('.mat-radio-label-content').textContent
+    },100)
   }
 }
