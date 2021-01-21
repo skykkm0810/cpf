@@ -104,6 +104,8 @@ import { VideosUpdateComponent } from './modal/videos-update/videos-update.compo
 import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
 import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
 import { SocketioService } from './service/socketio.service';
+import { EmergencySmsComponent } from './modal/emergency-sms/emergency-sms.component';
+import { ContactFamilyComponent } from './modal/contact-family/contact-family.component';
 
 @NgModule({
   declarations: [
@@ -164,6 +166,8 @@ import { SocketioService } from './service/socketio.service';
     DietaryPhotoUpdateComponent,
     VideosUpdateComponent,
     WorkerUpdateComponent,
+    EmergencySmsComponent,
+    ContactFamilyComponent,
   ],
   imports: [
     BrowserModule,

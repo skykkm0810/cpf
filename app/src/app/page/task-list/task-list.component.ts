@@ -71,7 +71,9 @@ export class TaskListComponent implements AfterViewInit {
     if( key !== '전체'){
       var allButton = document.querySelector('.all .mat-radio-button');
       allButton.classList.remove('mat-radio-checked')
-      keyoption.classList.add('mat-radio-checked')
+      setTimeout(()=>{
+        keyoption.classList.add('mat-radio-checked')
+      },200)
       keyoption.closest('.mat-radio-group').classList.add('chkOption');
       var chkGroupNum = document.getElementsByClassName('chkOption').length;
       // if(chkGroupNum == 1){

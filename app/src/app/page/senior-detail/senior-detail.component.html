@@ -48,8 +48,8 @@
   </div>
 </mat-card>
 <div class="functionButton m-b-20">
-  <button mat-button>보호자 연락</button>
-  <button mat-button>응급 요청</button>
+  <button mat-button (click)='contactFamily()'>보호자 연락</button>
+  <button mat-button (click)='emergencySMS()'>응급 요청</button>
   <button mat-button>돌봄 서비스 신청</button>
   <button mat-button>이동 지원</button>
 </div>

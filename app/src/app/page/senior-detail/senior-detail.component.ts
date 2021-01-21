@@ -9,6 +9,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Senior,SENIORS } from '../../interface/interface';
 import { SeniorContactComponent } from '../../modal/senior-contact/senior-contact.component';
 import { SeniorUpdateComponent } from '../../modal/senior-update/senior-update.component';
+import { ContactFamilyComponent } from '../../modal/contact-family/contact-family.component';
+import { EmergencySmsComponent } from '../../modal/emergency-sms/emergency-sms.component';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 
@@ -32,6 +34,8 @@ export class SeniorDetailComponent implements AfterViewInit {
   @ViewChild('sort3') sort3: MatSort;
   constructor(
     public dialog: MatDialog,
+    public dialog2: MatDialog,
+    public dialog3: MatDialog,
     public route : ActivatedRoute,
   ) {
     this.requestData = new MatTableDataSource(REQUESTS);
@@ -78,11 +82,13 @@ export class SeniorDetailComponent implements AfterViewInit {
       alert('삭제되었습니다.')
     }
   }
-  // openNumber(obj1,obj2,obj3,obj4){
-  //   const dialogRef2 = this.dialog.open(SeniorContactComponent, {
-  //     width: '30%',
-  //     data: {name: obj1, contact: obj2, guardian: obj3, guardianContact: obj4}
-  //   });
-  // }
+  contactFamily(){
+    const dialogRef2 = this.dialog2.open(ContactFamilyComponent);
+
+  }
+  emergencySMS(){
+    const dialogRef3 = this.dialog3.open(EmergencySmsComponent);
+
+  }
   
 }
