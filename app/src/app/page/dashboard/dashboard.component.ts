@@ -71,7 +71,13 @@ export class DashboardComponent implements AfterViewInit {
     this.weatherData = new MatTableDataSource(WEATHER);
     this.covidData = new MatTableDataSource(COVID);
     nodeio.Covid.subscribe(data => {
-      console.log(data);
+      console.log(data)
+      // var parser = new DOMParser();
+      // var xmlDoc = parser.parseFromString(data,"text/xml");
+      // var total1 = xmlDoc.getElementsByTagName('decideCnt');
+      // var total2 = xmlDoc.getElementsByTagName('decideCnt')[1].innerHTML;
+      // var newDe = Number(total1) - Number(total2)
+      // console.log(newDe)
     })
     nodeio.Weather.subscribe(data => {
       console.log(data);
