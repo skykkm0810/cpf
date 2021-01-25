@@ -12,16 +12,6 @@ import { Router } from '@angular/router';
 })
 export class TaskListComponent implements AfterViewInit {
 
-  allComplete: boolean = false;
-  
-  displayedColumns: string[] = taskHeader;
-  dataSource: MatTableDataSource<Task>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  
-   filter = taskFilter
-  
   constructor(
     public router : Router
   ) {
@@ -31,7 +21,20 @@ export class TaskListComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    console.log(this.filter);
   }
+
+  chkCon: boolean = false;
+  datas = TASKS;
+
+  displayedColumns: string[] = taskHeader;
+  dataSource: MatTableDataSource<Task>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
+  filter = taskFilter;
+  selectedF = ['', ''];
   
   applyFilter(event: Event) {  
     const filterValue = (event.target as HTMLInputElement).value;
@@ -42,38 +45,53 @@ export class TaskListComponent implements AfterViewInit {
     console.log(this.dataSource);
   }
   
-  updateAllComplete() {
-    this.allComplete = this.filter.subFilters != null && this.filter.subFilters.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    if (this.filter.subFilters == null) {
-      return false;
-    }
-    return this.filter.subFilters.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
-
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.filter.subFilters == null) {
-      return;
-    }
-    this.filter.subFilters.forEach(t => t.completed = completed);
-  }
   add(){
     this.router.navigate(['/taskAdd/']);
   }
+
+  radio( s, f ) {
+    if( f.tag === 'issue' ) {
+      this.selectedF[0] = s.name;
+    } else if ( f.tag === 'center' ) {
+      this.selectedF[1] = s.name;
+    } else {
+      this.selectedF = ['', ''];
+      let btns = document.querySelectorAll('input[type=radio]');
+      console.log(btns);
+      for( let i = 0; i < btns.length; i++ ) {
+        (btns[i] as HTMLInputElement).checked = false;
+      }
+
+    }
+    console.log(this.selectedF);
+
+    this.datas = TASKS;
+    console.log(this.datas);
+    const d1 = this.datas.filter( d => {
+      d.event === '낙상';
+      console.log(d.event);
+      console.log(this.selectedF[0]);
+    });
+    console.log(d1);
+
+    // const d2 = d1.filter( d => {
+    //   d.center == this.selectedF[1];
+    // })
+
+    // this.dataSource = new MatTableDataSource(d2);
+  }
+
   radioFilter(e : Event){
-    var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
-    var keyoption = (e.target as HTMLElement).closest('.mat-radio-button');
-    var data = new Array;
-    var result : Task[] = [];
-    if( key !== '전체'){
-      var allButton = document.querySelector('.all .mat-radio-button');
-      allButton.classList.remove('mat-radio-checked')
-      keyoption.classList.add('mat-radio-checked')
-      keyoption.closest('.mat-radio-group').classList.add('chkOption');
-      var chkGroupNum = document.getElementsByClassName('chkOption').length;
+    // var key =(e.target as HTMLElement).closest('.mat-radio-button').querySelector('.mat-radio-label-content').textContent.trim();
+    // var keyoption = (e.target as HTMLElement).closest('.mat-radio-button');
+    // var data = new Array;
+    // var result : Task[] = [];
+    // if( key !== '전체'){
+    //   var allButton = document.querySelector('.all .mat-radio-button');
+    //   allButton.classList.remove('mat-radio-checked')
+    //   keyoption.classList.add('mat-radio-checked')
+    //   keyoption.closest('.mat-radio-group').classList.add('chkOption');
+    //   var chkGroupNum = document.getElementsByClassName('chkOption').length;
       // if(chkGroupNum == 1){
       //   this.dataSource = new MatTableDataSource(TASKS);
       //   data = this.dataSource.filteredData;
@@ -89,13 +107,44 @@ export class TaskListComponent implements AfterViewInit {
       //   data = this.dataSource.filteredData;
 
       // }
+    // }
+    // else{
+    //   var optionsButton = document.querySelectorAll('.mat-radio-button');
+    //   for(var i=1; i< optionsButton.length; i++){
+    //     optionsButton[i].classList.remove('mat-radio-checked')
+    //   }
+    //   keyoption.classList.add('mat-radio-checked')
+    // }
+  }
+
+  updateAllComplete( el, m ) {
+    if ( el.type == 'all' ) {
+      m.eventFilters.forEach( d => {
+        d.completed = false;
+      })
+      m.centerFilters.forEach( d => {
+        d.completed = false;
+      })
+    } else if ( el.type == 'event' ) {
+      m.eventFilters.forEach( d => {
+        d.completed = false;
+      })
+      m.allFilter.forEach( d => {
+        d.completed = false;
+      })
+      el.completed = true;
+    } else if ( el.type == 'center' ) {
+      m.centerFilters.forEach( d => {
+        d.completed = false;
+      })
+      m.allFilter.forEach( d => {
+        d.completed = false;
+      })
+      el.completed = true;
     }
-    else{
-      var optionsButton = document.querySelectorAll('.mat-radio-button');
-      for(var i=1; i< optionsButton.length; i++){
-        optionsButton[i].classList.remove('mat-radio-checked')
-      }
-      keyoption.classList.add('mat-radio-checked')
-    }
+  }
+
+  checkFilter( el ) {
+
   }
 }

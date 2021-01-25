@@ -8,15 +8,15 @@
         <mat-form-field>
           <mat-label>대상 시설</mat-label>
           <mat-select>
-            <mat-option value="녹양주간보호센터">녹양주간보호센터</mat-option>
-            <mat-option value="요셉주간보호센터">요셉주간보호센터</mat-option>
+            <mat-option value="녹양주간보호센터" (click)="inputWhere($event)">녹양주간보호센터</mat-option>
+            <mat-option value="요셉주간보호센터" (click)="inputWhere($event)">요셉주간보호센터</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-radio-group>
-          <mat-radio-button value="1"> 긴급 구조 신고</mat-radio-button>
-          <mat-radio-button value="2"> 응급 환자 신고</mat-radio-button>
+          <mat-radio-button value="1" (click)='inputWhy($event)'>긴급 구조 신고</mat-radio-button>
+          <mat-radio-button value="2" (click)='inputWhy($event)'>응급 환자 신고</mat-radio-button>
         </mat-radio-group>
-        <button mat-raised-button color="warn" (click)="emergencyCall('긴급 상황, 위치: 경기도 의정부시 녹양동 412-1 녹양주간보호센터')"> 호출 </button>
+        <button mat-raised-button color="warn" (click)="emergencyCall()"> 호출 </button>
       </div>
     </mat-card>
     <mat-card class="centerCall">

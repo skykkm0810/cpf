@@ -10,6 +10,9 @@ import {CALLEMERGENCY, callEmergency } from '../../interface/interface';
   styleUrls: ['./emergency.component.css']
 })
 export class EmergencyComponent implements AfterViewInit {
+  where :any;
+  msg : any;
+  why : any;
   dataColumns: string[] = ["id","date","center","what","desc"];
   dataSource: MatTableDataSource<callEmergency>;
   @ViewChild('pagnator') paginator: MatPaginator;
@@ -27,8 +30,21 @@ export class EmergencyComponent implements AfterViewInit {
       // console.log(data);
     })
   }
-
-  emergencyCall( d ): void {
-    this.nodeio.emergencyCall( d );
+  inputWhere(e:Event) {
+    var tag = e.target as HTMLElement;
+    this.where = tag.innerHTML;
+  }
+  inputWhy(e:Event){
+    var tag = e.target as HTMLElement
+    this.why = tag.closest('label').getElementsByClassName('mat-radio-label-content')[0].textContent;
+  }
+  emergencyCall(): void {
+    if( this.where == undefined && this.why ==undefined){
+      this.msg = "<신고문자>"
+    }
+    else{
+      this.msg ='<'+ this.why +'> \n위치:'+this.where;
+    }
+    this.nodeio.emergencyCall( this.msg );
   }
 }

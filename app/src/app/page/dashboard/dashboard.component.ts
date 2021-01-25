@@ -30,14 +30,16 @@ import {
   weather,
   WEATHER
 } from '../../interface/interface';
-import {
-  covid,
-  COVID
-} from '../../interface/interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WeatherService } from '../../service/weather.service';
 import { SocketioService } from 'src/app/service/socketio.service';
-
+export interface covid19 {
+  id:number;
+  date:string;
+  new?:number;
+  updated?:string;
+}
+export const COVIDDATA : covid19[] =[];
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -51,9 +53,10 @@ export class DashboardComponent implements AfterViewInit {
   logData: MatTableDataSource < log > ;
   weatherColumns: string[] = ["id", 'center', 'todayT', 'todayW', 'tmrrwT', 'tmrrwW'];
   weatherData: MatTableDataSource < weather > ;
-  covidColumns: string[] = ["id", 'date', 'location', 'new', 'total', 'desc'];
-  covidData: MatTableDataSource < covid > ;
-
+  wheaherdata : any;
+  
+  covidColumns: string[] = ["id", 'date', 'new', 'updated'];
+  covidData: MatTableDataSource < covid19 > ;
   @ViewChild('pagnator1') paginator1: MatPaginator;
   @ViewChild('pagnator2') paginator2: MatPaginator;
   @ViewChild('pagnator3') paginator3: MatPaginator;
@@ -62,19 +65,35 @@ export class DashboardComponent implements AfterViewInit {
   @ViewChild('sort2') sort2: MatSort;
   @ViewChild('sort3') sort3: MatSort;
   @ViewChild('sort4') sort4: MatSort;
-
+  wheatherApi :any
   constructor(
     private nodeio: SocketioService
   ) {
     this.requestData = new MatTableDataSource(REQUESTS);
     this.logData = new MatTableDataSource(LOG);
     this.weatherData = new MatTableDataSource(WEATHER);
-    this.covidData = new MatTableDataSource(COVID);
+    this.covidData = new MatTableDataSource(COVIDDATA);
     nodeio.Covid.subscribe(data => {
-      console.log(data);
+      // console.log(data)
+      // var parser = new DOMParser();
+      // var xmlDoc = parser.parseFromString(data,"text/xml");
+      // var total1 = xmlDoc.getElementsByTagName('decideCnt')[0];
+      // var total2 = xmlDoc.getElementsByTagName('decideCnt')[1];
+      // var newDe = Number(total1.innerHTML) - Number(total2.innerHTML);
+      // var updatedTime = xmlDoc.getElementsByTagName('createDt')[0].innerHTML;
+      // var idx = 1;
+      // if(Number(total2.innerHTML) > 0 ){
+      //   var covid :any = {id: idx , date:updatedTime.substr(0,10), new: newDe, updated:updatedTime.substr(0,16) }
+      //   COVIDDATA.push(covid) ;
+      //   console.log(COVIDDATA)
+      //   this.covidData = new MatTableDataSource(COVIDDATA);
+      // }
+
     })
     nodeio.Weather.subscribe(data => {
-      console.log(data);
+      // console.log(data)
+      console.log(JSON.parse(data).response.body.items.item);
+      // REH - 습도 , T1H - 기온 , TMN 아침 최저 , TMX 낮 최고 , POP 강수 확률 
     })
   }
   ngAfterViewInit(): void {

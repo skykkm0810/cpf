@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { AdministratorComponent} from '../../page/administrator/administrator.component';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SelLEVEL } from 'src/app/interface/interface';
@@ -8,7 +8,7 @@ import { PhxChannelService } from 'src/app/service/phx-channel.service';
   templateUrl: './account-update.component.html',
   styleUrls: ['./account-update.component.css']
 })
-export class AccountUpdateComponent implements OnInit {
+export class AccountUpdateComponent implements AfterViewInit {
 
   accountInfo: any;
 
@@ -33,6 +33,7 @@ export class AccountUpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.accountInfo = data;
+    console.log(data);
     this.centers = [];
     phxChannel.Centers.subscribe( data => {
       this.centers = [];
@@ -46,7 +47,7 @@ export class AccountUpdateComponent implements OnInit {
    }
 
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.phxChannel.gets('center', '');
     this.account = {
       id: this.accountInfo.id,

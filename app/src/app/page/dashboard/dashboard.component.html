@@ -191,24 +191,14 @@
             <td mat-cell *matCellDef="let row4"> {{row4.date}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="location">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> 지역 위치 </th>
-            <td mat-cell *matCellDef="let row4"> {{row4.location}} </td>
-          </ng-container>
-
           <ng-container matColumnDef="new">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> 신규확진자 </th>
             <td mat-cell *matCellDef="let row4"> {{row4.new}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="total">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> 총 확진자 </th>
-            <td mat-cell *matCellDef="let row4"> {{row4.total}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="desc">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> 내용 </th>
-            <td mat-cell *matCellDef="let row4"> {{row4.desc}} </td>
+          <ng-container matColumnDef="updated">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> 업데이트 시간 </th>
+            <td mat-cell *matCellDef="let row4"> {{row4.updated}} </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="covidColumns"></tr>
