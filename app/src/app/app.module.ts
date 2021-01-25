@@ -103,7 +103,12 @@ import { DietaryPhotoUpdateComponent } from './modal/dietary-photo-update/dietar
 import { VideosUpdateComponent } from './modal/videos-update/videos-update.component';
 import { WorkerUpdateComponent } from './modal/worker-update/worker-update.component';
 import { ActivityUpdateComponent } from './modal/activity-update/activity-update.component';
+<<<<<<< HEAD
 import { SocketioService } from './service/socketio.service';
+=======
+import { ContactFamilyComponent } from './modal/contact-family/contact-family.component';
+import { EmergencySMSComponent } from './modal/emergency-sms/emergency-sms.component';
+>>>>>>> 9bb2c6605137b3124330443da27b8d70b0a5207c
 
 @NgModule({
   declarations: [
@@ -164,6 +169,8 @@ import { SocketioService } from './service/socketio.service';
     DietaryPhotoUpdateComponent,
     VideosUpdateComponent,
     WorkerUpdateComponent,
+    ContactFamilyComponent,
+    EmergencySMSComponent,
   ],
   imports: [
     BrowserModule,

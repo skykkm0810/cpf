@@ -10,9 +10,14 @@ import {CALLEMERGENCY, callEmergency } from '../../interface/interface';
   styleUrls: ['./emergency.component.css']
 })
 export class EmergencyComponent implements AfterViewInit {
+<<<<<<< HEAD
   where :any;
   msg : any;
   why : any;
+=======
+  where :any
+  why :any
+>>>>>>> 9bb2c6605137b3124330443da27b8d70b0a5207c
   dataColumns: string[] = ["id","date","center","what","desc"];
   dataSource: MatTableDataSource<callEmergency>;
   @ViewChild('pagnator') paginator: MatPaginator;
@@ -46,5 +51,17 @@ export class EmergencyComponent implements AfterViewInit {
       this.msg ='<'+ this.why +'> \n위치:'+this.where;
     }
     this.nodeio.emergencyCall( this.msg );
+  }
+  sendSMS(){
+    var mes = "위치: "+this.where +"\n"+"요청사항:"+this.why; 
+    console.log(mes)
+  }
+  place(e:Event){
+    this.where = (e.target as HTMLElement).textContent;
+  }
+  for(){
+    setTimeout(()=>{
+    this.why = document.getElementsByClassName('mat-radio-checked')[0].querySelector('.mat-radio-label-content').textContent
+    },100)
   }
 }
