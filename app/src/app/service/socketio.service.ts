@@ -35,8 +35,8 @@ export class SocketioService {
     this.nodeSocket.emit('emergency', info);
   }
 
-  weatherCall() {
-    this.nodeSocket.emit('weather');
+  weatherCall(x,y) {
+    this.nodeSocket.emit('weather',x,y);
   }
 
   covidCall() {

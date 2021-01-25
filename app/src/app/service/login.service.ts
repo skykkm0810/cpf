@@ -6,6 +6,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 export class LoginService {
 
   Logined: boolean = true;
+  one: string = 'one';
+  two: string = 'two';
   userInfo: any;
 
   @Output() Log: EventEmitter<any> = new EventEmitter();
@@ -16,7 +18,6 @@ export class LoginService {
     this.Logined = true;
     this.userInfo = data;
     this.Log.emit(this.Logined);
-
   }
 
   setLogout(): void {

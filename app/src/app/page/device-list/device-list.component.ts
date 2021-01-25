@@ -18,7 +18,10 @@ import { FnService } from '../../service/fn.service';
   styleUrls: ['./device-list.component.css']
 })
 export class DeviceListComponent implements AfterViewInit {
-
+  filter = deviceFilter
+  CheckFilter : Device[] = [];
+  filteredData : Device[] = [];
+  
   allComplete: boolean = false;
   DEVICES: Device[] = [];
   
@@ -94,9 +97,7 @@ export class DeviceListComponent implements AfterViewInit {
     }
     this.filter.subFilters.forEach(t => t.completed = completed);
   }
-  filter = deviceFilter
-  CheckFilter : Device[] = [];
-  filteredData : Device[] = [];
+ 
   checkFilter(filter){
 
     this.filteredData = [];

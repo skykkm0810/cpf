@@ -7,10 +7,9 @@ import {EMERGENCY , Emergency} from '../../interface/interface';
 import {MEDICINE , Medicine} from '../../interface/interface';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Senior,SENIORS } from '../../interface/interface';
-import { SeniorContactComponent } from '../../modal/senior-contact/senior-contact.component';
-import { SeniorUpdateComponent } from '../../modal/senior-update/senior-update.component';
 import { ContactFamilyComponent } from '../../modal/contact-family/contact-family.component';
 import { EmergencySmsComponent } from '../../modal/emergency-sms/emergency-sms.component';
+import { SeniorUpdateComponent } from '../../modal/senior-update/senior-update.component';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 

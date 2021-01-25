@@ -18,7 +18,7 @@ export const TAGS : Record<string, string> = {
   NOTICEADD: 'noticeAdd',
   SENIORDETAIL: 'seniorDetail/:id',
   ATTENDANCE: 'attendance',
-  ATTENDANTS: 'attendants',
+  ATTENDANTS: 'attendants/:id',
   SCHEDULE: 'schedule',
   PHOTOBOOK: 'photobook',
   TASKADD: 'taskAdd',
@@ -199,7 +199,7 @@ export interface Account {
 export interface Filter {
   name: string;
   completed?: boolean;
-  color: ThemePalette;
+  color?: ThemePalette;
   subFilters?: Filter[];
 }
 // user
@@ -241,7 +241,6 @@ export const deviceFilter: Filter = {
     {name: '스마트 스피커', completed: false, color: 'primary'},
   ]
 }
-
 export const DEVICES: Device[] = [
   { id: 1, name: 'RB-01', type: '로봇', center: '시설A', inserted: '2020.10.15', location: '활동실', status: '정상', color: 'blue'},
   { id: 2, name: 'ST-04', type: '센서', center: '시설B', inserted: '2020.11.25', location: '주방', status: '정상', color: 'blue'},
@@ -271,17 +270,17 @@ export const LOG : log[] =[
 export interface weather {
   id:number;
   center:string;
-  todayT:string;
-  todayW: string;
-  tmrrwT:string;
-  tmrrwW:string;
+  date:string;
+  highT: string;
+  lowT:string;
+  sky:string;
 }
 export const WEATHER : weather[] =[
-  { id: 1, center: '시설A', todayT: '8/-3', todayW: '40%', tmrrwT: '10/3', tmrrwW: '41%' },
-  { id: 2, center: '시설B', todayT: '9/1', todayW: '56%', tmrrwT: '3/-5', tmrrwW: '51%' },
-  { id: 3, center: '시설C', todayT: '4/-4', todayW: '39%', tmrrwT: '10/1', tmrrwW: '25%' },
-  { id: 4, center: '시설D', todayT: '7/-4', todayW: '44%', tmrrwT: '6/1', tmrrwW: '24%' },
-  { id: 5, center: '시설E', todayT: '-1/-12', todayW: '65%', tmrrwT: '7/-2', tmrrwW: '26%' },
+  { id: 1, center: '시설A', date: '8/-3', highT: '40%', lowT: '10/3', sky: '41%' },
+  { id: 2, center: '시설B', date: '9/1', highT: '56%', lowT: '3/-5', sky: '51%' },
+  { id: 3, center: '시설C', date: '4/-4', highT: '39%', lowT: '10/1', sky: '25%' },
+  { id: 4, center: '시설D', date: '7/-4', highT: '44%', lowT: '6/1', sky: '24%' },
+  { id: 5, center: '시설E', date: '-1/-12', highT: '65%', lowT: '7/-2', sky: '26%' },
 ]
 // covid
 export interface covid {
@@ -421,19 +420,27 @@ export interface Task {
 
 export const taskHeader: string[] = ['id', 'name', 'event', 'center', 'present', 'datetime','control'];
 
-export const taskFilter: Filter = {
-  name: '전체',
-  completed: false,
-  color: 'primary',
-  subFilters: [
-    {name: '화재', completed: false, color: 'primary'},
-    {name: '낙상', completed: false, color: 'primary'},
-    {name: '배화', completed: false, color: 'primary'},
-    {name: '체온이상자', completed: false, color: 'primary'},
-    {name: '무단 결석자', completed: false, color: 'primary'},
-    {name: '기타 사건사고', completed: false, color: 'primary'},
-  ]
-}
+export let taskFilter: any[] = [
+  {
+    name: '전체',
+    completed: false,
+    color: 'primary',
+    allFilter: [
+      {name: '전체', completed: false, color: 'primary', type: 'all'},
+    ],
+    eventFilters: [
+      {name: '낙상', completed: false, color: 'primary', type: 'event'},
+      {name: '화재', completed: false, color: 'primary', type: 'event'},
+      {name: '배회', completed: false, color: 'primary', type: 'event'},
+    ],
+    centerFilters: [
+      {name: '시설A', completed: false, color: 'primary', type: 'center'},
+      {name: '시설B', completed: false, color: 'primary', type: 'center'},
+      {name: '시설C', completed: false, color: 'primary', type: 'center'},
+    ]
+  }
+]
+
 
 export const TASKS: Task[] = [
   { id : '#REQ001', center : '시설A', present: 40, datetime: '2020.10.15 14:13', name : '김모모', event: '낙상'},
