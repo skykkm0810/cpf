@@ -107,27 +107,51 @@ export class TaskListComponent implements AfterViewInit {
       el.completed = true;
     }
   }
-
-  checkFilter( el ) {
-    if(el.name == '전체'){
-      this.dataSource = new MatTableDataSource(TASKS);
-    }
-    else{
+  array :any
+  arrayC :any
+  arrayE :any
+  allcall(){
+    this.dataSource = new MatTableDataSource(TASKS);
+  }
+  checkFilter( el,m:Event ) {
+      var container = (m.target as HTMLElement).closest('.filterContainer');
       var arrayE = new Array ;
       var array = new Array ;
       var arrayC = new Array ;
-      this.dataSource = new MatTableDataSource(TASKS);
-      for(var i=0; i<TASKS.length; i++){
-        if(TASKS[i].event == el.name){
+      if(TASKS[i].event == el.name){
+        if(container.classList.contains('one')){
+          
+        }
+        else{
+          container.classList
+        }
+          for(var i=0; i<TASKS.length; i++){
           arrayE.push(TASKS[i]);
-        }
-        else if(TASKS[i].center == el.name){
-          arrayC.push(TASKS[i]);
-        }
+          }
       }
-      // 여기서 각 array 길이 = 잇다없다 판단 -> 4가지 경우 해서 플로팅
-      array = arrayE.filter(x => arrayC.includes(x))
-      this.dataSource = new MatTableDataSource(array);
-    }
+        else if(TASKS[i].center == el.name){
+          for(var i=0; i<TASKS.length; i++){
+            arrayC.push(TASKS[i]);
+          }
+      }
+      console.log(arrayE)
+      console.log(arrayC)
+      if(arrayE.length > 0 && arrayC.length > 0){
+        alert('both')
+        array = arrayE.filter(x => arrayC.includes(x));
+        console.log(array)
+        this.dataSource = new MatTableDataSource(array);
+
+      }
+      else if (arrayE.length < 0 && arrayC.length > 0 ){
+        alert('second')
+
+        this.dataSource = new MatTableDataSource(arrayC);
+      }
+      else if (arrayE.length > 0 && arrayC.length < 0 ){
+        alert('first')
+
+        this.dataSource = new MatTableDataSource(arrayE);
+      }
   }
 }

@@ -10,21 +10,21 @@
             <li *ngFor="let s of f.allFilter">
               <mat-checkbox [(ngModel)]="s.completed"
                             (ngModelChange)="updateAllComplete( s, f )"
-                            (change)="checkFilter(s)">
+                            (change)="allcall()">
                 {{ s.name }}
               </mat-checkbox>
             </li>
             <li *ngFor="let s of f.eventFilters">
               <mat-checkbox [(ngModel)]="s.completed"
                             (ngModelChange)="updateAllComplete( s, f )"
-                            (change)="checkFilter(s)">
+                            (change)="checkFilter(s,$event)">
                 {{ s.name }}
               </mat-checkbox>
             </li>
             <li *ngFor="let s of f.centerFilters">
               <mat-checkbox [(ngModel)]="s.completed"
                             (ngModelChange)="updateAllComplete( s, f )"
-                            (change)="checkFilter(s)">
+                            (change)="checkFilter(s,$event)">
                 {{ s.name }}
               </mat-checkbox>
             </li>
